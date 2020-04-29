@@ -1,7 +1,49 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'date'
+
+User.destroy_all
+TaggedPost.destroy_all
+
+puts 'Database wiped...'
+
+User.create(
+  first_name: 'Jonas',
+  last_name: 'Vanbuel',
+  email: 'jonas.vanbuel@gmail.com',
+  password: 'shoutouts',
+  password_confirmation: 'shoutouts'
+)
+
+puts "#{User.count} users created..."
+User.all.each do |user|
+  puts "- #{user.first_name} #{user.last_name}"
+end
+
+InstagramAccount.create(username: 'mariotestino')
+puts "#{InstagramAccount.count} instagram accounts created..."
+UsersInstagramAccount.create(user: User.first, instagram_account: InstagramAccount.first)
+puts "Instagram accounts connected to users..."
+
+TaggedPost.create(
+  instagram_account: InstagramAccount.find(1),
+  author: 'anglophileclub',
+  message: 'Princess Diana for @vanityfair, 1997. (📷: @mariotestino)',
+  posted_at: DateTime.new(2020, 4, 27),
+  post_url: 'https://www.instagram.com/p/B_fb1GoJKhs/',
+  image_url: 'https://scontent-lht6-1.cdninstagram.com/v/t51.2885-15/e35/p1080x1080/95016821_2584228335238619_6233441985609805717_n.jpg?_nc_ht=scontent-lht6-1.cdninstagram.com&_nc_cat=111&_nc_ohc=MVspVszkOdMAX_M2VS2&oh=c1210bd67b036d237f02a02d6fc19f2a&oe=5ED3CBEC',
+  likes: 923
+)
+
+TaggedPost.create(
+  instagram_account: InstagramAccount.find(1),
+  author: 'crazyforcouture',
+  message: 'Bone structure for their future baby will be perfecto !
+#gigihadid #zaynmalik 📸 @mariotestino
+FOLLOW @crazyforcouture for your daily style & couture inspiration, We always tag & mention the designers. #Crazyforcouture #hautecouture #couture #couturefashion #couturedress #couturegown #highfashion #bride #ballgown #whitegown #weddingdress #mermaiddress #royalwedding #style #eveningdress #dreamdress #fashionart #fashionstyle #couturestyle #headpiece #whiteweddingdress #fashionphotography #weddinggown #amazingdress #couturedetails #beautifuldress #fairy #dreamy',
+  posted_at: DateTime.new(2020, 4, 29),
+  post_url: 'https://www.instagram.com/p/B_jDZQKjMRn/',
+  image_url: 'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-15/e35/p1080x1080/95525962_841113593051762_150187507184528024_n.jpg?_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_cat=102&_nc_ohc=N8QlBvfJOdAAX_Xyzr8&oh=01890bb7261fdfda08e7b3ff68d7f671&oe=5ED29F5F',
+  likes: 923
+)
+
+puts "#{TaggedPost.count} tagged posts created..."
+puts "SEEDING COMPLETED!"
