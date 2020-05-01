@@ -1,4 +1,4 @@
-import FETCH_TAGGED_POSTS from '../actions';
+import { FETCH_TAGGED_POSTS } from '../actions';
 
 export default function(state = null, action) {
   switch (action.type) {

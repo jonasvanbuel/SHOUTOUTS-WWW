@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import logger from 'redux-logger'
+import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
