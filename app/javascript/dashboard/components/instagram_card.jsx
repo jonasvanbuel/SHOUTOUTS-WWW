@@ -5,11 +5,47 @@ import InstaComment from 'images/insta-comment.png';
 import InstaShare from 'images/insta-share.png';
 
 const InstagramCard = ({ taggedPost }) => {
-  function postedAtToString(dateTimeString) {
-    const dateTimeMilliseconds = Date.parse(dateTimeString);
-    let timeNow = Date.now();
-    console.log(dateTimeMilliseconds);
-    console.log(timeNow);
+  function timeDiffToString(dateTimeString) {
+    const dateTime = new Date(dateTimeString);
+    const timeDiff = Date.now() - dateTime;
+
+    // date if over 1 week
+    if (timeDiff > 604800000) {
+      const monthsArray = [
+        'january',
+        'february',
+        'march',
+        'april',
+        'may',
+        'june',
+        'july',
+        'august',
+        'september',
+        'october',
+        'november',
+        'december'
+      ];
+      const month = monthsArray[dateTime.getMonth()];
+      const day = dateTime.getDate();
+      return `${day} ${month.toUpperCase()}`;
+    }
+    // number of days
+    if (timeDiff >= 86400000) {
+      return '### of days';
+    }
+    // number of hours
+    if (timeDiff >= 3600000) {
+      return '### of hours';
+    }
+    // number of mins
+    if (timeDiff >= 60000) {
+      return '### of mins';
+    }
+    // number of secs
+    if (timeDiff >= 1000) {
+      return '### of secs';
+    }
+    return null;
   }
 
   return (
@@ -42,7 +78,7 @@ const InstagramCard = ({ taggedPost }) => {
       </div>
 
       <div className="time">
-        {postedAtToString(taggedPost.posted_at)}
+        {timeDiffToString(taggedPost.posted_at)}
       </div>
 
     </div>
