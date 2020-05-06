@@ -80,7 +80,6 @@ const InstagramCard = ({ taggedPost }) => {
       <div className="time">
         {timeDiffToString(taggedPost.posted_at)}
       </div>
-
     </div>
   );
 };
