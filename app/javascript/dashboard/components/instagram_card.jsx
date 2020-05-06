@@ -51,7 +51,7 @@ const InstagramCard = ({ taggedPost }) => {
   return (
     <div className="instagram-card">
       <div className="header">
-        <div className="avatar" />
+        <img className="avatar" src={taggedPost.user_avatar_url} alt={taggedPost.author} />
         <div className="author">
           {taggedPost.author}
         </div>

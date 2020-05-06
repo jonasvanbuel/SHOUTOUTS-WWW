@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_29_171915) do
+ActiveRecord::Schema.define(version: 2020_05_06_155800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_04_29_171915) do
     t.integer "likes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_avatar_url"
     t.index ["instagram_account_id"], name: "index_tagged_posts_on_instagram_account_id"
   end
 
