@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import InstagramCard from '../components/instagram_card';
 import { fetchTaggedPosts } from '../actions';
 
 class DashboardPostList extends Component {
@@ -10,14 +11,13 @@ class DashboardPostList extends Component {
   }
 
   render() {
+    const { taggedPosts } = this.props;
     return (
-      <ul>
-        <li>Post 1</li>
-        <li>Post 2</li>
-        <li>Post 3</li>
-        <li>Post 4</li>
-        <li>Post 5</li>
-      </ul>
+      <div className="dashboard-post-list">
+        {taggedPosts.map((taggedPost) => {
+          return <InstagramCard taggedPost={taggedPost} key={taggedPost.post_url} />;
+        })}
+      </div>
     );
   }
 }
