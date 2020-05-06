@@ -42,7 +42,7 @@ FOLLOW @crazyforcouture for your daily style & couture inspiration, We always ta
   posted_at: DateTime.new(2020, 4, 29),
   post_url: 'https://www.instagram.com/p/B_jDZQKjMRn/',
   image_url: 'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-15/e35/p1080x1080/95525962_841113593051762_150187507184528024_n.jpg?_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_cat=102&_nc_ohc=N8QlBvfJOdAAX_Xyzr8&oh=01890bb7261fdfda08e7b3ff68d7f671&oe=5ED29F5F',
-  likes: 923
+  likes: 16
 )
 
 puts "#{TaggedPost.count} tagged posts created..."
