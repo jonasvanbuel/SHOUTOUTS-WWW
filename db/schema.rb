@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_155800) do
     t.string "author"
     t.text "message"
     t.datetime "posted_at"
-    t.string "post_url"
+    t.string "pathname"
     t.string "image_url"
     t.integer "likes"
     t.datetime "created_at", null: false
