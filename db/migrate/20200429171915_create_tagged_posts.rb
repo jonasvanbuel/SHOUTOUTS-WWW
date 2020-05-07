@@ -5,7 +5,7 @@ class CreateTaggedPosts < ActiveRecord::Migration[5.2]
       t.string :author
       t.text :message
       t.datetime :posted_at
-      t.string :post_url
+      t.string :pathname
       t.string :image_url
       t.integer :likes
 

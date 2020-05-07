@@ -15,7 +15,7 @@ class DashboardPostList extends Component {
     return (
       <div className="dashboard-post-list">
         {taggedPosts.map((taggedPost) => {
-          return <InstagramCard taggedPost={taggedPost} key={taggedPost.post_url} />;
+          return <InstagramCard taggedPost={taggedPost} key={taggedPost.pathname} />;
         })}
       </div>
     );
