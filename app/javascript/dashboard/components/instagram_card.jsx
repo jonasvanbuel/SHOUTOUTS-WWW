@@ -1,8 +1,11 @@
 import React from 'react';
+import Truncate from 'react-truncate-html';
 
 import InstaLike from 'images/insta-like.png';
 import InstaComment from 'images/insta-comment.png';
 import InstaShare from 'images/insta-share.png';
+
+// TO DO: convert to Class
 
 const InstagramCard = ({ taggedPost }) => {
   function timeDiffToString(dateTimeString) {
@@ -29,23 +32,41 @@ const InstagramCard = ({ taggedPost }) => {
       const day = dateTime.getDate();
       return `${day} ${month.toUpperCase()}`;
     }
-    // number of days
     if (timeDiff >= 86400000) {
-      return '### of days';
+      const days = timeDiff / 86400000;
+      if (Math.floor(days) === 1) {
+        return `${Math.floor(days)} day ago`;
+      }
+      return `${Math.floor(days)} days ago`;
     }
-    // number of hours
     if (timeDiff >= 3600000) {
-      return '### of hours';
+      const hours = timeDiff / 3600000;
+      if (Math.floor(hours) === 1) {
+        return `${Math.floor(hours)} hour ago`;
+      }
+      return `${Math.floor(hours)} hours ago`;
     }
-    // number of mins
     if (timeDiff >= 60000) {
-      return '### of mins';
+      const mins = timeDiff / 60000;
+      if (Math.floor(mins) === 1) {
+        return `${Math.floor(mins)} minute ago`;
+      }
+      return `${Math.floor(mins)} minutes ago`;
     }
-    // number of secs
     if (timeDiff >= 1000) {
-      return '### of secs';
+      const mins = timeDiff / 1000;
+      if (Math.floor(mins) === 1) {
+        return `${Math.floor(mins)} second ago`;
+      }
+      return `${Math.floor(mins)} seconds ago`;
     }
     return null;
+  }
+
+  function parseHTML(string) {
+    const div = document.createElement('div');
+    div.innerHTML = string;
+    return div;
   }
 
   return (
@@ -74,7 +95,12 @@ const InstagramCard = ({ taggedPost }) => {
       <div className="message">
         <span className="author">{taggedPost.author}</span>
         <span> </span>
-        {`${taggedPost.message.slice(0, 140)} ...`}
+        <Truncate
+          lines={3}
+          dangerouslySetInnerHTML={{
+            __html: taggedPost.message
+          }}
+        />
       </div>
 
       <div className="time">
@@ -85,3 +111,5 @@ const InstagramCard = ({ taggedPost }) => {
 };
 
 export default InstagramCard;
+
+// {`${taggedPost.message.slice(0, 140)} ...`}
