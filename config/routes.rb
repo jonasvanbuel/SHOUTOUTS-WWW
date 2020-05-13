@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       get 'tagged_posts/:instagram_username', to: 'tagged_posts#index'
+      post 'tagged_posts/:instagram_username', to: 'tagged_posts#create'
     end
   end
 end

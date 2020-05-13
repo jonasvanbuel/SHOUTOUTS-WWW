@@ -4,7 +4,7 @@ import DashboardPostList from '../containers/dashboard_post_list';
 
 const Dashboard = (props) => {
   return (
-    <div>
+    <div className="dashboard">
       <DashboardPostList />
     </div>
   );
