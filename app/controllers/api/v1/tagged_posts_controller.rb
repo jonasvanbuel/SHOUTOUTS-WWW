@@ -26,6 +26,7 @@ class Api::V1::TaggedPostsController < ActionController::API
 
   def render_index
     instagram_account = InstagramAccount.find_by(username: params[:instagram_username])
-    return TaggedPost.where(instagram_account: instagram_account)
+    tagged_posts_selection = TaggedPost.where(instagram_account: instagram_account)
+    return tagged_posts_selection.sort_by(&:posted_at)[0..9].reverse
   end
 end

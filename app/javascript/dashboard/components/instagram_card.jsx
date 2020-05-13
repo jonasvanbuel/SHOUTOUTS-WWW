@@ -63,12 +63,6 @@ const InstagramCard = ({ taggedPost }) => {
     return null;
   }
 
-  function parseHTML(string) {
-    const div = document.createElement('div');
-    div.innerHTML = string;
-    return div;
-  }
-
   return (
     <div className="instagram-card">
       <div className="header">
