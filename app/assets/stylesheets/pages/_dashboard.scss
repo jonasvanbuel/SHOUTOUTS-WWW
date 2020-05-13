@@ -1,5 +1,63 @@
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+.dashboard {
+  width: 468px;
+  margin: auto;
+  padding-top: 24px;
+}
+
 .dashboard-post-list {
-  // background-color: white;
-  padding: 0px 40px;
-  display: flex;
+  // background-color: gray;
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: repeat(2, 230px);
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@include media-breakpoint-up(sm) {
+  .dashboard {
+  }
+  .dashboard-post-list {
+    // background-color: yellow;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@include media-breakpoint-up(md) {
+  .dashboard {
+    width: 706px;
+    margin: auto;
+  }
+  .dashboard-post-list {
+    // background-color: purple;
+    grid-gap: 8px;
+    grid-template-columns: repeat(3, 230px);
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@include media-breakpoint-up(lg) {
+  .dashboard {
+    width: 944px;
+    margin: auto;
+  }
+  .dashboard-post-list {
+    // background-color: purple;
+    grid-gap: 8px;
+    grid-template-columns: repeat(4, 230px);
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@include media-breakpoint-up(xl) {
+  .dashboard {
+    width: 1182px;
+    margin: auto;
+  }
+  .dashboard-post-list {
+    // background-color: purple;
+    grid-gap: 8px;
+    grid-template-columns: repeat(5, 230px);
+  }
 }
