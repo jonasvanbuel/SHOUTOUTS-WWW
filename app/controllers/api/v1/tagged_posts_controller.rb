@@ -1,6 +1,6 @@
 class Api::V1::TaggedPostsController < ActionController::API
   def index
-    render json: render_index
+    render json: render_selection
   end
 
   def create
@@ -17,16 +17,16 @@ class Api::V1::TaggedPostsController < ActionController::API
         likes: params[:likes]
       )
     end
-    render json: render_index
+    render json: render_selection
   end
 
   # render the entire set of posts that need to possibly be re-rendered
 
   private
 
-  def render_index
+  def render_selection
     instagram_account = InstagramAccount.find_by(username: params[:instagram_username])
     tagged_posts_selection = TaggedPost.where(instagram_account: instagram_account)
-    return tagged_posts_selection.sort_by(&:posted_at)[0..9].reverse
+    return tagged_posts_selection.sort_by(&:posted_at).reverse[0..9]
   end
 end
