@@ -1,6 +1,6 @@
 class Api::V1::TaggedPostsController < ActionController::API
   def index
-    render json: render_selection
+    render json: core_selection
   end
 
   def create
@@ -17,16 +17,31 @@ class Api::V1::TaggedPostsController < ActionController::API
         likes: params[:likes]
       )
     end
-    render json: render_selection
+    render json: core_selection
   end
 
-  # render the entire set of posts that need to possibly be re-rendered
+  def update
+    instagram_account = InstagramAccount.find_by(username: params[:instagram_username])
+    tagged_post = TaggedPost.find_by instagram_account: instagram_account, pathname: params[:pathname]
+    tagged_post[:likes] = params[:likes]
+    tagged_post.save
+    render json: core_selection
+  end
+
+  # TO INCLUDE A WIDER SELECTION OF POSTS WHEN UPDATING?
 
   private
 
-  def render_selection
+  def core_selection
     instagram_account = InstagramAccount.find_by(username: params[:instagram_username])
     tagged_posts_selection = TaggedPost.where(instagram_account: instagram_account)
     return tagged_posts_selection.sort_by(&:posted_at).reverse[0..9]
   end
+
+  def render_wider_selection
+  end
+
+  # IMPLEMENT STRONG PARAMS
+
+
 end
