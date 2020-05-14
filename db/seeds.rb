@@ -10,6 +10,22 @@ User.create(
   first_name: 'Jonas',
   last_name: 'Vanbuel',
   email: 'jonas.vanbuel@gmail.com',
+  password: 'shoutouts123',
+  password_confirmation: 'shoutouts123'
+)
+
+User.create(
+  first_name: 'Toon',
+  last_name: 'Bosmans',
+  email: 'toon.j.bosmans@gmail.com',
+  password: 'shoutouts',
+  password_confirmation: 'shoutouts'
+)
+
+User.create(
+  first_name: 'Greg',
+  last_name: 'Lofthouse',
+  email: 'greglofthouse@gmail.com',
   password: 'shoutouts',
   password_confirmation: 'shoutouts'
 )
