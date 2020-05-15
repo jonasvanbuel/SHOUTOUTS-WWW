@@ -1,8 +1,8 @@
 require 'date'
 
-User.destroy_all
 TaggedPost.destroy_all
 InstagramAccount.destroy_all
+User.destroy_all
 
 puts 'Database wiped...'
 
