@@ -1,6 +1,7 @@
 require 'date'
 
 TaggedPost.destroy_all
+UsersInstagramAccount.destroy_all
 InstagramAccount.destroy_all
 User.destroy_all
 
@@ -37,11 +38,12 @@ end
 
 InstagramAccount.create(username: 'mariotestino')
 puts "#{InstagramAccount.count} instagram accounts created..."
-UsersInstagramAccount.create(user: User.first, instagram_account: InstagramAccount.first)
+
+UsersInstagramAccount.create(user: User.find_by(first_name: 'Jonas'), instagram_account: InstagramAccount.find_by(username: 'mariotestino'))
 puts "Instagram accounts connected to users..."
 
 TaggedPost.create(
-  instagram_account: InstagramAccount.find(1),
+  instagram_account: InstagramAccount.find_by(username: 'mariotestino'),
   author: 'anglophileclub',
   message: 'Princess Diana for @vanityfair, 1997. (📷: @mariotestino)',
   posted_at: DateTime.new(2020, 4, 27),
@@ -52,7 +54,7 @@ TaggedPost.create(
 )
 
 TaggedPost.create(
-  instagram_account: InstagramAccount.find(1),
+  instagram_account: InstagramAccount.find_by(username: 'mariotestino'),
   author: 'crazyforcouture',
   message: 'Bone structure for their future baby will be perfecto !
 #gigihadid #zaynmalik 📸 @mariotestino
