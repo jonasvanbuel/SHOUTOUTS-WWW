@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get 'tagged_posts/:instagram_username', to: 'tagged_posts#index'
       post 'tagged_posts/:instagram_username', to: 'tagged_posts#create'
       patch 'tagged_posts/:instagram_username', to: 'tagged_posts#update'
+      delete 'tagged_posts/:instagram_username', to: 'tagged_posts#delete'
     end
   end
 end
