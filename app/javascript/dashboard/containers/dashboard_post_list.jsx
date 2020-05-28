@@ -7,7 +7,11 @@ import { fetchTaggedPosts } from '../actions';
 
 class DashboardPostList extends Component {
   componentDidMount() {
-    this.props.fetchTaggedPosts('mariotestino');
+    this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
