@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  root to: 'application#redirect_to_dashboard'
-  get '/dashboard', to: 'pages#dashboard'
+  root to: 'pages#root'
+  get '/dashboard', to: 'pages#root'
+  get '/live', to: 'pages#root'
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

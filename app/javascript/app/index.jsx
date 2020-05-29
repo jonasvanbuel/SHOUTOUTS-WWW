@@ -7,10 +7,11 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 // internal modules
-import Dashboard from './components/dashboard';
+import DashboardContainer from './components/dashboard_container';
+import LiveContainer from './components/live_container';
 
 // state and reducers
 import taggedPostsReducer from './reducers/tagged_posts_reducer';
@@ -28,11 +29,13 @@ const store = createStore(reducers, initialState, middlewares);
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <Switch>
-        <Route path="/" component={Dashboard} />
+        <Route path="/dashboard" exact component={DashboardContainer} />
+        <Route path="/live" component={LiveContainer} />
+        <Redirect from="/" to="/dashboard" />
       </Switch>
-    </BrowserRouter>
+    </Router>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('react-root')
 );
