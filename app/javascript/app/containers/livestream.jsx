@@ -2,12 +2,12 @@ import React from 'react';
 
 // import DashboardPostList from '../containers/dashboard_post_list';
 
-const LiveContainer = (props) => {
+const Livestream = (props) => {
   return (
     <div>
-      LiveContainer goes here...
+      Livestream goes here...
     </div>
   );
 };
 
-export default LiveContainer;
+export default Livestream;
