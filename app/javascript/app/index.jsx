@@ -13,7 +13,7 @@ import {
   Redirect,
   Switch
 } from 'react-router-dom';
-import { createHistory as history } from 'history';
+import { createBrowserHistory } from 'history';
 
 // internal modules
 import DashboardContainer from './components/dashboard_container';
@@ -32,6 +32,7 @@ const reducers = combineReducers({
 
 const middlewares = applyMiddleware(logger, promise);
 const store = createStore(reducers, initialState, middlewares);
+const history = createBrowserHistory();
 
 ReactDOM.render(
   <Provider store={store}>

@@ -4,8 +4,9 @@ import React from 'react';
 
 const Livestream = (props) => {
   return (
-    <div>
-      Livestream goes here...
+    <div className="animation-container">
+      <div className="test-animation">
+      </div>
     </div>
   );
 };
