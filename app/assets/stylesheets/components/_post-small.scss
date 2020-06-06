@@ -1,0 +1,74 @@
+.post-small {
+  width: 136px;
+  // height: 200px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 0.5px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+
+  animation-name: post_small_slide;
+  // animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+
+  .header {
+    height: 12px;
+    margin-bottom: 4px;
+
+    .avatar {
+      width: 12px;
+      height: 12px;
+      border-radius: 6px;
+      margin-right: 6px;
+      border: 0.2px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .author {
+      font-size: 6px;
+    }
+  }
+
+  .img-container {
+    height: 120px;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .icon-container {
+    height: 8px;
+    margin-bottom: 2.5px;
+
+    img {
+      width: 8px;
+      margin: auto 5px auto 0px;
+    }
+  }
+
+  .likes {
+    font-size: 6px;
+    margin-bottom: 2.5px;
+  }
+
+  .message {
+    font-size: 5px;
+
+    span.author {
+      font-size: 6px;
+    }
+  }
+
+  .time {
+    font-size: 6px;
+    margin-top: 1.5px;
+  }
+}
+
+/* // KEYFRAMES // */
+@keyframes post_small_slide {
+  0% {
+    top: calc(100vh + 20px);
+  }
+  100% {
+    top: -220px;
+  }
+}

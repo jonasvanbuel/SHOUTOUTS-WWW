@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import InstagramCard from '../components/instagram_card';
+import Post from '../components/post';
 import { fetchTaggedPosts } from '../actions';
 
-class LivestreamPostList extends Component {
+class Livestream extends Component {
   componentDidMount() {
     this.props.fetchTaggedPosts('mariotestino');
     // this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
@@ -18,9 +18,9 @@ class LivestreamPostList extends Component {
   render() {
     const { taggedPosts } = this.props;
     return (
-      <div className="dashboard-post-list">
+      <div className="livestream-container">
         {taggedPosts.map((taggedPost) => {
-          return <InstagramCard taggedPost={taggedPost} key={taggedPost.pathname} />;
+          return <Post taggedPost={taggedPost} key={taggedPost.pathname} />;
         })}
       </div>
     );
@@ -37,4 +37,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchTaggedPosts }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LivestreamPostList);
+export default connect(mapStateToProps, mapDispatchToProps)(Livestream);
