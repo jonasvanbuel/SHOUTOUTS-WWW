@@ -16,8 +16,8 @@ import {
 import { createBrowserHistory } from 'history';
 
 // internal modules
-import DashboardContainer from './components/dashboard_container';
-import Livestream from './containers/livestream';
+import Dashboard from './components/dashboard';
+import Livestream from './components/livestream';
 
 // state and reducers
 import taggedPostsReducer from './reducers/tagged_posts_reducer';
@@ -38,7 +38,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <Route path="/dashboard" exact component={DashboardContainer} />
+        <Route path="/dashboard" exact component={Dashboard} />
         <Route path="/live" component={Livestream} />
         <Redirect from="/" to="/dashboard" />
       </Switch>
