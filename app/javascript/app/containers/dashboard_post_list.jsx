@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import InstagramCard from '../components/instagram_card';
+import Post from '../components/post';
 import { fetchTaggedPosts } from '../actions';
 
 class DashboardPostList extends Component {
   componentDidMount() {
-    this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
+    this.props.fetchTaggedPosts('mariotestino');
+    // this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    // clearInterval(this.interval);
   }
 
   render() {
@@ -19,7 +20,7 @@ class DashboardPostList extends Component {
     return (
       <div className="dashboard-post-list">
         {taggedPosts.map((taggedPost) => {
-          return <InstagramCard taggedPost={taggedPost} key={taggedPost.pathname} />;
+          return <Post taggedPost={taggedPost} key={taggedPost.pathname} />;
         })}
       </div>
     );

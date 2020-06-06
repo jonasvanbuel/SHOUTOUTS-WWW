@@ -2,7 +2,7 @@ import React from 'react';
 
 import DashboardPostList from '../containers/dashboard_post_list';
 
-const DashboardContainer = (props) => {
+const Dashboard = (props) => {
   return (
     <div className="dashboard-container">
       <DashboardPostList />
@@ -10,4 +10,4 @@ const DashboardContainer = (props) => {
   );
 };
 
-export default DashboardContainer;
+export default Dashboard;

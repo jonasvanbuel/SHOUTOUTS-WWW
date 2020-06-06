@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import InstagramCard from '../components/instagram_card';
+import Post from '../components/post';
 import { fetchTaggedPosts } from '../actions';
 
 class Livestream extends Component {
@@ -18,9 +18,9 @@ class Livestream extends Component {
   render() {
     const { taggedPosts } = this.props;
     return (
-      <div className="dashboard-post-list">
+      <div className="livestream-container">
         {taggedPosts.map((taggedPost) => {
-          return <InstagramCard taggedPost={taggedPost} key={taggedPost.pathname} />;
+          return <Post taggedPost={taggedPost} key={taggedPost.pathname} />;
         })}
       </div>
     );
