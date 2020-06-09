@@ -1,15 +1,11 @@
 .post-small {
+  position: absolute;
+
   width: 136px;
-  // height: 200px;
   padding: 8px;
   border-radius: 8px;
   border: 0.5px solid rgba(0, 0, 0, 0.3);
   box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
-
-  animation-name: post_small_slide;
-  // animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
 
   .header {
     height: 12px;
@@ -63,12 +59,3 @@
   }
 }
 
-/* // KEYFRAMES // */
-@keyframes post_small_slide {
-  0% {
-    top: calc(100vh + 20px);
-  }
-  100% {
-    top: -220px;
-  }
-}

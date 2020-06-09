@@ -42,7 +42,7 @@ class Api::V1::TaggedPostsController < ActionController::API
 
   def most_recent_selection
     tagged_posts = TaggedPost.where(instagram_account: @instagram_account)
-    sorted_posts = tagged_posts.sort_by(&:posted_at).reverse[0..1]
+    sorted_posts = tagged_posts.sort_by(&:posted_at).reverse[0..19]
     categorized_posts = add_style_classnames(sorted_posts, 'MR')
   end
 

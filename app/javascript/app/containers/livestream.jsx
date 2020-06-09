@@ -7,12 +7,16 @@ import { fetchTaggedPosts } from '../actions';
 
 class Livestream extends Component {
   componentDidMount() {
+    // Prevent scrolling of body
+    const body = document.getElementsByTagName('body')[0];
+    body.style.overflow = "hidden";
+
     this.props.fetchTaggedPosts('mariotestino');
-    // this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
+    this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
   }
 
   componentWillUnmount() {
-    // clearInterval(this.interval);
+    clearInterval(this.interval);
   }
 
   render() {

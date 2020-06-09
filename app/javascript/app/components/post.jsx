@@ -8,12 +8,12 @@ import InstaShare from 'images/insta-share.png';
 // Import HELPERS
 import timeDiffToString from '../helpers/_time_helper';
 import setStyleClassname from '../helpers/_style_classname_helper';
-import setAnimation from '../helpers/_set_animation';
+import initAnimation from '../helpers/_animation';
 
 class Post extends Component {
   componentDidMount() {
     const { taggedPost } = this.props;
-    setAnimation(taggedPost.pathname);
+    initAnimation(taggedPost.pathname);
   }
 
   render() {
