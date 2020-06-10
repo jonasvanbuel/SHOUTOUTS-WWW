@@ -8,29 +8,51 @@ const getRandomInt = (min, max) => {
   return min + randomDiff;
 };
 
-const setInitialPosition = (post) => {
-  // If post-small
-  const left = getRandomInt(
-    -PADDING,
-    window.innerWidth - (post.offsetWidth - PADDING)
-  );
+const checkRandomLocation = (post, size, randomLocation) => {
+  const minDistanceX = Math.floor(post.offsetWidth * 0.8);
+  const minDistanceY = Math.floor(post.offsetHeight * 0.8);
+
+  const sameSizePosts = document.querySelectorAll('.post-small.location-assigned');
+
+  if (sameSizePosts.length > 0) {
+    for (const sameSizePost of sameSizePosts) {
+      const distanceDiffX = Math.abs(randomLocation.left - parseInt(sameSizePost.style.left));
+      const distanceDiffY = Math.abs(randomLocation.top - parseInt(sameSizePost.style.top));
+
+      if (distanceDiffX < minDistanceX && distanceDiffY < minDistanceY) {
+        return getRandomLocation(post, size);
+      }
+    }
+  }
+  return randomLocation;
+};
+
+const getRandomLocation = (post, size) => {
   const top = getRandomInt(
     -PADDING,
     window.innerHeight - (post.offsetHeight - PADDING)
   );
+  const left = getRandomInt(
+    -PADDING,
+    window.innerWidth - (post.offsetWidth - PADDING)
+  );
+  return checkRandomLocation(post, size, { top, left });
+};
 
-  // Check distance to other posts
+const setInitialPosition = (post, size) => {
+  // If post-small
+  if (size === 'sm') {
+    const randomLocation = getRandomLocation(post, size);
 
+    post.style.left = `${randomLocation.left}px`;
+    post.style.top = `${randomLocation.top}px`;
+    post.classList.add('location-assigned');
 
-
-  post.style.left = `${left}px`;
-  post.style.top = `${top}px`;
-
-
-  return {
-    left,
-    top
-  };
+    return {
+      top: randomLocation.top,
+      left: randomLocation.left
+    };
+  }
 };
 
 const firstAnimation = (post, initialPosition, totalDuration) => {
@@ -57,10 +79,7 @@ const firstAnimation = (post, initialPosition, totalDuration) => {
 };
 
 const secondAnimation = (post, initialPosition, totalDuration) => {
-  console.log('Second animation triggered...');
   post.style.top = `${window.innerHeight + PADDING}px`;
-
-  const totalDistance = window.innerHeight + post.offsetHeight + (PADDING * 2);
 
   anime({
     targets: post,
@@ -75,9 +94,9 @@ const initAnimation = (pathname) => {
   const post = document.getElementById(pathname);
 
   if (post.classList.contains('post-small')) {
-    const duration = getRandomInt(30000, 35000);
-    const initialPosition = setInitialPosition(post);
-    firstAnimation(post, initialPosition, duration);
+    const totalDuration = getRandomInt(30000, 35000);
+    const initialPosition = setInitialPosition(post, 'sm');
+    firstAnimation(post, initialPosition, totalDuration);
   }
 };
 

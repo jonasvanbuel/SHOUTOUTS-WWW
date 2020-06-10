@@ -12,11 +12,11 @@ class Livestream extends Component {
     body.style.overflow = "hidden";
 
     this.props.fetchTaggedPosts('mariotestino');
-    this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
+    // this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    // clearInterval(this.interval);
   }
 
   render() {
