@@ -1,0 +1,75 @@
+$md-width:                  184px;
+$md-card-padding:           10px;
+$md-avatar-height:          18px;
+$md-image-height:           160px;
+$md-icon-height:            12px;
+$md-main-vertical-padding:  6px;
+$md-main-font-size:         8px;
+$md-main-font-size-large:   9px;
+$md-main-font-size-small:   7px;
+
+.post-medium {
+  position: absolute;
+
+  width: $md-width;
+  padding: $md-card-padding;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+  z-index: 75;
+
+  .post-content {
+    opacity: 0.85;
+
+    .header {
+      height: $md-avatar-height;
+      margin-bottom: $md-main-vertical-padding;
+
+      .avatar {
+        width: $md-avatar-height;
+        height: $md-avatar-height;
+        border-radius: $md-avatar-height / 2;
+        margin-right: $md-main-vertical-padding * 1.5;
+        border: 0.2px solid rgba(0, 0, 0, 0.2);
+      }
+
+      .author {
+        font-size: $md-main-font-size-large;
+      }
+    }
+
+    .img-container {
+      height: $md-image-height;
+      margin-bottom: $md-main-vertical-padding;
+    }
+
+    .icon-container {
+      height: $md-icon-height;
+      margin-bottom: $md-main-vertical-padding * 0.75;
+
+      img {
+        width: $md-icon-height;
+        margin: auto 10px auto 0px;
+      }
+    }
+
+    .likes {
+      font-size: $md-main-font-size-large;
+      margin-bottom: $md-main-vertical-padding / 2;
+    }
+
+    .message {
+      font-size: $md-main-font-size;
+
+      span.author {
+        font-size: $md-main-font-size-large;
+      }
+    }
+
+    .time {
+      font-size: $md-main-font-size-small;
+      margin-top: $md-main-vertical-padding / 2;
+    }
+  }
+}
+

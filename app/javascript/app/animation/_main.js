@@ -1,5 +1,8 @@
 import anime from 'animejs/lib/anime.es';
 
+import { DURATION_CONFIG } from './_animation_config';
+
+// TO DO: Move to config file
 const PADDING = 20;
 const OVERLAP_COEFF = 0.8;
 
@@ -22,10 +25,10 @@ const checkRandomLocation = (post, size, randomLocation) => {
       let distanceDiffY = Math.abs(randomLocation.top - parseInt(sameSizePost.style.top));
 
       // Count tries to prevent stack overflow trying to repeatedly place the next post in new location
-      // count += 1;
-      // if (count >= 20) {
-      //   return randomLocation;
-      // }
+      count += 1;
+      if (count >= 20) {
+        return randomLocation;
+      }
 
       if (distanceDiffX < minDistanceX && distanceDiffY < minDistanceY) {
         return getRandomLocation(post, size);
@@ -97,16 +100,29 @@ const initAnimation = (pathname) => {
   const post = document.getElementById(pathname);
 
   if (post.classList.contains('post-large')) {
-    const totalDuration = getRandomInt(80000, 90000);
+    const totalDuration = getRandomInt(
+      DURATION_CONFIG.post_large.duration_low,
+      DURATION_CONFIG.post_large.duration_high
+    );
+    const initialPosition = setInitialPosition(post, 'lg');
+    firstAnimation(post, initialPosition, totalDuration);
+  }
+  if (post.classList.contains('post-medium')) {
+    const totalDuration = getRandomInt(
+      DURATION_CONFIG.post_medium.duration_low,
+      DURATION_CONFIG.post_medium.duration_high
+    );
     const initialPosition = setInitialPosition(post, 'lg');
     firstAnimation(post, initialPosition, totalDuration);
   }
   if (post.classList.contains('post-small')) {
-    const totalDuration = getRandomInt(40000, 45000);
+    const totalDuration = getRandomInt(
+      DURATION_CONFIG.post_small.duration_low,
+      DURATION_CONFIG.post_small.duration_high
+    );
     const initialPosition = setInitialPosition(post, 'sm');
     firstAnimation(post, initialPosition, totalDuration);
   }
-
 };
 
 export default initAnimation;

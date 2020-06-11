@@ -1,8 +1,18 @@
+$sm-width:                  136px;
+$sm-card-padding:           8px;
+$sm-avatar-height:          12px;
+$sm-image-height:           120px;
+$sm-icon-height:            8px;
+$sm-main-vertical-padding:  4px;
+$sm-main-font-size:         5px;
+$sm-main-font-size-large:   5px;
+$sm-main-font-size-small:   4px;
+
 .post-small {
   position: absolute;
 
-  width: 136px;
-  padding: 8px;
+  width: $sm-width;
+  padding: $sm-card-padding;
   border-radius: 8px;
   border: 0.5px solid rgba(0, 0, 0, 0.3);
   box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
@@ -11,54 +21,53 @@
     opacity: 0.7;
 
     .header {
-      height: 12px;
-      margin-bottom: 4px;
+      height: $sm-avatar-height;
+      margin-bottom: $sm-main-vertical-padding;
 
       .avatar {
-        width: 12px;
-        height: 12px;
-        border-radius: 6px;
-        margin-right: 6px;
+        width: $sm-avatar-height;
+        height: $sm-avatar-height;
+        border-radius: $sm-avatar-height / 2;
+        margin-right: $sm-main-vertical-padding * 1.5;
         border: 0.2px solid rgba(0, 0, 0, 0.2);
       }
 
       .author {
-        font-size: 6px;
+        font-size: $sm-main-font-size-large;
       }
     }
 
     .img-container {
-      height: 120px;
-      width: 100%;
-      margin-bottom: 4px;
+      height: $sm-image-height;
+      margin-bottom: $sm-main-vertical-padding;
     }
 
     .icon-container {
-      height: 8px;
-      margin-bottom: 2.5px;
+      height: $sm-icon-height;
+      margin-bottom: $sm-main-vertical-padding * 0.75;
 
       img {
-        width: 8px;
+        width: $sm-icon-height;
         margin: auto 5px auto 0px;
       }
     }
 
     .likes {
-      font-size: 6px;
-      margin-bottom: 2.5px;
+      font-size: $sm-main-font-size-large;
+      margin-bottom: $sm-main-vertical-padding / 2;
     }
 
     .message {
-      font-size: 5px;
+      font-size: $sm-main-font-size;
 
       span.author {
-        font-size: 6px;
+        font-size: $sm-main-font-size-large;
       }
     }
 
     .time {
-      font-size: 6px;
-      margin-top: 1.5px;
+      font-size: $sm-main-font-size-small;
+      margin-top: $sm-main-vertical-padding / 2;
     }
   }
 }
