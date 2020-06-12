@@ -48,12 +48,6 @@ class Post extends Component {
           <div className="message">
             <span className="author">{taggedPost.author}</span>
             <span> </span>
-            <Truncate
-              lines={3}
-              dangerouslySetInnerHTML={{
-                __html: taggedPost.message
-              }}
-            />
           </div>
 
           <div className="time">
