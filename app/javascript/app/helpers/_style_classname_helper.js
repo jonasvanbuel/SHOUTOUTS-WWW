@@ -28,7 +28,6 @@ const getStyleClassname = (selectionType, typeNumber) => {
 };
 
 const evaluateStyleClassname = (apiStyleClassname) => {
-
   const selectionType = getSelectionType(apiStyleClassname);
   const typeNumber = getTypeNumber(apiStyleClassname);
   const newStyleClassname = getStyleClassname(selectionType, typeNumber);

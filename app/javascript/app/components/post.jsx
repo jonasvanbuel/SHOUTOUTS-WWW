@@ -8,7 +8,7 @@ import InstaShare from 'images/insta-share.png';
 // Import HELPERS
 import timeDiffToString from '../helpers/_time_helper';
 import evaluateStyleClassname from '../helpers/_style_classname_helper';
-import initAnimation from '../animation/_main';
+import initAnimation from '../animation/main';
 
 class Post extends Component {
   componentDidMount() {
