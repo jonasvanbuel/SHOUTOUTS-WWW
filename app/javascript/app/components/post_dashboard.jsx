@@ -7,23 +7,29 @@ import InstaShare from 'images/insta-share.png';
 
 // Import HELPERS
 import timeDiffToString from '../helpers/_time_helper';
-import { evaluateStyleClassname } from '../helpers/_style_classname';
-import animate from '../animation/main';
 
-class Post extends Component {
+class PostLivestream extends Component {
   componentDidMount() {
     const { taggedPost } = this.props;
-    animate(taggedPost.pathname);
+    const post = document.getElementById(taggedPost.pathname);
+    const postOptions = post.getElementsByClassName('post-options')[0];
+
+    // post.addEventListener('type', listener, optionsOrUseCapture?)
+    // debugger
   }
 
   render() {
     const { taggedPost } = this.props;
     return (
       <div
-        className={`post ${evaluateStyleClassname(taggedPost.style_classname)}`}
+        className="post post-dashboard"
         id={taggedPost.pathname}
       >
-        <div className="post-content">
+
+        <div className="post-options invisible">
+        </div>
+
+        <div className="post-content noselect">
           <div className="header">
             <img className="avatar" src={taggedPost.user_avatar_url} alt={taggedPost.author} />
             <div className="author">
@@ -65,4 +71,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default PostLivestream;

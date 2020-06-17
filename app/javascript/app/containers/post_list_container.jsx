@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Post from '../components/post';
 import { fetchTaggedPosts } from '../actions';
 
-class DashboardPostList extends Component {
+import Filter from '../components/filter';
+import PostList from '../components/post_list';
+
+class PostListContainer extends Component {
   componentDidMount() {
     this.props.fetchTaggedPosts('mariotestino');
     // this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
@@ -18,10 +20,9 @@ class DashboardPostList extends Component {
   render() {
     const { taggedPosts } = this.props;
     return (
-      <div className="dashboard-post-list">
-        {taggedPosts.map((taggedPost) => {
-          return <Post taggedPost={taggedPost} key={taggedPost.pathname} />;
-        })}
+      <div className="post-list-container">
+        <Filter />
+        <PostList taggedPosts={taggedPosts} />
       </div>
     );
   }
@@ -37,4 +38,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchTaggedPosts }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardPostList);
+export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer);

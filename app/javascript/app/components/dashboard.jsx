@@ -1,11 +1,20 @@
 import React from 'react';
 
-import DashboardPostList from '../containers/dashboard_post_list';
+// Import components
+import Navbar from './navbar';
+import Menu from './menu';
+import PostListContainer from '../containers/post_list_container';
 
-const Dashboard = (props) => {
+const Dashboard = () => {
   return (
-    <div className="dashboard-container">
-      <DashboardPostList />
+    <div className="dashboard">
+      <Navbar />
+      <div className="container">
+        <div className="dashboard-body">
+          <Menu />
+          <PostListContainer />
+        </div>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Post from '../components/post';
+import Post from '../components/post_livestream';
 import { fetchTaggedPosts } from '../actions';
 
 class Livestream extends Component {

@@ -1,63 +1,104 @@
-// Extra small devices (portrait phones, less than 576px)
-// No media query for `xs` since this is the default in Bootstrap
+// @media (min-width: 576px)
+// @media (min-width: 768px)
+// @media (min-width: 992px)
+// @media (min-width: 1200px)
+
+$navbar-height:      80px;
+$body-from-top:      160px;
+
+$db-post-width:      184px;
+$grid-gap:           32px;
+$small-padding:      6px;
+
+
 .dashboard {
-  width: 468px;
-  margin: auto;
-  padding-top: 24px;
-}
+  // background-color: red;
 
-.dashboard-post-list {
-  // background-color: gray;
-  display: grid;
-  grid-gap: 8px;
-  grid-template-columns: repeat(2, 230px);
-}
+  width: 100vw;
 
+  .navbar {
+    background-color: rgba(0, 0, 0, 0.2);
 
-// Small devices (landscape phones, 576px and up)
-@include media-breakpoint-up(sm) {
-  .dashboard {
-  }
-  .dashboard-post-list {
-    // background-color: yellow;
+    height: $navbar-height;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    z-index: 5;
   }
 }
 
-// Medium devices (tablets, 768px and up)
-@include media-breakpoint-up(md) {
-  .dashboard {
-    width: 706px;
-    margin: auto;
+.dashboard-body {
+  width: 100%;
+  display: flex;
+  margin-top: $body-from-top;
+  margin-bottom: 200px;
+
+  .menu {
+    background-color: yellow;
+
+    height: 500px;
+    padding-right: $small-padding;
+    flex-grow: 2;
+    position: sticky;
+    top: $navbar-height;
   }
-  .dashboard-post-list {
-    // background-color: purple;
-    grid-gap: 8px;
-    grid-template-columns: repeat(3, 230px);
+
+  .post-list-container {
+    display: flex;
+    flex-direction: column;
+
+    .filter {
+      background-color: pink;
+
+      height: 160px;
+      padding: $small-padding;
+      position: sticky;
+      top: 0px;
+      z-index: 10;
+    }
+
+    .post-list {
+      // background-color: orange;
+
+      padding-top: $grid-gap;
+      padding-left: $small-padding;
+      padding-right: $small-padding;
+      display: grid;
+      grid-gap: 12px;
+      grid-template-columns: repeat(1, $db-post-width);
+
+      @media (min-width: 576px) {
+        grid-gap: 16px;
+        grid-template-columns: repeat(2, $db-post-width);
+      }
+
+      @media (min-width: 768px) {
+        grid-gap: 24px;
+        grid-template-columns: repeat(2, $db-post-width);
+      }
+
+      @media (min-width: 992px) {
+        grid-gap: $grid-gap;
+        grid-template-columns: repeat(3, $db-post-width);
+      }
+
+      @media (min-width: 1200px) {
+
+        grid-gap: $grid-gap;
+        grid-template-columns: repeat(4, $db-post-width);
+      }
+    }
+
   }
 }
 
-// Large devices (desktops, 992px and up)
-@include media-breakpoint-up(lg) {
-  .dashboard {
-    width: 944px;
-    margin: auto;
-  }
-  .dashboard-post-list {
-    // background-color: purple;
-    grid-gap: 8px;
-    grid-template-columns: repeat(4, 230px);
-  }
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
-// Extra large devices (large desktops, 1200px and up)
-@include media-breakpoint-up(xl) {
-  .dashboard {
-    width: 1182px;
-    margin: auto;
-  }
-  .dashboard-post-list {
-    // background-color: purple;
-    grid-gap: 8px;
-    grid-template-columns: repeat(5, 230px);
-  }
-}
