@@ -7,15 +7,12 @@ import InstaShare from 'images/insta-share.png';
 
 // Import HELPERS
 import timeDiffToString from '../helpers/_time_helper';
+import initPostOptions from '../helpers/_dashboard_post_options';
 
 class PostLivestream extends Component {
   componentDidMount() {
     const { taggedPost } = this.props;
-    const post = document.getElementById(taggedPost.pathname);
-    const postOptions = post.getElementsByClassName('post-options')[0];
-
-    // post.addEventListener('type', listener, optionsOrUseCapture?)
-    // debugger
+    initPostOptions(taggedPost);
   }
 
   render() {
@@ -27,6 +24,14 @@ class PostLivestream extends Component {
       >
 
         <div className="post-options invisible">
+          <div className="hide-option">
+            <i className="fas fa-eye-slash"></i>
+            <span className="symbol-label invisible">hide</span>
+          </div>
+          <div className="view-post-option">
+            <i className="fas fa-external-link-square-alt"></i>
+            <span className="symbol-label invisible">view post</span>
+          </div>
         </div>
 
         <div className="post-content noselect">
