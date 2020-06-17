@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Truncate from 'react-truncate-html';
+// import Truncate from 'react-truncate-html';
 
 import InstaLike from 'images/insta-like.png';
 import InstaComment from 'images/insta-comment.png';
@@ -7,13 +7,13 @@ import InstaShare from 'images/insta-share.png';
 
 // Import HELPERS
 import timeDiffToString from '../helpers/_time_helper';
-import evaluateStyleClassname from '../helpers/_style_classname_helper';
-import initAnimation from '../animation/main';
+import { evaluateStyleClassname } from '../helpers/_style_classname';
+import animate from '../animation/main';
 
 class Post extends Component {
   componentDidMount() {
     const { taggedPost } = this.props;
-    initAnimation(taggedPost.pathname);
+    animate(taggedPost.pathname);
   }
 
   render() {

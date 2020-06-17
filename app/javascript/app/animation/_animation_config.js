@@ -1,8 +1,8 @@
 // Number of posts in each size
 export const COUNT_CONFIG = {
   mr: {
-    post_large: 3,
-    post_medium: 5,
+    post_large: 6,
+    post_medium: 12,
   }
 };
 
@@ -20,3 +20,16 @@ export const DURATION_CONFIG = {
     duration_high: 100000
   }
 };
+
+export const LAYOUT_CONFIG = {
+  screen_padding: 20,
+  post_small: {
+    overlap_coeff: 0.7
+  },
+  post_medium: {
+    overlap_coeff: 0.9
+  },
+  post_large: {
+    overlap_coeff: 1.2
+  },
+}

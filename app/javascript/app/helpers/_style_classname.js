@@ -1,5 +1,15 @@
 import { COUNT_CONFIG } from '../animation/_animation_config';
 
+export const fetchStyleCategory = (post) => {
+  const styleCategories = ['post-large', 'post-medium', 'post-small'];
+  for (const category of styleCategories) {
+    if (post.classList.contains(category)) {
+      return category;
+    }
+  }
+  return null;
+};
+
 const getSelectionType = (apiStyleClassname) => {
   return apiStyleClassname.slice(0, 2);
 };
@@ -27,11 +37,9 @@ const getStyleClassname = (selectionType, typeNumber) => {
   }
 };
 
-const evaluateStyleClassname = (apiStyleClassname) => {
+export const evaluateStyleClassname = (apiStyleClassname) => {
   const selectionType = getSelectionType(apiStyleClassname);
   const typeNumber = getTypeNumber(apiStyleClassname);
   const newStyleClassname = getStyleClassname(selectionType, typeNumber);
   return newStyleClassname;
 };
-
-export default evaluateStyleClassname;
