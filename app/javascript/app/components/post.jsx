@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Truncate from 'react-truncate-html';
+import Truncate from 'react-truncate-html';
 
 import InstaLike from 'images/insta-like.png';
 import InstaComment from 'images/insta-comment.png';
@@ -48,6 +48,12 @@ class Post extends Component {
           <div className="message">
             <span className="author">{taggedPost.author}</span>
             <span> </span>
+            <Truncate
+              lines={3}
+              dangerouslySetInnerHTML={{
+                __html: taggedPost.message
+              }}
+            />
           </div>
 
           <div className="time">
