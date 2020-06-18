@@ -11,3 +11,16 @@ export function fetchTaggedPosts(username) {
     payload: promise
   };
 }
+
+// hidePost
+export function hidePost(taggedPost) {
+  const endpoint = `${BASE_URL}/tagged_posts/${username}`;
+  const promise = fetch(endpoint, { credentials: "same-origin" }).then((r) => r.json());
+
+  return {
+    type: FETCH_TAGGED_POSTS,
+    payload: promise
+  };
+}
+
+// unhidePost

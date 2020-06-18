@@ -22,12 +22,29 @@ class Api::V1::TaggedPostsController < ActionController::API
     render json: most_recent_selection
   end
 
-  def update
-    # instagram_account = InstagramAccount.find_by(username: params[:instagram_username])
+  def update_likes
+    # TO DO: REFACTOR TO DEDICATED IF STATEMENT
     tagged_post = TaggedPost.find_by instagram_account: @instagram_account, pathname: params[:pathname]
     tagged_post[:likes] = params[:likes]
     tagged_post.save
     render json: most_recent_selection
+  end
+
+  def update_hidden
+    update_type = params[:type]
+    if update_type === 'HIDE_POST'
+      tagged_post = TaggedPost.find(params[:id])
+      unless tagged_post[:hidden] = true
+        tagged_post[:hidden] = true
+      end
+      if tagged_post.save
+        response = {
+          type: 'POST_HIDDEN',
+          id: params[:id]
+        }
+      end
+      render json: response
+    end
   end
 
   def delete
@@ -42,7 +59,7 @@ class Api::V1::TaggedPostsController < ActionController::API
 
   def most_recent_selection
     tagged_posts = TaggedPost.where(instagram_account: @instagram_account)
-    sorted_posts = tagged_posts.sort_by(&:posted_at).reverse[0..1]
+    sorted_posts = tagged_posts.sort_by(&:posted_at).reverse[0..29]
     categorized_posts = add_style_classnames(sorted_posts, 'MR')
   end
 

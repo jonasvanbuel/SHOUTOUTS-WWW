@@ -23,16 +23,32 @@ class PostLivestream extends Component {
         id={taggedPost.pathname}
       >
 
-        <div className="post-options invisible">
-          <div className="hide-option">
-            <i className="fas fa-eye-slash"></i>
-            <span className="symbol-label invisible">hide</span>
-          </div>
-          <div className="view-post-option">
-            <i className="fas fa-external-link-square-alt"></i>
-            <span className="symbol-label invisible">view post</span>
-          </div>
-        </div>
+        {(() => {
+          if (taggedPost.hidden) {
+            return (
+              <div className="post-hidden">
+                <div className="hide-option">
+                  <i className="fas fa-eye-slash"></i>
+                  <span className="symbol-label">hidden</span>
+                </div>
+              </div>
+            );
+          }
+          return (
+            <div className="post-options invisible">
+              <div className="hide-option">
+                <i className="fas fa-eye-slash"></i>
+                <span className="symbol-label invisible">hide</span>
+              </div>
+              <div className="view-post-option">
+                <i className="fas fa-external-link-square-alt"></i>
+                <span className="symbol-label invisible">view post</span>
+              </div>
+            </div>
+          );
+        })()}
+
+
 
         <div className="post-content noselect">
           <div className="header">

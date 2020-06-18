@@ -14,8 +14,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'tagged_posts/:instagram_username', to: 'tagged_posts#index'
       post 'tagged_posts/:instagram_username', to: 'tagged_posts#create'
-      patch 'tagged_posts/:instagram_username', to: 'tagged_posts#update'
-      delete 'tagged_posts/:instagram_username', to: 'tagged_posts#delete'
+      patch 'tagged_posts/update_likes', to: 'tagged_posts#update_likes'
+      patch 'tagged_posts/update_hidden', to: 'tagged_posts#update_hidden'
+      delete 'tagged_posts/delete', to: 'tagged_posts#delete'
     end
   end
 end
