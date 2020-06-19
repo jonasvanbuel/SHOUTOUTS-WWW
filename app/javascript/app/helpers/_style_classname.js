@@ -1,4 +1,4 @@
-import { COUNT_CONFIG } from '../animation/_animation_config';
+import { COUNT_CONFIG } from '../animation_livestream/_animation_config';
 
 export const fetchStyleCategory = (post) => {
   const styleCategories = ['post-large', 'post-medium', 'post-small'];

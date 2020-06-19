@@ -1,0 +1,64 @@
+// POST-OPTIONS SIZES ARE DECLARED AT BOTTOM OF _POST-DASHBOARD.SCSS
+
+$internal-padding: 8px;
+
+.post-options,
+.post-hidden {
+  background-color: white;
+  opacity: 0.6;
+
+  position: absolute;
+  margin-left: 0.5px;
+  padding: $internal-padding;
+  z-index: 3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .hide-option, .view-post-option {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hide-option {
+    align-items: center;
+  }
+
+  .view-post-option {
+    align-items: flex-end;
+
+    position: absolute;
+    right: $internal-padding;
+    top: $internal-padding;
+  }
+
+  .fas {
+    cursor: pointer;
+  }
+
+  .fa-eye-slash {
+    font-size: 40px;
+  }
+
+  span.symbol-label {
+    font-size: 10px;
+    font-weight: 500;
+  }
+}
+
+.post-hidden {
+  background-color: #ef3054;
+  opacity: 0.9;
+
+  .fas {
+    color: white;
+  }
+
+  span.symbol-label {
+    color: white;
+  }
+}
+
+
+

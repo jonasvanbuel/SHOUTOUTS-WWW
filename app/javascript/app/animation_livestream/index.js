@@ -42,7 +42,7 @@ const secondAnimation = (post, initialPosition, totalDuration) => {
   });
 };
 
-const animate = (pathname) => {
+const animatePost = (pathname) => {
   const post = document.getElementById(pathname);
   const styleCategory = fetchStyleCategory(post);
   if (styleCategory) {
@@ -52,4 +52,4 @@ const animate = (pathname) => {
   }
 };
 
-export default animate;
+export default animatePost;
