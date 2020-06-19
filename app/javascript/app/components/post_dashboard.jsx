@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import Truncate from 'react-truncate-html';
 
 import InstaLike from 'images/insta-like.png';
 import InstaComment from 'images/insta-comment.png';
 import InstaShare from 'images/insta-share.png';
 
+// Import ACTIONS
+import { hidePost } from '../actions';
+
 // Import HELPERS
 import timeDiffToString from '../helpers/_time_helper';
 import initPostOptions from '../helpers/_dashboard_post_options';
 
-class PostLivestream extends Component {
+class PostDashboard extends Component {
   componentDidMount() {
     const { taggedPost } = this.props;
     initPostOptions(taggedPost);
   }
 
+  // TO DO: EXTERNALISE POST_OPTIONS AND POST_HIDDEN COMPONENTS
   render() {
-    const { taggedPost } = this.props;
+    const { taggedPost, hidePost } = this.props;
     return (
       <div
         className="post post-dashboard"
@@ -37,7 +43,7 @@ class PostLivestream extends Component {
           return (
             <div className="post-options invisible">
               <div className="hide-option">
-                <i className="fas fa-eye-slash"></i>
+                <i className="fas fa-eye-slash" onClick={() => hidePost(taggedPost)}></i>
                 <span className="symbol-label invisible">hide</span>
               </div>
               <div className="view-post-option">
@@ -47,8 +53,6 @@ class PostLivestream extends Component {
             </div>
           );
         })()}
-
-
 
         <div className="post-content noselect">
           <div className="header">
@@ -92,4 +96,8 @@ class PostLivestream extends Component {
   }
 }
 
-export default PostLivestream;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ hidePost }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(PostDashboard);

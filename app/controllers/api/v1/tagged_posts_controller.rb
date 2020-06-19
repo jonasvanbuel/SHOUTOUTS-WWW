@@ -43,7 +43,7 @@ class Api::V1::TaggedPostsController < ActionController::API
           id: params[:id]
         }
       end
-      render json: response
+      render json: most_recent_selection
     end
   end
 
@@ -70,7 +70,11 @@ class Api::V1::TaggedPostsController < ActionController::API
   end
 
   def set_instagram_account
-    @instagram_account = InstagramAccount.find_by(username: params[:instagram_username])
+    if params[:instagram_username]
+      @instagram_account = InstagramAccount.find_by(username: params[:instagram_username])
+    elsif params[:instagram_account_id]
+      @instagram_account = InstagramAccount.find(params[:instagram_account_id])
+    end
   end
 
   def add_style_classnames(posts_array, selection_type)

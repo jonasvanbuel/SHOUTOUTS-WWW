@@ -10,10 +10,11 @@ $db-post-width:      184px;
 $grid-gap:           32px;
 $small-padding:      6px;
 
+body {
+  background-color: #E5E4DC;
+}
 
 .dashboard {
-  // background-color: red;
-
   width: 100vw;
 
   .navbar {
