@@ -1,7 +1,16 @@
+import { fetchPostOptions } from '../animation_dashboard';
+
 const BASE_URL = '/api/v1';
 
 export const FETCH_TAGGED_POSTS = 'FETCH_TAGGED_POSTS';
 export const HIDE_POST = 'HIDE_POST';
+
+const hidePostOptions = (taggedPost) => {
+  const postOptions = fetchPostOptions(taggedPost);
+  if (!postOptions.classList.contains('invisible')) {
+    postOptions.classList.add('invisible');
+  }
+};
 
 export function fetchTaggedPosts(username) {
   const endpoint = `${BASE_URL}/tagged_posts/${username}`;
@@ -17,6 +26,8 @@ export function fetchTaggedPosts(username) {
 }
 
 export function hidePost(taggedPost) {
+  hidePostOptions(taggedPost);
+
   const body = {
     type: HIDE_POST,
     instagram_account_id: taggedPost.instagram_account_id,
