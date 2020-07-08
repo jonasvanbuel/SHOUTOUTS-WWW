@@ -32,18 +32,25 @@ class Api::V1::TaggedPostsController < ActionController::API
 
   def update_hidden
     update_type = params[:type]
+
     if update_type === 'HIDE_POST'
-      tagged_post = TaggedPost.find(params[:id])
+      tagged_post = TaggedPost.find(params[:post_id])
       unless tagged_post[:hidden] = true
         tagged_post[:hidden] = true
       end
       if tagged_post.save
-        response = {
-          type: 'POST_HIDDEN',
-          id: params[:id]
-        }
+        render json: most_recent_selection
       end
-      render json: most_recent_selection
+    end
+
+    if update_type === 'UNHIDE_POST'
+      tagged_post = TaggedPost.find(params[:post_id])
+      unless tagged_post[:hidden] = false
+        tagged_post[:hidden] = false
+      end
+      if tagged_post.save
+        render json: most_recent_selection
+      end
     end
   end
 

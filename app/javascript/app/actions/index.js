@@ -1,4 +1,4 @@
-import { fetchPostOptions } from '../animation_dashboard';
+import { fetchPostOptions, fetchPostHidden } from '../animation_dashboard';
 
 const BASE_URL = '/api/v1';
 
@@ -6,6 +6,7 @@ export const FETCH_TAGGED_POSTS = 'FETCH_TAGGED_POSTS';
 export const HIDE_POST = 'HIDE_POST';
 export const UNHIDE_POST = 'UNHIDE_POST';
 
+// Internal helper functions
 const hidePostOptions = (taggedPost) => {
   const postOptions = fetchPostOptions(taggedPost);
   if (!postOptions.classList.contains('invisible')) {
@@ -13,6 +14,14 @@ const hidePostOptions = (taggedPost) => {
   }
 };
 
+const hidePostHidden = (taggedPost) => {
+  const postHidden = fetchPostHidden(taggedPost);
+  if (!postHidden.classList.contains('invisible')) {
+    postHidden.classList.add('invisible');
+  }
+};
+
+// ACTIONS
 export function fetchTaggedPosts(username) {
   const endpoint = `${BASE_URL}/tagged_posts/${username}`;
   const promise = fetch(endpoint, {
@@ -32,7 +41,7 @@ export function hidePost(taggedPost) {
   const body = {
     type: HIDE_POST,
     instagram_account_id: taggedPost.instagram_account_id,
-    id: taggedPost.id
+    post_id: taggedPost.id
   };
 
   const endpoint = `${BASE_URL}/tagged_posts/update_hidden`;
@@ -51,12 +60,14 @@ export function hidePost(taggedPost) {
 }
 
 export function unhidePost(taggedPost) {
-  hidePostOptions(taggedPost);
+  // hidePostOptions(taggedPost);
+  hidePostHidden(taggedPost);
+  // debugger
 
   const body = {
     type: UNHIDE_POST,
     instagram_account_id: taggedPost.instagram_account_id,
-    id: taggedPost.id
+    post_id: taggedPost.id
   };
 
   const endpoint = `${BASE_URL}/tagged_posts/update_hidden`;

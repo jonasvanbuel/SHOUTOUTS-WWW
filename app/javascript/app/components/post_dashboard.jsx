@@ -8,7 +8,7 @@ import InstaComment from 'images/insta-comment.png';
 import InstaShare from 'images/insta-share.png';
 
 // Import ACTIONS
-import { hidePost } from '../actions';
+import { hidePost, unhidePost } from '../actions';
 
 // Import HELPERS
 import timeDiffToString from '../helpers/_time_helper';
@@ -23,7 +23,7 @@ class PostDashboard extends Component {
   // TO DO: EXTERNALISE POST_OPTIONS AND POST_HIDDEN COMPONENTS
 
   render() {
-    const { taggedPost, hidePost } = this.props;
+    const { taggedPost, hidePost, unhidePost } = this.props;
     return (
       <div
         className="post post-dashboard"
@@ -32,7 +32,7 @@ class PostDashboard extends Component {
 
         <div className="post-hidden-options invisible">
           <div className="unhide-option">
-            <i className="fas fa-eye"></i>
+            <i className="fas fa-eye" onClick={() => unhidePost(taggedPost)}></i>
             <span className="symbol-label invisible">unhide</span>
           </div>
           <div className="view-post-option">
@@ -102,7 +102,7 @@ class PostDashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ hidePost }, dispatch);
+  return bindActionCreators({ hidePost, unhidePost }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(PostDashboard);

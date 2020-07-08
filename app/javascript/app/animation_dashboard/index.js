@@ -11,7 +11,7 @@ export const fetchPostOptions = (taggedPost) => {
   return postOptions;
 };
 
-const fetchPostHidden = (taggedPost) => {
+export const fetchPostHidden = (taggedPost) => {
   const post = document.getElementById(taggedPost.pathname);
   const postHidden = post.getElementsByClassName('post-hidden')[0];
   return postHidden;
@@ -25,10 +25,6 @@ const fetchPostHiddenOptions = (taggedPost) => {
 
 const animateLabels = (taggedPost) => {
   const post = fetchPost(taggedPost);
-  // const postOptions = fetchPostOptions(taggedPost);
-  // const postHidden = fetchPostHidden(taggedPost);
-  // const postHiddenOptions = fetchPostHiddenOptions(taggedPost);
-
   const labels = post.getElementsByClassName('symbol-label');
 
   for (const label of labels) {

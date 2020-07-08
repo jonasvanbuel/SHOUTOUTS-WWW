@@ -1,4 +1,4 @@
-import { FETCH_TAGGED_POSTS, HIDE_POST } from '../actions';
+import { FETCH_TAGGED_POSTS, HIDE_POST, UNHIDE_POST } from '../actions';
 
 export default function(state = null, action) {
   switch (action.type) {
@@ -6,6 +6,9 @@ export default function(state = null, action) {
       return action.payload;
     }
     case `${HIDE_POST}_FULFILLED`: {
+      return action.payload;
+    }
+    case `${UNHIDE_POST}_FULFILLED`: {
       return action.payload;
     }
     default:
