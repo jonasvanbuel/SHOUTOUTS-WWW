@@ -4,6 +4,7 @@ const BASE_URL = '/api/v1';
 
 export const FETCH_TAGGED_POSTS = 'FETCH_TAGGED_POSTS';
 export const HIDE_POST = 'HIDE_POST';
+export const UNHIDE_POST = 'UNHIDE_POST';
 
 const hidePostOptions = (taggedPost) => {
   const postOptions = fetchPostOptions(taggedPost);
@@ -49,4 +50,26 @@ export function hidePost(taggedPost) {
   };
 }
 
-// unhidePost
+export function unhidePost(taggedPost) {
+  hidePostOptions(taggedPost);
+
+  const body = {
+    type: UNHIDE_POST,
+    instagram_account_id: taggedPost.instagram_account_id,
+    id: taggedPost.id
+  };
+
+  const endpoint = `${BASE_URL}/tagged_posts/update_hidden`;
+  const promise = fetch(endpoint, {
+    method: 'PATCH',
+    credentials: "same-origin",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  })
+    .then((r) => r.json());
+
+  return {
+    type: UNHIDE_POST,
+    payload: promise
+  };
+}

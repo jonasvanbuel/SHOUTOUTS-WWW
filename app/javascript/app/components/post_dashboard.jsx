@@ -21,6 +21,7 @@ class PostDashboard extends Component {
   }
 
   // TO DO: EXTERNALISE POST_OPTIONS AND POST_HIDDEN COMPONENTS
+
   render() {
     const { taggedPost, hidePost } = this.props;
     return (
@@ -28,12 +29,15 @@ class PostDashboard extends Component {
         className="post post-dashboard"
         id={taggedPost.pathname}
       >
-        <div
-          className={`post-hidden ${taggedPost.hidden ? '' : 'invisible'}`}
-        >
-          <div className="hide-option">
-            <i className="fas fa-eye-slash"></i>
-            <span className="symbol-label">hidden</span>
+
+        <div className="post-hidden-options invisible">
+          <div className="unhide-option">
+            <i className="fas fa-eye"></i>
+            <span className="symbol-label invisible">unhide</span>
+          </div>
+          <div className="view-post-option">
+            <i className="fas fa-external-link-square-alt"></i>
+            <span className="symbol-label invisible">view post</span>
           </div>
         </div>
 
@@ -45,6 +49,13 @@ class PostDashboard extends Component {
           <div className="view-post-option">
             <i className="fas fa-external-link-square-alt"></i>
             <span className="symbol-label invisible">view post</span>
+          </div>
+        </div>
+
+        <div className={`post-hidden ${taggedPost.hidden ? '' : 'invisible'}`}>
+          <div className="hide-option">
+            <i className="fas fa-eye-slash"></i>
+            <span className="symbol-label invisible">hidden</span>
           </div>
         </div>
 
