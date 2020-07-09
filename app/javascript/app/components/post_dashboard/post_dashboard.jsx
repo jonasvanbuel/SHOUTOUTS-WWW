@@ -17,8 +17,7 @@ import { hidePost, unhidePost } from '../../actions';
 
 // HELPERS
 import timeDiffToString from '../../helpers/_time_helper';
-import { fetchPost, fetchPostOptions } from './helpers';
-// import animatePost from '../../animation_dashboard';
+import { fetchPost, fetchPostOptions, animateLabels } from './helpers';
 
 class PostDashboard extends Component {
   constructor(props) {
@@ -50,6 +49,8 @@ class PostDashboard extends Component {
           postOptions.classList.add('invisible');
         }
       });
+
+      animateLabels(taggedPost);
     }
   }
 
