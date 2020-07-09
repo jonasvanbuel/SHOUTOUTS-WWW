@@ -17,7 +17,7 @@ import { hidePost, unhidePost } from '../../actions';
 
 // HELPERS
 import timeDiffToString from '../../helpers/_time_helper';
-import { fetchPost, fetchPostOptions, animateLabels } from './helpers';
+import { fetchPost, fetchPostOptions, fetchPostHidden, animateLabels } from './helpers';
 
 class PostDashboard extends Component {
   constructor(props) {
@@ -28,30 +28,45 @@ class PostDashboard extends Component {
     };
   }
 
-  componentDidMount() {
+  setHidden = (bool) => {
+    this.setState({
+      hidden: bool
+    })
+  }
+
+  componentDidUpdate() {
     const { taggedPost } = this.props;
+    const { hidden } = this.state;
     const post = fetchPost(taggedPost);
     const postOptions = fetchPostOptions(taggedPost);
+    const postHidden = fetchPostHidden(taggedPost);
+
+    // MOUSE-ENTER
+    // If post is NOT hidden, show postOptions
+    const onMouseEnterHandler = (event) => {
+      if (postHidden.classList.contains('invisible') && postOptions.classList.contains('invisible')) {
+        postOptions.classList.remove('invisible');
+      }
+    }
+
+    // MOUSE-LEAVE
+    // Regardless of wether post is hidden, hide postOptions
+    const onMouseLeaveHandler = (event) => {
+      if (!postOptions.classList.contains('invisible')) {
+        postOptions.classList.add('invisible');
+      }
+    }
 
     if (post && postOptions) {
-      // MOUSE-ENTER
-      // If post is NOT hidden, show postOptions
-      post.addEventListener('mouseenter', () => {
-        if (post.dataset.hidden === "false" && postOptions.classList.contains('invisible')) {
-          postOptions.classList.remove('invisible');
-        }
-      });
-
-      // MOUSE-LEAVE
-      // Regardless of wether post is hidden, hide postOptions
-      post.addEventListener('mouseleave', () => {
-        if (!postOptions.classList.contains('invisible')) {
-          postOptions.classList.add('invisible');
-        }
-      });
-
-      animateLabels(taggedPost);
+      post.addEventListener('mouseenter', onMouseEnterHandler);
+      post.addEventListener('mouseleave', onMouseLeaveHandler);
     }
+  }
+
+  componentDidMount() {
+    const { taggedPost } = this.props;
+    animateLabels(taggedPost);
+    this.componentDidUpdate();
   }
 
   render() {
@@ -61,11 +76,10 @@ class PostDashboard extends Component {
       <div
         className="post post-dashboard"
         id={taggedPost.pathname}
-        data-hidden={taggedPost.hidden}
       >
         <PostHidden taggedPost={taggedPost} stateHidden={hidden} />
 
-        <PostOptions taggedPost={taggedPost} stateHidden={hidden} />
+        <PostOptions taggedPost={taggedPost} stateHidden={hidden} setHidden={this.setHidden} />
 
         <div className="post-content noselect">
           <div className="header">

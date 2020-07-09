@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+// ACTIONS
 import { unhidePost } from '../../actions';
+
+// HELPERS
+import { fetchPostOptions } from './helpers';
 
 class PostHiddenOptions extends Component {
   handleClick = () => {
-    const { unhidePost, taggedPost } = this.props;
+    const { taggedPost, unhidePost } = this.props;
     unhidePost(taggedPost);
   }
 

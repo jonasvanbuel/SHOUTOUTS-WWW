@@ -20,7 +20,13 @@ class PostHidden extends Component {
       // If post is hidden, show postHiddenOptions
       // Hide icon in icon-container
       postHidden.addEventListener('mouseenter', () => {
-        if (stateHidden && postHiddenOptions.classList.contains('invisible')) {
+        console.log('postHidden mouseenter eventlistener triggered...');
+
+
+        // TODO: CAN I PREVENT MOUSEENTER LISTENER TO KICK IN
+
+
+        if (taggedPost.hidden && postHiddenOptions.classList.contains('invisible')) {
           if (!posthiddenOverlay.classList.contains('invisible')) {
             posthiddenOverlay.classList.add('invisible');
           }
@@ -33,7 +39,7 @@ class PostHidden extends Component {
       // If post is hidden, show icon
       postHidden.addEventListener('mouseleave', () => {
         if (!postHiddenOptions.classList.contains('invisible')) {
-          if (stateHidden && posthiddenOverlay.classList.contains('invisible')) {
+          if (taggedPost.hidden && posthiddenOverlay.classList.contains('invisible')) {
             posthiddenOverlay.classList.remove('invisible');
           }
           postHiddenOptions.classList.add('invisible');
@@ -42,10 +48,14 @@ class PostHidden extends Component {
     }
   }
 
+  componentDidUpdate() {
+    this.componentDidMount();
+  }
+
   render() {
     const { taggedPost, stateHidden } = this.props;
     return (
-      <div className={`post-hidden ${stateHidden ? '' : 'invisible'}`}>
+      <div className={`post-hidden ${taggedPost.hidden ? '' : 'invisible'}`}>
         <PostHiddenOptions taggedPost={taggedPost} stateHidden={stateHidden} />
         <div className="post-hidden-overlay">
           <div className="unhide-option">

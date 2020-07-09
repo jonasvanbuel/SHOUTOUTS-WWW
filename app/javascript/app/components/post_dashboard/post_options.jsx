@@ -10,12 +10,21 @@ import { hidePost } from '../../actions';
 
 class PostOptions extends Component {
   handleClick = () => {
-    const { hidePost, taggedPost } = this.props;
+    const { taggedPost, hidePost, setHidden } = this.props;
+    // Update state postDashboard
+    // setHidden(true);
+
+    // DOESN'T SEEM TO BE WORKING! Remove eventListeners from post...
+    // const post = fetchPost(taggedPost);
+    // post.removeEventListener('mouseenter', onMouseEnterHandler);
+    // post.removeEventListener('mouseleave', onMouseLeaveHandler);
+
+    // Dispatch server action
     hidePost(taggedPost);
   }
 
   render() {
-    const { taggedPost, stateHidden } = this.props;
+    const { taggedPost, stateHidden, setHidden } = this.props;
     return (
       <div className="post-options invisible">
         <div className="hide-option">

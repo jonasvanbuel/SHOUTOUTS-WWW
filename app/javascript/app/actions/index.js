@@ -1,4 +1,4 @@
-import { fetchPostOptions, fetchPostHidden, animatePostOptions } from '../components/post_dashboard/helpers/';
+import { fetchPostOptions, fetchPostHidden, fetchPostHiddenOptions, animatePostOptions } from '../components/post_dashboard/helpers/';
 
 const BASE_URL = '/api/v1';
 
@@ -28,7 +28,15 @@ const unhidePostHidden = (taggedPost) => {
   }
 };
 
+const hidePostHiddenOptions = (taggedPost) => {
+  const postHiddenOptions = fetchPostHiddenOptions(taggedPost);
+  if (!postHiddenOptions.classList.contains('invisible')) {
+    postHiddenOptions.classList.add('invisible');
+  }
+};
+
 // ACTIONS
+
 export function fetchTaggedPosts(username) {
   const endpoint = `${BASE_URL}/tagged_posts/${username}`;
   const promise = fetch(endpoint, {
@@ -43,9 +51,12 @@ export function fetchTaggedPosts(username) {
 }
 
 export function hidePost(taggedPost) {
+  // Update DOM
   hidePostOptions(taggedPost);
   unhidePostHidden(taggedPost);
-  animatePostOptions(taggedPost);
+
+  // TO DO: REMOVE EVENT LISTENER?
+
 
   const body = {
     type: HIDE_POST,
@@ -69,9 +80,9 @@ export function hidePost(taggedPost) {
 }
 
 export function unhidePost(taggedPost) {
-  // hidePostOptions(taggedPost);
+  // Update DOM
   hidePostHidden(taggedPost);
-  // debugger
+  hidePostHiddenOptions(taggedPost);
 
   const body = {
     type: UNHIDE_POST,
