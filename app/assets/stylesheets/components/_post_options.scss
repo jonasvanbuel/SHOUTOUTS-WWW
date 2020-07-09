@@ -4,7 +4,8 @@ $internal-padding: 8px;
 
 .post-options,
 .post-hidden,
-.post-hidden-options {
+.post-hidden-options,
+.post-hidden-overlay {
   position: absolute;
   // margin-left: 0.5px;
   padding: $internal-padding;
@@ -21,6 +22,7 @@ $internal-padding: 8px;
     flex-direction: column;
   }
 
+  .hidden-overlay,
   .hide-option,
   .unhide-option {
     align-items: center;
@@ -50,7 +52,7 @@ $internal-padding: 8px;
   }
 }
 
-.post-hidden {
+.post-hidden-overlay {
   background-color: #70587C;
   opacity: 0.9;
 

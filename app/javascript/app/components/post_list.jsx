@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Import components
-import PostDashboard from './post_dashboard';
+import PostDashboard from './post_dashboard/post_dashboard';
 
 class PostList extends Component {
   render() {

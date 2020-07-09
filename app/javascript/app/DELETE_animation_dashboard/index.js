@@ -1,5 +1,3 @@
-import { addInvisibleClassToElement } from './helpers';
-
 const fetchPost = (taggedPost) => {
   const post = document.getElementById(taggedPost.pathname);
   return post;
@@ -42,45 +40,38 @@ const animateLabels = (taggedPost) => {
   }
 };
 
-const animatePostOptions = (taggedPost) => {
+export const animatePostOptions = (taggedPost) => {
   const post = fetchPost(taggedPost);
-  let postHidden = fetchPostHidden(taggedPost);
-  let postOptions = fetchPostOptions(taggedPost);
-  let postHiddenOptions = fetchPostHiddenOptions(taggedPost);
 
   // MOUSE-ENTER
   post.addEventListener('mouseenter', () => {
-    postHidden = fetchPostHidden(taggedPost);
-    postOptions = fetchPostOptions(taggedPost);
-    postHiddenOptions = fetchPostHiddenOptions(taggedPost);
+    let postHidden = fetchPostHidden(taggedPost);
+    let postOptions = fetchPostOptions(taggedPost);
 
-    // If taggedPost is not hidden, show postOptions
-    if (!taggedPost.hidden && postOptions.classList.contains('invisible')) {
+    // If post is not hidden, show postOptions
+    if (!post.dataset.hidden && postOptions.classList.contains('invisible')) {
       postOptions.classList.remove('invisible');
     }
 
-    // If taggedPost is hidden, hide postHidden and show postHiddenOptions
-    if (taggedPost.hidden && !postHidden.classList.contains('invisible')) {
+    // If post is hidden, hide postHidden and show postHiddenOptions
+    if (post.dataset.hidden && !postHidden.classList.contains('invisible')) {
       postHidden.classList.add('invisible');
-      postHiddenOptions.classList.remove('invisible');
     }
   });
 
   // MOUSE-LEAVE
   post.addEventListener('mouseleave', () => {
-    postHidden = fetchPostHidden(taggedPost);
-    postOptions = fetchPostOptions(taggedPost);
-    postHiddenOptions = fetchPostHiddenOptions(taggedPost);
+    let postHidden = fetchPostHidden(taggedPost);
+    let postOptions = fetchPostOptions(taggedPost);
 
     // If taggedPost is not hidden, hide postOptions
-    if (!taggedPost.hidden && !postOptions.classList.contains('invisible')) {
+    if (!post.dataset.hidden && !postOptions.classList.contains('invisible')) {
       postOptions.classList.add('invisible');
     }
 
     // If taggedPost is hidden, show postHidden and hidden postHiddenOptions
-    if (taggedPost.hidden && postHidden.classList.contains('invisible')) {
+    if (post.dataset.hidden && postHidden.classList.contains('invisible')) {
       postHidden.classList.remove('invisible');
-      postHiddenOptions.classList.add('invisible');
     }
   });
 };

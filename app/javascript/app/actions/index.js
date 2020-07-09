@@ -1,4 +1,4 @@
-import { fetchPostOptions, fetchPostHidden } from '../animation_dashboard';
+import { fetchPostOptions, fetchPostHidden, animatePostOptions } from '../components/post_dashboard/helpers/';
 
 const BASE_URL = '/api/v1';
 
@@ -21,6 +21,13 @@ const hidePostHidden = (taggedPost) => {
   }
 };
 
+const unhidePostHidden = (taggedPost) => {
+  const postHidden = fetchPostHidden(taggedPost);
+  if (postHidden.classList.contains('invisible')) {
+    postHidden.classList.remove('invisible');
+  }
+};
+
 // ACTIONS
 export function fetchTaggedPosts(username) {
   const endpoint = `${BASE_URL}/tagged_posts/${username}`;
@@ -37,6 +44,8 @@ export function fetchTaggedPosts(username) {
 
 export function hidePost(taggedPost) {
   hidePostOptions(taggedPost);
+  unhidePostHidden(taggedPost);
+  animatePostOptions(taggedPost);
 
   const body = {
     type: HIDE_POST,
