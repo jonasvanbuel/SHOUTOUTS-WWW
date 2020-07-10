@@ -3,12 +3,11 @@
 $internal-padding: 8px;
 
 .post-options,
-.post-hidden {
-  background-color: white;
-  opacity: 0.6;
-
+.post-hidden,
+.post-hidden-options,
+.post-hidden-overlay {
   position: absolute;
-  margin-left: 0.5px;
+  // margin-left: 0.5px;
   padding: $internal-padding;
   z-index: 3;
 
@@ -16,12 +15,16 @@ $internal-padding: 8px;
   justify-content: center;
   align-items: center;
 
-  .hide-option, .view-post-option {
+  .hide-option,
+  .unhide-option,
+  .view-post-option {
     display: flex;
     flex-direction: column;
   }
 
-  .hide-option {
+  .hidden-overlay,
+  .hide-option,
+  .unhide-option {
     align-items: center;
   }
 
@@ -35,30 +38,38 @@ $internal-padding: 8px;
 
   .fas {
     cursor: pointer;
+    font-size: 40px;
   }
 
-  .fa-eye-slash {
-    font-size: 40px;
+  .fa-external-link-square-alt {
+    font-size: 16px;
   }
 
   span.symbol-label {
     font-size: 10px;
     font-weight: 500;
+    color: white;
   }
 }
 
-.post-hidden {
-  background-color: #ef3054;
+.post-hidden-overlay {
+  background-color: #70587C;
   opacity: 0.9;
 
-  .fas {
-    color: white;
-  }
-
+  .fas,
   span.symbol-label {
     color: white;
   }
 }
 
+.post-options,
+.post-hidden-options {
+  background-color: white;
+  opacity: 0.6;
 
+  .fas,
+  span.symbol-label {
+    color: black;
+  }
+}
 

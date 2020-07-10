@@ -1,16 +1,21 @@
-import { fetchPostOptions } from '../animation_dashboard';
+// HELPERS
+import {
+  hidePostOptions,
+  hidePostHidden,
+  showPostHidden,
+  hidePostHiddenOptions,
+  showPostHiddenOverlay
+} from '../components/post_dashboard/helpers';
 
+// VARIABLES
 const BASE_URL = '/api/v1';
-
 export const FETCH_TAGGED_POSTS = 'FETCH_TAGGED_POSTS';
 export const HIDE_POST = 'HIDE_POST';
+export const UNHIDE_POST = 'UNHIDE_POST';
 
-const hidePostOptions = (taggedPost) => {
-  const postOptions = fetchPostOptions(taggedPost);
-  if (!postOptions.classList.contains('invisible')) {
-    postOptions.classList.add('invisible');
-  }
-};
+// ====================
+// ACTIONS
+// ====================
 
 export function fetchTaggedPosts(username) {
   const endpoint = `${BASE_URL}/tagged_posts/${username}`;
@@ -26,12 +31,20 @@ export function fetchTaggedPosts(username) {
 }
 
 export function hidePost(taggedPost) {
+  // UPDATE DOM
   hidePostOptions(taggedPost);
+  hidePostHiddenOptions(taggedPost);
+
+  showPostHidden(taggedPost);
+  showPostHiddenOverlay(taggedPost);
+
+  // TODO: REMOVE EVENT LISTENER???
+
 
   const body = {
     type: HIDE_POST,
     instagram_account_id: taggedPost.instagram_account_id,
-    id: taggedPost.id
+    post_id: taggedPost.id
   };
 
   const endpoint = `${BASE_URL}/tagged_posts/update_hidden`;
@@ -49,4 +62,28 @@ export function hidePost(taggedPost) {
   };
 }
 
-// unhidePost
+export function unhidePost(taggedPost) {
+  // Update DOM
+  hidePostHidden(taggedPost);
+  hidePostHiddenOptions(taggedPost);
+
+  const body = {
+    type: UNHIDE_POST,
+    instagram_account_id: taggedPost.instagram_account_id,
+    post_id: taggedPost.id
+  };
+
+  const endpoint = `${BASE_URL}/tagged_posts/update_hidden`;
+  const promise = fetch(endpoint, {
+    method: 'PATCH',
+    credentials: "same-origin",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  })
+    .then((r) => r.json());
+
+  return {
+    type: UNHIDE_POST,
+    payload: promise
+  };
+}

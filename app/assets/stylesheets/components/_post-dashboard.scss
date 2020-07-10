@@ -75,7 +75,9 @@ $md-main-font-size-small:   7px;
 
 // FURTHER STYLING IS DECLARED AT _POST_OPTIONS.SCSS
 .post-options,
-.post-hidden {
+.post-hidden,
+.post-hidden-options,
+.post-hidden-overlay {
   width: $md-width - 2.5;
   height: $md-height - 2;
   border-radius: $md-border-radius - 1;

@@ -3,50 +3,54 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Truncate from 'react-truncate-html';
 
+// ASSETS
 import InstaLike from 'images/insta-like.png';
 import InstaComment from 'images/insta-comment.png';
 import InstaShare from 'images/insta-share.png';
 
-// Import ACTIONS
-import { hidePost } from '../actions';
+// COMPONENTS
+import PostHidden from './post_hidden';
+import PostOptions from './post_options';
 
-// Import HELPERS
-import timeDiffToString from '../helpers/_time_helper';
-import animatePost from '../animation_dashboard';
+// ACTIONS - should be passed to options components?
+import { hidePost, unhidePost } from '../../actions';
+
+// HELPERS
+import animatePostOptions from './helpers/animate_post_options';
+import animateLabels from './helpers/animate_labels';
+import timeDiffToString from '../../helpers/_time_helper';
 
 class PostDashboard extends Component {
-  componentDidMount() {
-    const { taggedPost } = this.props;
-    animatePost(taggedPost);
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hidden: props.taggedPost.hidden
+    };
   }
 
-  // TO DO: EXTERNALISE POST_OPTIONS AND POST_HIDDEN COMPONENTS
+  setHidden = (bool) => {
+    this.setState({
+      hidden: bool
+    })
+  }
+
+  componentDidMount() {
+    const { taggedPost } = this.props;
+    animateLabels(taggedPost);
+    animatePostOptions(taggedPost);
+  }
+
   render() {
-    const { taggedPost, hidePost } = this.props;
+    const { taggedPost, hidePost, unhidePost } = this.props;
+    const { hidden } = this.state;
     return (
       <div
         className="post post-dashboard"
         id={taggedPost.pathname}
       >
-        <div
-          className={`post-hidden ${taggedPost.hidden ? '' : 'invisible'}`}
-        >
-          <div className="hide-option">
-            <i className="fas fa-eye-slash"></i>
-            <span className="symbol-label">hidden</span>
-          </div>
-        </div>
-
-        <div className="post-options invisible">
-          <div className="hide-option">
-            <i className="fas fa-eye-slash" onClick={() => hidePost(taggedPost)}></i>
-            <span className="symbol-label invisible">hide</span>
-          </div>
-          <div className="view-post-option">
-            <i className="fas fa-external-link-square-alt"></i>
-            <span className="symbol-label invisible">view post</span>
-          </div>
-        </div>
+        <PostHidden taggedPost={taggedPost} stateHidden={hidden} setHidden={this.setHidden} />
+        <PostOptions taggedPost={taggedPost} stateHidden={hidden} setHidden={this.setHidden} />
 
         <div className="post-content noselect">
           <div className="header">
@@ -91,7 +95,7 @@ class PostDashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ hidePost }, dispatch);
+  return bindActionCreators({ hidePost, unhidePost }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(PostDashboard);
