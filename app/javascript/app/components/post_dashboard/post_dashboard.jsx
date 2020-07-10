@@ -16,8 +16,9 @@ import PostOptions from './post_options';
 import { hidePost, unhidePost } from '../../actions';
 
 // HELPERS
+import animatePostOptions from './helpers/animate_post_options';
+import animateLabels from './helpers/animate_labels';
 import timeDiffToString from '../../helpers/_time_helper';
-import { fetchPost, fetchPostOptions, fetchPostHidden, animateLabels } from './helpers';
 
 class PostDashboard extends Component {
   constructor(props) {
@@ -34,39 +35,10 @@ class PostDashboard extends Component {
     })
   }
 
-  componentDidUpdate() {
-    const { taggedPost } = this.props;
-    const { hidden } = this.state;
-    const post = fetchPost(taggedPost);
-    const postOptions = fetchPostOptions(taggedPost);
-    const postHidden = fetchPostHidden(taggedPost);
-
-    // MOUSE-ENTER
-    // If post is NOT hidden, show postOptions
-    const onMouseEnterHandler = (event) => {
-      if (postHidden.classList.contains('invisible') && postOptions.classList.contains('invisible')) {
-        postOptions.classList.remove('invisible');
-      }
-    }
-
-    // MOUSE-LEAVE
-    // Regardless of wether post is hidden, hide postOptions
-    const onMouseLeaveHandler = (event) => {
-      if (!postOptions.classList.contains('invisible')) {
-        postOptions.classList.add('invisible');
-      }
-    }
-
-    if (post && postOptions) {
-      post.addEventListener('mouseenter', onMouseEnterHandler);
-      post.addEventListener('mouseleave', onMouseLeaveHandler);
-    }
-  }
-
   componentDidMount() {
     const { taggedPost } = this.props;
     animateLabels(taggedPost);
-    this.componentDidUpdate();
+    animatePostOptions(taggedPost);
   }
 
   render() {
@@ -77,8 +49,7 @@ class PostDashboard extends Component {
         className="post post-dashboard"
         id={taggedPost.pathname}
       >
-        <PostHidden taggedPost={taggedPost} stateHidden={hidden} />
-
+        <PostHidden taggedPost={taggedPost} stateHidden={hidden} setHidden={this.setHidden} />
         <PostOptions taggedPost={taggedPost} stateHidden={hidden} setHidden={this.setHidden} />
 
         <div className="post-content noselect">

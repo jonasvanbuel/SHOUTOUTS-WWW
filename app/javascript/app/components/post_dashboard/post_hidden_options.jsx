@@ -10,12 +10,16 @@ import { fetchPostOptions } from './helpers';
 
 class PostHiddenOptions extends Component {
   handleClick = () => {
-    const { taggedPost, unhidePost } = this.props;
+    const { taggedPost, unhidePost, setHidden } = this.props;
+    // Update local state postDashboard
+    setHidden(false);
+
+    // Dispatch server action
     unhidePost(taggedPost);
   }
 
   render() {
-    const { taggedPost, stateHidden } = this.props;
+    const { taggedPost, stateHidden, setHidden } = this.props;
     return (
       <div className="post-hidden-options invisible">
         <div className="unhide-option">
@@ -23,7 +27,9 @@ class PostHiddenOptions extends Component {
           <span className="symbol-label invisible">unhide</span>
         </div>
         <div className="view-post-option">
-          <i className="fas fa-external-link-square-alt"></i>
+          <a href={`https://www.instagram.com${taggedPost.pathname}`} target="_blank">
+            <i className="fas fa-external-link-square-alt"></i>
+          </a>
           <span className="symbol-label invisible">view post</span>
         </div>
       </div>

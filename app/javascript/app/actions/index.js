@@ -1,41 +1,21 @@
-import { fetchPostOptions, fetchPostHidden, fetchPostHiddenOptions, animatePostOptions } from '../components/post_dashboard/helpers/';
+// HELPERS
+import {
+  hidePostOptions,
+  hidePostHidden,
+  showPostHidden,
+  hidePostHiddenOptions,
+  showPostHiddenOverlay
+} from '../components/post_dashboard/helpers';
 
+// VARIABLES
 const BASE_URL = '/api/v1';
-
 export const FETCH_TAGGED_POSTS = 'FETCH_TAGGED_POSTS';
 export const HIDE_POST = 'HIDE_POST';
 export const UNHIDE_POST = 'UNHIDE_POST';
 
-// Internal helper functions
-const hidePostOptions = (taggedPost) => {
-  const postOptions = fetchPostOptions(taggedPost);
-  if (!postOptions.classList.contains('invisible')) {
-    postOptions.classList.add('invisible');
-  }
-};
-
-const hidePostHidden = (taggedPost) => {
-  const postHidden = fetchPostHidden(taggedPost);
-  if (!postHidden.classList.contains('invisible')) {
-    postHidden.classList.add('invisible');
-  }
-};
-
-const unhidePostHidden = (taggedPost) => {
-  const postHidden = fetchPostHidden(taggedPost);
-  if (postHidden.classList.contains('invisible')) {
-    postHidden.classList.remove('invisible');
-  }
-};
-
-const hidePostHiddenOptions = (taggedPost) => {
-  const postHiddenOptions = fetchPostHiddenOptions(taggedPost);
-  if (!postHiddenOptions.classList.contains('invisible')) {
-    postHiddenOptions.classList.add('invisible');
-  }
-};
-
+// ====================
 // ACTIONS
+// ====================
 
 export function fetchTaggedPosts(username) {
   const endpoint = `${BASE_URL}/tagged_posts/${username}`;
@@ -51,11 +31,14 @@ export function fetchTaggedPosts(username) {
 }
 
 export function hidePost(taggedPost) {
-  // Update DOM
+  // UPDATE DOM
   hidePostOptions(taggedPost);
-  unhidePostHidden(taggedPost);
+  hidePostHiddenOptions(taggedPost);
 
-  // TO DO: REMOVE EVENT LISTENER?
+  showPostHidden(taggedPost);
+  showPostHiddenOverlay(taggedPost);
+
+  // TODO: REMOVE EVENT LISTENER???
 
 
   const body = {

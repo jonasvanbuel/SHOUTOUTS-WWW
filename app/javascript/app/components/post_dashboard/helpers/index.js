@@ -29,82 +29,37 @@ export const fetchPostHiddenOverlay = (taggedPost) => {
   return postHiddenOverlay;
 };
 
-
-
-export const animateLabels = (taggedPost) => {
+export const hidePostOptions = (taggedPost) => {
   const postOptions = fetchPostOptions(taggedPost);
-  const postHiddenOptions = fetchPostHiddenOptions(taggedPost);
-
-  const targettedElements = [postOptions, postHiddenOptions];
-
-  targettedElements.forEach((element) => {
-    const labels = element.getElementsByClassName('symbol-label');
-    for (const label of labels) {
-      const symbol = label.parentElement.getElementsByClassName('fas')[0];
-      symbol.addEventListener('mouseenter', () => {
-        if (label.classList.contains('invisible')) {
-          label.classList.remove('invisible');
-        }
-      });
-      symbol.addEventListener('mouseleave', () => {
-        if (!label.classList.contains('invisible')) {
-          label.classList.add('invisible');
-        }
-      });
-    }
-  });
+  if (!postOptions.classList.contains('invisible')) {
+    postOptions.classList.add('invisible');
+  }
 };
 
-// export const animatePostOptions = (taggedPost) => {
-//   const post = fetchPost(taggedPost);
+export const hidePostHidden = (taggedPost) => {
+  const postHidden = fetchPostHidden(taggedPost);
+  if (!postHidden.classList.contains('invisible')) {
+    postHidden.classList.add('invisible');
+  }
+};
 
-//   // MOUSE-ENTER
-//   post.addEventListener('mouseenter', () => {
-//     let postHidden = fetchPostHidden(taggedPost);
-//     let postOptions = fetchPostOptions(taggedPost);
+export const showPostHidden = (taggedPost) => {
+  const postHidden = fetchPostHidden(taggedPost);
+  if (postHidden.classList.contains('invisible')) {
+    postHidden.classList.remove('invisible');
+  }
+};
 
-//     // If post is not hidden, show postOptions
-//     if (!post.dataset.hidden && postOptions.classList.contains('invisible')) {
-//       postOptions.classList.remove('invisible');
-//     }
+export const hidePostHiddenOptions = (taggedPost) => {
+  const postHiddenOptions = fetchPostHiddenOptions(taggedPost);
+  if (!postHiddenOptions.classList.contains('invisible')) {
+    postHiddenOptions.classList.add('invisible');
+  }
+};
 
-//     // If post is hidden, hide postHidden and show postHiddenOptions
-//     if (post.dataset.hidden && !postHidden.classList.contains('invisible')) {
-//       postHidden.classList.add('invisible');
-//     }
-//   });
-
-//   // MOUSE-LEAVE
-//   post.addEventListener('mouseleave', () => {
-//     let postHidden = fetchPostHidden(taggedPost);
-//     let postOptions = fetchPostOptions(taggedPost);
-
-//     // If taggedPost is not hidden, hide postOptions
-//     if (!post.dataset.hidden && !postOptions.classList.contains('invisible')) {
-//       postOptions.classList.add('invisible');
-//     }
-
-//     // If taggedPost is hidden, show postHidden and hidden postHiddenOptions
-//     if (post.dataset.hidden && postHidden.classList.contains('invisible')) {
-//       postHidden.classList.remove('invisible');
-//     }
-//   });
-// };
-
-// const animatePost = (taggedPost) => {
-//   const post = fetchPost(taggedPost);
-//   const postOptions = fetchPostOptions(taggedPost);
-//   const postHidden = fetchPostOptions(taggedPost);
-
-//   if (post) {
-//     animateLabels(taggedPost);
-//   }
-//   if (post && postOptions) {
-//     animatePostOptions(taggedPost);
-//   }
-//   if (post && postHidden) {
-//     // animatePostHidden();
-//   }
-// };
-
-// export default animatePost;
+export const showPostHiddenOverlay = (taggedPost) => {
+  const postHiddenOverlay = fetchPostHiddenOverlay(taggedPost);
+  if (postHiddenOverlay.classList.contains('invisible')) {
+    postHiddenOverlay.classList.remove('invisible');
+  }
+};

@@ -2,22 +2,18 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+// ACTIONS
+import { hidePost } from '../../actions';
+
 // HELPERS
 import { fetchPost, fetchPostOptions } from './helpers';
 
-// ACTIONS
-import { hidePost } from '../../actions';
 
 class PostOptions extends Component {
   handleClick = () => {
     const { taggedPost, hidePost, setHidden } = this.props;
-    // Update state postDashboard
-    // setHidden(true);
-
-    // DOESN'T SEEM TO BE WORKING! Remove eventListeners from post...
-    // const post = fetchPost(taggedPost);
-    // post.removeEventListener('mouseenter', onMouseEnterHandler);
-    // post.removeEventListener('mouseleave', onMouseLeaveHandler);
+    // Update local state postDashboard
+    setHidden(true);
 
     // Dispatch server action
     hidePost(taggedPost);
