@@ -1,0 +1,51 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 600;
+
+  a {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .start-livestream {
+    background-color: black;
+    width: 100%;
+    // height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 80px;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    font-size: 20px;
+  }
+
+  .connected-accounts-title,
+  .connected-accounts {
+    text-align: right;
+  }
+
+  .connected-accounts-title {
+    // margin-top: being set with JS to get exact height filter-div
+    margin-bottom: 24px;
+  }
+
+  .connected-accounts {
+    background-color: black;
+    color: white;
+
+    padding: 6px 24px;
+    border-radius: 80px;
+  }
+
+}
+
+
