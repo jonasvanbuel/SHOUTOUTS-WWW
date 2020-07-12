@@ -41,7 +41,7 @@ const isTriggerFromCenter = (event) => {
   const unhideOption = postHiddenOverlay.getElementsByClassName('unhide-option')[0];
   const unhideOptionDimensions = fetchDimensions(unhideOption);
 
-  const MARGIN = unhideOptionDimensions.width * 0.25;
+  const MARGIN = unhideOptionDimensions.width * 0.5;
 
   const isNearCenterX = () => {
     const { width } = unhideOptionDimensions;
@@ -49,6 +49,9 @@ const isTriggerFromCenter = (event) => {
       min: centerX - ((width / 2) + MARGIN),
       max: centerX + ((width / 2) + MARGIN)
     };
+    console.log(clientX);
+    console.log(range);
+
     if (clientX >= range.min && clientX <= range.max) {
       return true;
     }
@@ -61,6 +64,9 @@ const isTriggerFromCenter = (event) => {
       min: centerY - ((height / 2) + MARGIN),
       max: centerY + ((height / 2) + MARGIN)
     };
+    console.log(clientY);
+    console.log(range);
+
     if (clientY >= range.min && clientY <= range.max) {
       return true;
     }
@@ -68,7 +74,10 @@ const isTriggerFromCenter = (event) => {
   };
 
   const nearCenterX = isNearCenterX();
+  console.log(`nearCenterX: ${nearCenterX}`);
   const nearCenterY = isNearCenterY();
+  console.log(`nearCenterY: ${nearCenterY}`);
+
   if (nearCenterX && nearCenterY) {
     return true;
   }
@@ -82,7 +91,8 @@ const animatePostHiddenOptions = (taggedPost) => {
   const posthiddenOverlay = fetchPostHiddenOverlay(taggedPost);
 
   // MOUSE-ENTER
-  // Only if post is hidden, show postHiddenOptions and hide postHiddenOverlay
+  // Only if post is hidden and not triggered from center after hiding,
+  // show postHiddenOptions and hide postHiddenOverlay
   const onMouseEnterHandler = (event) => {
     const triggerFromCenter = isTriggerFromCenter(event);
 
@@ -95,13 +105,12 @@ const animatePostHiddenOptions = (taggedPost) => {
         }
       }
     }
-
   };
 
   // MOUSE-LEAVE
   // Regardless of whether post is hidden, hide postHiddenOptions
   // Only if taggedPost is hidden, show postHiddenOverlay
-  const onMouseLeaveHandler = (event) => {
+  const onMouseLeaveHandler = () => {
     if (!postHiddenOptions.classList.contains('invisible')) {
       postHiddenOptions.classList.add('invisible');
 
