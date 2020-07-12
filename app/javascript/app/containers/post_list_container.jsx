@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { fetchTaggedPosts } from '../actions';
 
-import Filter from '../components/filter';
+import FilterBar from '../components/filter_bar';
 import PostList from '../components/post_list';
 
 class PostListContainer extends Component {
@@ -21,7 +21,7 @@ class PostListContainer extends Component {
     const { taggedPosts } = this.props;
     return (
       <div className="post-list-container">
-        <Filter />
+        <FilterBar />
         <PostList taggedPosts={taggedPosts} />
       </div>
     );
