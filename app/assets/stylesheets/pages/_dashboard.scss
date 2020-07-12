@@ -9,6 +9,7 @@ $body-from-top:      160px;
 $db-post-width:      184px;
 $grid-gap:           32px;
 $small-padding:      6px;
+$large-padding:      40px;
 
 body {
   background-color: #E5E4DC;
@@ -39,6 +40,8 @@ body {
 
     height: 500px;
     padding-right: $small-padding;
+    padding-top: $large-padding;
+
     flex-grow: 2;
     position: sticky;
     top: $navbar-height;
@@ -48,11 +51,14 @@ body {
     display: flex;
     flex-direction: column;
 
-    .filter {
+    .filter-bar {
       background-color: pink;
 
-      height: 160px;
-      padding: $small-padding;
+      // height: 160px;
+      padding: 0;
+      padding-left: $small-padding;
+      padding-right: $small-padding;
+      padding-top: $large-padding;
       position: sticky;
       top: 0px;
       z-index: 10;
