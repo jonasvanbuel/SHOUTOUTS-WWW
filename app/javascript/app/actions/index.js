@@ -7,11 +7,17 @@ import {
   showPostHiddenOverlay
 } from '../components/post_dashboard/helpers';
 
+// ====================
 // VARIABLES
+// ====================
+
 const BASE_URL = '/api/v1';
+
 export const FETCH_TAGGED_POSTS = 'FETCH_TAGGED_POSTS';
 export const HIDE_POST = 'HIDE_POST';
 export const UNHIDE_POST = 'UNHIDE_POST';
+export const SET_SORT_KEY = 'SET_SORT_KEY';
+export const SET_SORT_ORDER = 'SET_SORT_ORDER';
 
 // ====================
 // ACTIONS
@@ -85,5 +91,23 @@ export function unhidePost(taggedPost) {
   return {
     type: UNHIDE_POST,
     payload: promise
+  };
+}
+
+export function setSortKey(sortKey) {
+  console.log('setSortKey action triggered...');
+
+  return {
+    type: SET_SORT_KEY,
+    payload: sortKey
+  };
+}
+
+export function setSortOrder(sortOrder) {
+  console.log('setSortOrder action triggered...');
+
+  return {
+    type: SET_SORT_ORDER,
+    payload: sortOrder
   };
 }

@@ -1,6 +1,5 @@
 /* eslint no-alert:off */
 
-// external modules
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -15,19 +14,25 @@ import {
 } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
-// internal modules
+// COMPONENTS
 import Dashboard from './components/dashboard';
 import Livestream from './containers/livestream';
 
-// state and reducers
+// REDUCERS
 import taggedPostsReducer from './reducers/tagged_posts_reducer';
+import sortKeyReducer from './reducers/sort_key_reducer';
+import sortOrderReducer from './reducers/sort_order_reducer';
 
 const initialState = {
-  taggedPosts: []
+  taggedPosts: [],
+  sortKey: 'posted',
+  sortOrder: 'desc'
 };
 
 const reducers = combineReducers({
-  taggedPosts: taggedPostsReducer
+  taggedPosts: taggedPostsReducer,
+  sortKey: sortKeyReducer,
+  sortOrder: sortOrderReducer
 });
 
 const middlewares = applyMiddleware(logger, promise);

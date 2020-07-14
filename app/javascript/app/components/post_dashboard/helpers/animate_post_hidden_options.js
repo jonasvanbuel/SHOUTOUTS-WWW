@@ -49,8 +49,8 @@ const isTriggerFromCenter = (event) => {
       min: centerX - ((width / 2) + MARGIN),
       max: centerX + ((width / 2) + MARGIN)
     };
-    console.log(clientX);
-    console.log(range);
+    // console.log(clientX);
+    // console.log(range);
 
     if (clientX >= range.min && clientX <= range.max) {
       return true;
@@ -64,8 +64,8 @@ const isTriggerFromCenter = (event) => {
       min: centerY - ((height / 2) + MARGIN),
       max: centerY + ((height / 2) + MARGIN)
     };
-    console.log(clientY);
-    console.log(range);
+    // console.log(clientY);
+    // console.log(range);
 
     if (clientY >= range.min && clientY <= range.max) {
       return true;
@@ -74,9 +74,9 @@ const isTriggerFromCenter = (event) => {
   };
 
   const nearCenterX = isNearCenterX();
-  console.log(`nearCenterX: ${nearCenterX}`);
+  // console.log(`nearCenterX: ${nearCenterX}`);
   const nearCenterY = isNearCenterY();
-  console.log(`nearCenterY: ${nearCenterY}`);
+  // console.log(`nearCenterY: ${nearCenterY}`);
 
   if (nearCenterX && nearCenterY) {
     return true;
