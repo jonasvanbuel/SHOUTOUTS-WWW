@@ -13,11 +13,11 @@ const FilterBar = () => {
           sort by:
         </div>
         <div className="filter-option" id="filter-option-posted">
-          <i class="fas fa-caret-up"></i>
+          <i className="fas fa-caret-up"></i>
           posted
         </div>
         <div className="filter-option" id="filter-option-likes">
-          <i class="fas fa-caret-up"></i>
+          <i className="fas fa-caret-up"></i>
           likes
         </div>
       </div>

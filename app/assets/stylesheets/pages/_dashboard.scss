@@ -3,8 +3,8 @@
 // @media (min-width: 992px)
 // @media (min-width: 1200px)
 
-$navbar-height:      80px;
-$body-from-top:      160px;
+$navbar-height:      156px;
+// $body-from-top:      160px;
 
 $db-post-width:      184px;
 $grid-gap:           32px;
@@ -17,30 +17,21 @@ body {
 
 .dashboard {
   width: 100vw;
-
-  .navbar {
-    background-color: rgba(0, 0, 0, 0.2);
-
-    height: $navbar-height;
-    width: 100%;
-    position: fixed;
-    top: 0px;
-    z-index: 5;
-  }
 }
 
 .dashboard-body {
   width: 100%;
   display: flex;
-  margin-top: $body-from-top;
+  margin-top: $navbar-height;
   margin-bottom: 200px;
 
   .menu {
     background-color: yellow;
 
     height: 500px;
-    padding-right: $small-padding;
+    // padding-right: $small-padding;
     padding-top: $large-padding;
+    margin-right: 24px;
 
     flex-grow: 2;
     position: sticky;
