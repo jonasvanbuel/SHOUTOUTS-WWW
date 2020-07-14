@@ -7,7 +7,6 @@ class Menu extends Component {
     const filterBar = document.getElementsByClassName('filter-bar')[0];
     const startLivestreamBtn = document.getElementsByClassName('start-livestream')[0];
     const connectedAccountsTitle = document.getElementsByClassName('connected-accounts-title')[0];
-
     const margin = filterBar.offsetHeight - startLivestreamBtn.offsetHeight;
     connectedAccountsTitle.style.marginTop = `${margin}px`;
   }
