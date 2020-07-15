@@ -22,17 +22,23 @@ import Livestream from './containers/livestream';
 import taggedPostsReducer from './reducers/tagged_posts_reducer';
 import sortKeyReducer from './reducers/sort_key_reducer';
 import sortOrderReducer from './reducers/sort_order_reducer';
+import filteredReducer from './reducers/filtered_reducer';
+import filterReducer from './reducers/filter_reducer';
 
 const initialState = {
   taggedPosts: [],
   sortKey: 'posted',
-  sortOrder: 'desc'
+  sortOrder: 'desc',
+  filtered: false,
+  filter: ''
 };
 
 const reducers = combineReducers({
   taggedPosts: taggedPostsReducer,
   sortKey: sortKeyReducer,
-  sortOrder: sortOrderReducer
+  sortOrder: sortOrderReducer,
+  filtered: filteredReducer,
+  filter: filterReducer
 });
 
 const middlewares = applyMiddleware(logger, promise);

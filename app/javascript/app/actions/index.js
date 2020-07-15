@@ -18,6 +18,8 @@ export const HIDE_POST = 'HIDE_POST';
 export const UNHIDE_POST = 'UNHIDE_POST';
 export const SET_SORT_KEY = 'SET_SORT_KEY';
 export const SET_SORT_ORDER = 'SET_SORT_ORDER';
+export const SET_FILTERED = 'SET_FILTERED';
+export const SET_FILTER = 'SET_FILTER';
 
 // ====================
 // ACTIONS
@@ -95,8 +97,6 @@ export function unhidePost(taggedPost) {
 }
 
 export function setSortKey(sortKey) {
-  console.log('setSortKey action triggered...');
-
   return {
     type: SET_SORT_KEY,
     payload: sortKey
@@ -104,10 +104,35 @@ export function setSortKey(sortKey) {
 }
 
 export function setSortOrder(sortOrder) {
-  console.log('setSortOrder action triggered...');
-
   return {
     type: SET_SORT_ORDER,
     payload: sortOrder
+  };
+}
+
+export function setFiltered(string) {
+  const regex = /\w|\W}\s/g;
+  if (regex.test(string) === true) {
+    return {
+      type: SET_FILTERED,
+      payload: true
+    };
+  }
+  if (string === '') {
+    return {
+      type: SET_FILTERED,
+      payload: false
+    };
+  }
+  return {
+    type: SET_FILTERED,
+    payload: false
+  };
+}
+
+export function setFilter(string) {
+  return {
+    type: SET_FILTER,
+    payload: string
   };
 }
