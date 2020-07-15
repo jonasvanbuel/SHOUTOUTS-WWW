@@ -10,6 +10,7 @@ import PostDashboard from './post_dashboard/post_dashboard';
 
 // HELPERS
 import sortPosts from '../helpers/_sort_posts';
+import filterPosts from '../helpers/_filter_posts';
 
 class PostList extends Component {
   componentDidMount() {
@@ -22,12 +23,20 @@ class PostList extends Component {
   }
 
   render() {
-    const { taggedPosts, sortKey, sortOrder } = this.props;
-    const sortedPosts = sortPosts(taggedPosts, sortKey, sortOrder);
+    const {
+      taggedPosts,
+      sortKey,
+      sortOrder,
+      filtered,
+      filter
+    } = this.props;
+    const filteredPosts = filtered === true ? filterPosts(taggedPosts, filtered, filter) : taggedPosts;
+    // const filteredPosts = filterPosts(taggedPosts, filtered, filter);
+    const filteredAndSortedPosts = sortPosts(filteredPosts, sortKey, sortOrder);
 
     return (
       <div className="post-list">
-        {sortedPosts.map((taggedPost) => {
+        {filteredAndSortedPosts.map((taggedPost) => {
           return <PostDashboard taggedPost={taggedPost} key={taggedPost.pathname} />;
         })}
       </div>
@@ -39,7 +48,9 @@ function mapStateToProps(state) {
   return {
     taggedPosts: state.taggedPosts,
     sortKey: state.sortKey,
-    sortOrder: state.sortOrder
+    sortOrder: state.sortOrder,
+    filtered: state.filtered,
+    filter: state.filter
   };
 }
 

@@ -17,10 +17,21 @@ $medium-padding:     12px;
     display: flex;
     align-items: center;
     padding-left: 24px;
+    padding-right: 8px;
     border-bottom: 4px solid rgba(0, 0, 0, 0.6);
     margin-bottom: 8px;
 
     font-size: 20px;
+
+    input {
+      width: 100%;
+      border: none;
+    }
+
+    input:focus {
+      outline: 0;
+      color: rgba(0, 0, 0, 0.6);
+    }
   }
 
   .filter-options {
@@ -80,12 +91,12 @@ $medium-padding:     12px;
 
   .fas.asc {
     transform: rotate(0deg);
-    top: 1.5px;
+    // top: 0.5px;
   }
 
   .fas.desc {
     transform: rotate(180deg);
-    top: 2px;
+    top: 2.5px;
   }
 
   .fas.neutral {
