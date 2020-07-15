@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { setSortKey, setSortOrder } from '../actions';
 
 // COMPONENTS
+import SearchForm from './search_form';
 
 
 class FilterBar extends Component {
@@ -49,9 +50,7 @@ class FilterBar extends Component {
     };
     return (
       <div className="filter-bar">
-        <div className="search-form">
-          search
-        </div>
+        <SearchForm />
         <div className="filter-options">
           <div className="filter-label">
             sort by:
