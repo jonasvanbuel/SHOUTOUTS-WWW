@@ -4,7 +4,6 @@
 // @media (min-width: 1200px)
 
 $navbar-height:      156px;
-// $body-from-top:      160px;
 
 $db-post-width:      184px;
 $grid-gap:           32px;
@@ -12,21 +11,26 @@ $small-padding:      6px;
 $large-padding:      40px;
 
 body {
-  background-color: #E5E4DC;
+  // background-color: #E5E4DC;
 }
 
 .dashboard {
   width: 100vw;
+
+  .navbar {
+    height: $navbar-height;
+  }
 }
 
 .dashboard-body {
   width: 100%;
   display: flex;
-  margin-top: $navbar-height;
   margin-bottom: 200px;
+  position: relative;
+  top: $navbar-height;
 
   .menu {
-    background-color: yellow;
+    // background-color: yellow;
 
     height: 500px;
     // padding-right: $small-padding;
@@ -43,7 +47,7 @@ body {
     flex-direction: column;
 
     .filter-bar {
-      background-color: pink;
+      // background-color: pink;
 
       // height: 160px;
       padding: 0;
@@ -56,8 +60,6 @@ body {
     }
 
     .post-list {
-      // background-color: orange;
-
       padding-top: $grid-gap;
       padding-left: $small-padding;
       padding-right: $small-padding;

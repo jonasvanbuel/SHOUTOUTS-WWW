@@ -16,7 +16,7 @@ import { createBrowserHistory } from 'history';
 
 // COMPONENTS
 import Dashboard from './components/dashboard';
-import Livestream from './containers/livestream';
+import Livestream from './components/livestream';
 
 // REDUCERS
 import taggedPostsReducer from './reducers/tagged_posts_reducer';
