@@ -17,10 +17,21 @@ $medium-padding:     12px;
     display: flex;
     align-items: center;
     padding-left: 24px;
+    padding-right: 8px;
     border-bottom: 4px solid rgba(0, 0, 0, 0.6);
     margin-bottom: 8px;
 
     font-size: 20px;
+
+    input {
+      width: 100%;
+      border: none;
+    }
+
+    input:focus {
+      outline: 0;
+      color: rgba(0, 0, 0, 0.6);
+    }
   }
 
   .filter-options {
