@@ -1,18 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
 
 .navbar {
-  background-color: #F4F4F4;
+  background-color: green;
 
+  height: $navbar-height;
   width: 100%;
   position: fixed;
   top: 0px;
   padding: 0px;
   z-index: 5;
 
+  display: flex;
+
+  .fa-bars {
+    font-size: 30px;
+    position: absolute;
+    left: 0px;
+  }
+
   .navbar-logo {
     width: 200px;
-    position: relative;
+    position: absolute;
+    vertical-align: bottom;
+    left: 0px;
   }
+
 }
 
 

@@ -3,7 +3,7 @@
 // @media (min-width: 992px)
 // @media (min-width: 1200px)
 
-$navbar-height:      156px;
+
 
 $db-post-width:      184px;
 $grid-gap:           32px;
@@ -16,10 +16,6 @@ body {
 
 .dashboard {
   width: 100vw;
-
-  .navbar {
-    height: $navbar-height;
-  }
 }
 
 .dashboard-body {
