@@ -50,18 +50,22 @@ class FilterBar extends Component {
     };
     return (
       <div className="filter-bar">
-        <SearchForm />
-        <div className="filter-options">
-          <div className="filter-label">
-            sort by:
-          </div>
-          <div className="filter-option" id="filter-option-posted">
-            <i className={`fas fa-caret-up ${evaluateCaret('posted')}`}></i>
-            <button type="button" onClick={this.handlePostedClick}>posted</button>
-          </div>
-          <div className="filter-option" id="filter-option-likes">
-            <i className={`fas fa-caret-up ${evaluateCaret('likes')}`}></i>
-            <button type="button" onClick={this.handleLikesClick}>likes</button>
+        <div className="filter-sub">
+          <SearchForm />
+        </div>
+        <div className="filter-sub">
+          <div className="filter-options">
+            <div className="filter-label">
+              sort by:
+            </div>
+            <div className="filter-option" id="filter-option-posted">
+              <i className={`fas fa-caret-up ${evaluateCaret('posted')}`}></i>
+              <button type="button" onClick={this.handlePostedClick}>posted</button>
+            </div>
+            <div className="filter-option" id="filter-option-likes">
+              <i className={`fas fa-caret-up ${evaluateCaret('likes')}`}></i>
+              <button type="button" onClick={this.handleLikesClick}>likes</button>
+            </div>
           </div>
         </div>
       </div>

@@ -9,6 +9,9 @@ class PostListContainer extends Component {
     return (
       <div className="post-list-container">
         <FilterBar />
+        <div className="currently-livestreaming-title">
+          currently livestreaming:
+        </div>
         <PostList />
       </div>
     );

@@ -3,12 +3,6 @@
 // @media (min-width: 992px)
 // @media (min-width: 1200px)
 
-$navbar-height:      156px;
-
-$db-post-width:      184px;
-$grid-gap:           32px;
-$small-padding:      6px;
-$large-padding:      40px;
 
 body {
   // background-color: #E5E4DC;
@@ -16,10 +10,6 @@ body {
 
 .dashboard {
   width: 100vw;
-
-  .navbar {
-    height: $navbar-height;
-  }
 }
 
 .dashboard-body {
@@ -29,68 +19,25 @@ body {
   position: relative;
   top: $navbar-height;
 
-  .menu {
-    // background-color: yellow;
-
-    height: 500px;
-    // padding-right: $small-padding;
-    padding-top: $large-padding;
-    margin-right: 24px;
-
-    flex-grow: 2;
-    position: sticky;
-    top: $navbar-height;
-  }
-
   .post-list-container {
     display: flex;
     flex-direction: column;
-
-    .filter-bar {
-      // background-color: pink;
-
-      // height: 160px;
-      padding: 0;
-      padding-left: $small-padding;
-      padding-right: $small-padding;
-      padding-top: $large-padding;
-      position: sticky;
-      top: 0px;
-      z-index: 10;
-    }
-
-    .post-list {
-      padding-top: $grid-gap;
-      padding-left: $small-padding;
-      padding-right: $small-padding;
-      display: grid;
-      grid-gap: 12px;
-      grid-template-columns: repeat(1, $db-post-width);
-
-      @media (min-width: 576px) {
-        grid-gap: 16px;
-        grid-template-columns: repeat(2, $db-post-width);
-      }
-
-      @media (min-width: 768px) {
-        grid-gap: 24px;
-        grid-template-columns: repeat(2, $db-post-width);
-      }
-
-      @media (min-width: 992px) {
-        grid-gap: $grid-gap;
-        grid-template-columns: repeat(3, $db-post-width);
-      }
-
-      @media (min-width: 1200px) {
-
-        grid-gap: $grid-gap;
-        grid-template-columns: repeat(4, $db-post-width);
-      }
-    }
-
   }
 }
+
+
+.connected-accounts-title,
+.currently-livestreaming-title {
+  margin-top: $small-padding;
+  margin-bottom: $large-padding;
+
+  font-size: $small-font-size;
+  font-family: Open Sans, Helvetica, sans-serif;
+  font-weight: 400;
+  color: $font-color-light-gray;
+}
+
+
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
