@@ -7,9 +7,20 @@ import { hidePost } from '../../actions';
 
 // HELPERS
 import { fetchPost, fetchPostOptions } from './helpers';
+import animatePostOptions from './helpers/animate_post_options';
 
 
 class PostOptions extends Component {
+  componentDidMount() {
+    const { taggedPost } = this.props;
+    animatePostOptions(taggedPost);
+  }
+
+  // componentDidUpdate() {
+  //   const { taggedPost } = this.props;
+  //   animatePostOptions(taggedPost);
+  // }
+
   handleClick = () => {
     const { taggedPost, hidePost, setHidden } = this.props;
     // Update local state postDashboard
@@ -22,7 +33,7 @@ class PostOptions extends Component {
   render() {
     const { taggedPost, stateHidden, setHidden } = this.props;
     return (
-      <div className="post-options invisible">
+      <div className={`post-options invisible`}>
         <div className="hide-option">
           <i className="fas fa-eye-slash" onClick={this.handleClick}></i>
           <span className="symbol-label invisible">hide</span>

@@ -35,7 +35,7 @@ class PostList extends Component {
     const filteredAndSortedPosts = sortPosts(filteredPosts, sortKey, sortOrder);
 
     return (
-      <div className="post-list">
+      <div className="post-list" id="post-list">
         {filteredAndSortedPosts.map((taggedPost) => {
           return <PostDashboard taggedPost={taggedPost} key={taggedPost.pathname} />;
         })}

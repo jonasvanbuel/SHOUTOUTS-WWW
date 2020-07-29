@@ -9,24 +9,15 @@ import { setFilter, setFiltered } from '../actions';
 
 
 class SearchForm extends Component {
-  // state = {
-  //   input: ""
-  // }
 
   handleChange = (event) => {
     const { setFilter, setFiltered } = this.props;
     setFiltered(event.target.value);
     setFilter(event.target.value);
-
-
-    // this.setState({
-    //   input: event.target.value
-    // })
   };
 
   render() {
     const { filter } = this.props;
-    // const { input } = this.state;
 
     return (
       <div className="search-form">

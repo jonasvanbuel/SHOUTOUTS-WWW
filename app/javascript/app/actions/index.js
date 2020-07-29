@@ -4,7 +4,8 @@ import {
   hidePostHidden,
   showPostHidden,
   hidePostHiddenOptions,
-  showPostHiddenOverlay
+  showPostHiddenOverlay,
+  reviewScroll
 } from '../components/post_dashboard/helpers';
 
 // ====================
@@ -43,7 +44,7 @@ export function hidePost(taggedPost) {
   hidePostOptions(taggedPost);
   hidePostHiddenOptions(taggedPost);
 
-  showPostHidden(taggedPost);
+  // showPostHidden(taggedPost);
   showPostHiddenOverlay(taggedPost);
 
   // TODO: REMOVE EVENT LISTENER???
@@ -72,7 +73,7 @@ export function hidePost(taggedPost) {
 
 export function unhidePost(taggedPost) {
   // Update DOM
-  hidePostHidden(taggedPost);
+  // hidePostHidden(taggedPost);
   hidePostHiddenOptions(taggedPost);
 
   const body = {
@@ -131,6 +132,9 @@ export function setFiltered(string) {
 }
 
 export function setFilter(string) {
+  // Scroll to top post-list?
+  reviewScroll();
+
   return {
     type: SET_FILTER,
     payload: string

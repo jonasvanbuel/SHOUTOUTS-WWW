@@ -5,17 +5,23 @@ export const fetchPost = (taggedPost) => {
   return post;
 };
 
+// export const fetchPostContent = (taggedPost) => {
+//   const post = document.getElementById(taggedPost.pathname);
+//   const postContent = post.getElementsByClassName('post-content')[0];
+//   return postContent;
+// };
+
 export const fetchPostOptions = (taggedPost) => {
   const post = document.getElementById(taggedPost.pathname);
   const postOptions = post.getElementsByClassName('post-options')[0];
   return postOptions;
 };
 
-export const fetchPostHidden = (taggedPost) => {
-  const post = document.getElementById(taggedPost.pathname);
-  const postHidden = post.getElementsByClassName('post-hidden')[0];
-  return postHidden;
-};
+// export const fetchPostHidden = (taggedPost) => {
+//   const post = document.getElementById(taggedPost.pathname);
+//   const postHidden = post.getElementsByClassName('post-hidden')[0];
+//   return postHidden;
+// };
 
 export const fetchPostHiddenOptions = (taggedPost) => {
   const post = document.getElementById(taggedPost.pathname);
@@ -36,19 +42,19 @@ export const hidePostOptions = (taggedPost) => {
   }
 };
 
-export const hidePostHidden = (taggedPost) => {
-  const postHidden = fetchPostHidden(taggedPost);
-  if (!postHidden.classList.contains('invisible')) {
-    postHidden.classList.add('invisible');
-  }
-};
+// export const hidePostHidden = (taggedPost) => {
+//   const postHidden = fetchPostHidden(taggedPost);
+//   if (!postHidden.classList.contains('invisible')) {
+//     postHidden.classList.add('invisible');
+//   }
+// };
 
-export const showPostHidden = (taggedPost) => {
-  const postHidden = fetchPostHidden(taggedPost);
-  if (postHidden.classList.contains('invisible')) {
-    postHidden.classList.remove('invisible');
-  }
-};
+// export const showPostHidden = (taggedPost) => {
+//   const postHidden = fetchPostHidden(taggedPost);
+//   if (postHidden.classList.contains('invisible')) {
+//     postHidden.classList.remove('invisible');
+//   }
+// };
 
 export const hidePostHiddenOptions = (taggedPost) => {
   const postHiddenOptions = fetchPostHiddenOptions(taggedPost);
@@ -63,3 +69,15 @@ export const showPostHiddenOverlay = (taggedPost) => {
     postHiddenOverlay.classList.remove('invisible');
   }
 };
+
+export const reviewScroll = () => {
+  console.log(`Old reviewScroll: ${window.scrollY}`);
+  if (window.scrollY > 165) {
+    window.scroll(0, 165);
+  }
+  console.log(`New reviewScroll: ${window.scrollY}`);
+};
+
+
+
+
