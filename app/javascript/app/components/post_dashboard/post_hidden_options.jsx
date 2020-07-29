@@ -7,8 +7,20 @@ import { unhidePost } from '../../actions';
 
 // HELPERS
 import { fetchPostOptions } from './helpers';
+import animatePostHiddenOptions from './helpers/animate_post_hidden_options';
+
 
 class PostHiddenOptions extends Component {
+  componentDidMount() {
+    const { taggedPost } = this.props;
+    animatePostHiddenOptions(taggedPost);
+  }
+
+  // componentDidUpdate() {
+  //   const { taggedPost } = this.props;
+  //   animatePostHiddenOptions(taggedPost);
+  // }
+
   handleClick = () => {
     const { taggedPost, unhidePost, setHidden } = this.props;
     // Update local state postDashboard

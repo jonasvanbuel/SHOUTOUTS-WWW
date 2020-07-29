@@ -10,6 +10,7 @@ $md-main-font-size-small:   7px;
 .post-dashboard {
   width: $md-width;
   height: $md-height;
+  max-height: $md-height;
   border-radius: $md-border-radius;
 
   border: 1px solid rgba(0, 0, 0, 0.4);
