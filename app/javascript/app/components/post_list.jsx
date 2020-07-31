@@ -31,7 +31,6 @@ class PostList extends Component {
       filter
     } = this.props;
     const filteredPosts = filtered === true ? filterPosts(taggedPosts, filtered, filter) : taggedPosts;
-    // const filteredPosts = filterPosts(taggedPosts, filtered, filter);
     const filteredAndSortedPosts = sortPosts(filteredPosts, sortKey, sortOrder);
 
     return (

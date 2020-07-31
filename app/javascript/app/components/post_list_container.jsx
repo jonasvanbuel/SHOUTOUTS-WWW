@@ -32,7 +32,6 @@ class PostListContainer extends Component {
     const { setFiltered, setFilter } = this.props;
     setFiltered('');
     setFilter('');
-
   }
 
   render() {
