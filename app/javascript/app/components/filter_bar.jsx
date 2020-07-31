@@ -61,7 +61,10 @@ class FilterBar extends Component {
           <SearchForm />
         </div>
         <div className="filter-sub">
-          <div className="filter-options">
+          <div
+            className="filter-options"
+            data-sort-key={sortKey}
+          >
             <div className="filter-label">
               sort by:
             </div>
