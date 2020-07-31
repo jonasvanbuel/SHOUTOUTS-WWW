@@ -33,27 +33,3 @@
   }
 }
 
-.view-all-posts {
-  background-color: yellow;
-
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .fas {
-    cursor: pointer;
-  }
-
-  .fa-plus-circle {
-    font-size: 24px;
-  }
-
-  span.symbol-label {
-    font-size: 10px;
-    font-weight: 500;
-    // color: white;
-  }
-}
-

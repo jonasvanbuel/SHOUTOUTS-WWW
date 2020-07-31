@@ -1,0 +1,15 @@
+.no-posts-found {
+  // background-color: white;
+
+  min-height: $no-posts-found-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-size: 96px;
+    font-family: $body-font;
+    color: $font-color-light-gray;
+    opacity: 0.7;
+  }
+}

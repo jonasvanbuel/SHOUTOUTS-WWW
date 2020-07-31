@@ -5,47 +5,23 @@ import { connect } from 'react-redux';
 // COMPONENTS
 import FilterBar from '../components/filter_bar';
 import PostList from '../components/post_list';
+import NoPostsFound from '../components/no_posts_found';
+import ViewAllPosts from '../components/view_all_posts';
 
 // ACTIONS
-import { setFiltered, setFilter } from '../actions';
+// import { setFiltered, setFilter } from '../actions';
 
 
 class PostListContainer extends Component {
-  componentDidMount() {
-    const viewAllPosts = document.getElementsByClassName('view-all-posts')[0];
-    const label = viewAllPosts.getElementsByClassName('symbol-label')[0];
-    const symbol = label.parentElement.getElementsByClassName('fas')[0];
-
-    symbol.addEventListener('mouseenter', () => {
-      if (label.classList.contains('invisible')) {
-        label.classList.remove('invisible');
-      }
-    });
-    symbol.addEventListener('mouseleave', () => {
-      if (!label.classList.contains('invisible')) {
-        label.classList.add('invisible');
-      }
-    });
-  }
-
-  handleClick = () => {
-    const { setFiltered, setFilter } = this.props;
-    setFiltered('');
-    setFilter('');
-
-  }
-
   render() {
-    const { filtered } = this.props;
+    const { sortedFilteredPosts, filtered } = this.props;
 
     return (
       <div className="post-list-container">
         <FilterBar />
         <PostList />
-        <div className={`view-all-posts${filtered === true ? '' : ' invisible'}`}>
-          <i className="fas fa-plus-circle" onClick={this.handleClick}></i>
-          <span className="symbol-label invisible">view all posts</span>
-        </div>
+        {filtered && sortedFilteredPosts.length === 0 ? <NoPostsFound /> : null}
+        {filtered ? <ViewAllPosts /> : null}
       </div>
     );
   }
@@ -53,12 +29,13 @@ class PostListContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    filtered: state.filtered,
+    sortedFilteredPosts: state.sortedFilteredPosts,
+    filtered: state.filtered
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setFiltered, setFilter }, dispatch);
-}
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ setFiltered, setFilter }, dispatch);
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer);
+export default connect(mapStateToProps)(PostListContainer);
