@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
+import thunk from 'redux-thunk';
 import {
   BrowserRouter as Router,
   Route,
@@ -24,9 +25,11 @@ import sortKeyReducer from './reducers/sort_key_reducer';
 import sortOrderReducer from './reducers/sort_order_reducer';
 import filteredReducer from './reducers/filtered_reducer';
 import filterReducer from './reducers/filter_reducer';
+import sortedFilteredPostsReducer from './reducers/sorted_filtered_posts_reducer';
 
 const initialState = {
   taggedPosts: [],
+  sortedFilteredPosts: [],
   sortKey: 'posted',
   sortOrder: 'desc',
   filtered: false,
@@ -35,13 +38,14 @@ const initialState = {
 
 const reducers = combineReducers({
   taggedPosts: taggedPostsReducer,
+  sortedFilteredPosts: sortedFilteredPostsReducer,
   sortKey: sortKeyReducer,
   sortOrder: sortOrderReducer,
   filtered: filteredReducer,
   filter: filterReducer
 });
 
-const middlewares = applyMiddleware(logger, promise);
+const middlewares = applyMiddleware(logger, promise, thunk);
 const store = createStore(reducers, initialState, middlewares);
 const history = createBrowserHistory();
 

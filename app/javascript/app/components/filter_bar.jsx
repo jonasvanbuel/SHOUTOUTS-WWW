@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 // ACTIONS
-import { setSortKey, setSortOrder } from '../actions';
+import { setSortKey, setSortOrder, updateSortedFilteredPosts } from '../actions';
 
 // COMPONENTS
 import SearchForm from './search_form';
@@ -24,7 +24,14 @@ class FilterBar extends Component {
 
   handleLikesClick = (event) => {
     event.preventDefault();
-    const { sortKey, sortOrder, setSortKey, setSortOrder } = this.props;
+    const {
+      sortKey,
+      sortOrder,
+      setSortKey,
+      setSortOrder,
+      updateSortedFilteredPosts
+    } = this.props;
+
     if (sortKey === 'likes') {
       sortOrder === 'asc' ? setSortOrder('desc') : setSortOrder('asc');
     }
@@ -76,13 +83,16 @@ class FilterBar extends Component {
 function mapStateToProps(state) {
   return {
     taggedPosts: state.taggedPosts,
+    sortedFilteredPosts: state.sortedFilteredPosts,
     sortKey: state.sortKey,
-    sortOrder: state.sortOrder
+    sortOrder: state.sortOrder,
+    filtered: state.filtered,
+    filter: state.filter
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setSortKey, setSortOrder }, dispatch);
+  return bindActionCreators({ setSortKey, setSortOrder, updateSortedFilteredPosts }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterBar);

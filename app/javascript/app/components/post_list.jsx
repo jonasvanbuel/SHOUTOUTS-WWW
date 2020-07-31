@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 // ACTIONS
-import { fetchTaggedPosts } from '../actions';
+import { fetchTaggedPosts, updateSortedFilteredPosts } from '../actions';
 
 // COMPONENTS
 import PostDashboard from './post_dashboard/post_dashboard';
@@ -14,7 +14,13 @@ import filterPosts from '../helpers/_filter_posts';
 
 class PostList extends Component {
   componentDidMount() {
-    this.props.fetchTaggedPosts('mariotestino');
+    const {
+      taggedPosts,
+      sortedFilteredPosts,
+      fetchTaggedPosts,
+      updateSortedFilteredPosts
+    } = this.props;
+    fetchTaggedPosts('mariotestino');
     // this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
   }
 
@@ -23,19 +29,11 @@ class PostList extends Component {
   }
 
   render() {
-    const {
-      taggedPosts,
-      sortKey,
-      sortOrder,
-      filtered,
-      filter
-    } = this.props;
-    const filteredPosts = filtered === true ? filterPosts(taggedPosts, filtered, filter) : taggedPosts;
-    const filteredAndSortedPosts = sortPosts(filteredPosts, sortKey, sortOrder);
+    const { sortedFilteredPosts } = this.props;
 
     return (
       <div className="post-list" id="post-list">
-        {filteredAndSortedPosts.map((taggedPost) => {
+        {sortedFilteredPosts.map((taggedPost) => {
           return <PostDashboard taggedPost={taggedPost} key={taggedPost.pathname} />;
         })}
       </div>
@@ -46,6 +44,7 @@ class PostList extends Component {
 function mapStateToProps(state) {
   return {
     taggedPosts: state.taggedPosts,
+    sortedFilteredPosts: state.sortedFilteredPosts,
     sortKey: state.sortKey,
     sortOrder: state.sortOrder,
     filtered: state.filtered,
@@ -54,7 +53,10 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchTaggedPosts }, dispatch);
+  return bindActionCreators({
+    fetchTaggedPosts,
+    updateSortedFilteredPosts
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostList);

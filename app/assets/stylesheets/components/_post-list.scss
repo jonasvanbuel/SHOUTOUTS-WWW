@@ -33,14 +33,24 @@
   }
 }
 
+.post-not-found {
+  background-color: red;
+
+  height: $no-posts-found-height;
+
+}
+
 .view-all-posts {
   background-color: yellow;
 
-  height: 150px;
+  height: $view-all-posts-height;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  position: sticky;
+  top: $navbar-height;
 
   .fas {
     cursor: pointer;

@@ -1,4 +1,7 @@
+// ====================
 // HELPERS
+// ====================
+
 import {
   hidePostOptions,
   hidePostHidden,
@@ -7,6 +10,8 @@ import {
   showPostHiddenOverlay,
   reviewScroll
 } from '../components/post_dashboard/helpers';
+import sortPosts from '../helpers/_sort_posts';
+import filterPosts from '../helpers/_filter_posts';
 
 // ====================
 // VARIABLES
@@ -21,21 +26,30 @@ export const SET_SORT_KEY = 'SET_SORT_KEY';
 export const SET_SORT_ORDER = 'SET_SORT_ORDER';
 export const SET_FILTERED = 'SET_FILTERED';
 export const SET_FILTER = 'SET_FILTER';
+export const UPDATE_SORTED_FILTERED_POSTS = 'UPDATE_SORTED_FILTERED_POSTS';
 
 // ====================
 // ACTIONS
 // ====================
 
-export function fetchTaggedPosts(username) {
-  const endpoint = `${BASE_URL}/tagged_posts/${username}`;
-  const promise = fetch(endpoint, {
-    credentials: "same-origin"
-  })
-    .then((r) => r.json());
+export function updateSortedFilteredPosts() {
+  return (dispatch, getState) => {
+    console.log('updateSortedFilteredPosts triggered...');
+    const {
+      taggedPosts,
+      sortKey,
+      sortOrder,
+      filtered,
+      filter
+    } = getState();
 
-  return {
-    type: FETCH_TAGGED_POSTS,
-    payload: promise
+    const filteredPosts = filtered === true ? filterPosts(taggedPosts, filtered, filter) : taggedPosts;
+    const sortedFilteredPosts = sortPosts(filteredPosts, sortKey, sortOrder);
+
+    dispatch({
+      type: UPDATE_SORTED_FILTERED_POSTS,
+      payload: sortedFilteredPosts
+    });
   };
 }
 
@@ -43,12 +57,7 @@ export function hidePost(taggedPost) {
   // UPDATE DOM
   hidePostOptions(taggedPost);
   hidePostHiddenOptions(taggedPost);
-
-  // showPostHidden(taggedPost);
   showPostHiddenOverlay(taggedPost);
-
-  // TODO: REMOVE EVENT LISTENER???
-
 
   const body = {
     type: HIDE_POST,
@@ -98,45 +107,93 @@ export function unhidePost(taggedPost) {
 }
 
 export function setSortKey(sortKey) {
-  return {
-    type: SET_SORT_KEY,
-    payload: sortKey
+  // SYNCHRONOUS action dispatching using redux-thunks
+  return (dispatch) => {
+    dispatch({
+      type: SET_SORT_KEY,
+      payload: sortKey
+    });
+
+    dispatch(
+      updateSortedFilteredPosts()
+    );
   };
 }
 
 export function setSortOrder(sortOrder) {
-  return {
-    type: SET_SORT_ORDER,
-    payload: sortOrder
+  // SYNCHRONOUS action dispatching using redux-thunks
+  return (dispatch) => {
+    dispatch({
+      type: SET_SORT_ORDER,
+      payload: sortOrder
+    });
+
+    dispatch(
+      updateSortedFilteredPosts()
+    );
   };
 }
 
 export function setFiltered(string) {
-  const regex = /\w|\W}\s/g;
-  if (regex.test(string) === true) {
-    return {
-      type: SET_FILTERED,
-      payload: true
-    };
-  }
-  if (string === '') {
-    return {
-      type: SET_FILTERED,
-      payload: false
-    };
-  }
-  return {
-    type: SET_FILTERED,
-    payload: false
+  // SYNCHRONOUS action dispatching using redux-thunks
+  return (dispatch) => {
+    const regex = /\w|\W}\s/g;
+    if (regex.test(string) === true) {
+      dispatch({
+        type: SET_FILTERED,
+        payload: true
+      });
+    }
+    if (string === '') {
+      dispatch({
+        type: SET_FILTERED,
+        payload: false
+      });
+    }
+
+    // dispatch(
+    //   updateSortedFilteredPosts()
+    // );
   };
 }
 
 export function setFilter(string) {
-  // Scroll to top post-list?
+  // UPDATE DOM
   reviewScroll();
 
-  return {
-    type: SET_FILTER,
-    payload: string
+  // SYNCHRONOUS action dispatching using redux-thunks
+  return (dispatch) => {
+    dispatch({
+      type: SET_FILTER,
+      payload: string
+    });
+
+    dispatch(
+      updateSortedFilteredPosts()
+    );
   };
 }
+
+export function fetchTaggedPosts(username) {
+  // A-SYNCHRONOUS action dispatching using redux-thunks
+  return (dispatch) => {
+    const endpoint = `${BASE_URL}/tagged_posts/${username}`;
+    const promise = fetch(endpoint, {
+      credentials: "same-origin"
+    })
+      .then((r) => r.json());
+
+    const response = dispatch({
+      type: FETCH_TAGGED_POSTS,
+      payload: promise
+    });
+
+    // Async second action call
+    response.then(() => {
+      dispatch(updateSortedFilteredPosts());
+    });
+  };
+}
+
+
+
