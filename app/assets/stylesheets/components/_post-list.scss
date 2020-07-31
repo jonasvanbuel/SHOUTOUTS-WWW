@@ -33,37 +33,3 @@
   }
 }
 
-.post-not-found {
-  background-color: red;
-
-  height: $no-posts-found-height;
-
-}
-
-.view-all-posts {
-  background-color: yellow;
-
-  height: $view-all-posts-height;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  position: sticky;
-  top: $navbar-height;
-
-  .fas {
-    cursor: pointer;
-  }
-
-  .fa-plus-circle {
-    font-size: 24px;
-  }
-
-  span.symbol-label {
-    font-size: 10px;
-    font-weight: 500;
-    // color: white;
-  }
-}
-
