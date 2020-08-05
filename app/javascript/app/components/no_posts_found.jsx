@@ -14,7 +14,7 @@ class noPostsFound extends Component {
   render() {
     return (
       <div className="no-posts-found">
-        <span>(｡•́︿•̀｡)</span>
+        <span>╮( ˘ ､ ˘ )╭</span>
       </div>
     );
   }

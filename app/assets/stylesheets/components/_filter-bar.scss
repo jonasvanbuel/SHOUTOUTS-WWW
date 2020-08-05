@@ -109,11 +109,8 @@ $medium-padding:     12px;
         outline: 0;
       }
     }
-
   }
-
 }
-
 
 .filter-option {
   .fas {
@@ -136,9 +133,29 @@ $medium-padding:     12px;
   }
 }
 
+.filter-options[data-sort-key="posted"] {
+  #filter-option-posted {
+    .fas {
+      color: black;
+    }
+    button {
+      font-weight: 700;
+      color: black
+    }
+  }
+}
 
-
-
+.filter-options[data-sort-key="likes"] {
+  #filter-option-likes {
+    .fas {
+      color: black;
+    }
+    button {
+      font-weight: 700;
+      color: black
+    }
+  }
+}
 
 
 
