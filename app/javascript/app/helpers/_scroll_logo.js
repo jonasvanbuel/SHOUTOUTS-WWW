@@ -2,6 +2,7 @@ const LOGO_RECT_PRESET_PROPORTIONS = {
   height: 156,
   width: 725.58
 };
+const FILTER_BAR_PADDING_LEFT = 6;
 
 const scrollCallback = () => {
   const logo = document.querySelector('.logo-container');
@@ -22,7 +23,7 @@ const scrollCallback = () => {
   // console.log(`logoPaddingLeft: ${logoPaddingLeft}`);
 
   // COORDINATES
-  const initialPosition = filterBarRect.left - logoPaddingLeft;
+  const initialPosition = filterBarRect.left + FILTER_BAR_PADDING_LEFT - logoPaddingLeft;
   const scrolledPosition = menuRect.left - logoPaddingLeft;
   // console.log(`initialPosition: ${initialPosition}px`);
   // console.log(`scrolledPosition: ${scrolledPosition}px`);
