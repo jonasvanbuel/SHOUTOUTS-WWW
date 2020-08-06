@@ -1,0 +1,29 @@
+.logo-container {
+  // background-color: red;
+
+  height: $navbar-height;
+  // width: 400px;
+
+  display: flex;
+  align-items: center;
+
+  position: absolute;
+  left: 0px;
+
+    .logo-foreground {
+      height: 100%;
+      // opacity: 0.5;
+
+      z-index: 1;
+      box-shadow: inset 0 0 10px #000000;
+    }
+
+    .logo-pattern {
+      height: 45px;
+
+      position: absolute;
+      left: 5px;
+      top: 53px;
+      // margin: auto 0px;
+    }
+}

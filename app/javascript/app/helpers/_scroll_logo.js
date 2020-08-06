@@ -1,5 +1,5 @@
 const scrollCallback = () => {
-  const logo = document.querySelector('.navbar-logo');
+  const logo = document.querySelector('.logo-container');
   const logoRect = logo.getBoundingClientRect();
   const navbar = document.querySelector('.navbar');
   const navbarRect = navbar.getBoundingClientRect();
