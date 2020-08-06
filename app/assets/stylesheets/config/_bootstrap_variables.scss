@@ -35,6 +35,8 @@ $navbar-height:         156px;
 $navbar-body-padding:   56px;
 $filter-bar-height:     $navbar-height;
 $livestream-btn-height: 56px;
+$livestream-btn-margin: ($filter-bar-height - $livestream-btn-height) / 2;
+
 $no-posts-found-height: 250px;
 $view-all-posts-height: 150px;
 
@@ -43,7 +45,7 @@ $grid-gap:            32px;
 
 // PADDING
 $small-padding:       6px;
-$medium-padding:      10px;
+$medium-padding:      12px;
 $large-padding:       24px;
 
 // FONTS

@@ -1,70 +1,76 @@
 .menu {
   background-color: gray;
 
-  height: 500px;
+  // Horizontal flex-grow within dashboard-body
+  flex-grow: 2;
+  height: 50vh;
+
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  flex-grow: 2;
-
-  position: sticky;
-  top: $navbar-height;
+  align-items: flex-start;
 
   font-family: Open Sans;
   font-size: 14px;
 
-  margin-right: 24px;
-  margin-top: $navbar-body-padding;
+  position: sticky;
+  top: $filter-bar-height - $livestream-btn-margin;
+
+  margin-right: $large-padding;
 
   .submenu-top {
     background-color: yellow;
 
-    height: $filter-bar-height;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    height: $filter-bar-height;
 
-    a {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    padding-bottom: $medium-padding;
+
+    a.start-livestream {
       height: $livestream-btn-height;
       color: white;
       cursor: pointer;
       text-decoration: none;
       font-weight: 600;
+
+      background-color: black;
+      width: 100%;
+      // height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 80px;
+
+      padding-top: 12px;
+      padding-bottom: 12px;
+      margin: $livestream-btn-margin;
+      margin-left: 0px;
+      margin-right: 0px;
+
+      font-size: 20px;
+
+      // position: sticky;
+      // top: $navbar-height;
     }
 
+    .connected-accounts-title,
+    .connected-accounts {
+      text-align: right;
+    }
+
+    .connected-accounts {
+      background-color: black;
+      color: white;
+      font-weight: 600;
+
+      padding: 6px 24px;
+      border-radius: 80px;
+    }
   }
-
-
-  .start-livestream {
-    background-color: black;
-    width: 100%;
-    // height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 80px;
-
-    padding-top: 12px;
-    padding-bottom: 12px;
-
-    font-size: 20px;
-  }
-
-  .connected-accounts-title,
-  .connected-accounts {
-    text-align: right;
-  }
-
-  .connected-accounts {
-    background-color: black;
-    color: white;
-    font-weight: 600;
-
-    padding: 6px 24px;
-    border-radius: 80px;
-  }
-
 }
 
 

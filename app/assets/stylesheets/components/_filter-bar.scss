@@ -1,17 +1,12 @@
-$small-padding:      6px;
-$medium-padding:     12px;
-
 .filter-bar {
   background-color: yellow;
 
   height: $filter-bar-height;
   // margin-top: $navbar-body-padding;
-  padding: $small-padding;
-  padding-top: 0px;
-  padding-bottom: $medium-padding;
+  padding: 0 $small-padding $medium-padding $small-padding;
 
   position: sticky;
-  top: $navbar-height - $filter-bar-height;
+  top: 0;
   z-index: 10;
 
   display: flex;
