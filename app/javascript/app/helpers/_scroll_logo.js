@@ -1,31 +1,47 @@
+const LOGO_RECT_PRESET_PROPORTIONS = {
+  height: 156,
+  width: 725.58
+};
+
 const scrollCallback = () => {
   const logo = document.querySelector('.logo-container');
   const logoRect = logo.getBoundingClientRect();
   const navbar = document.querySelector('.navbar');
   const navbarRect = navbar.getBoundingClientRect();
-  // const navbarContainer = navbar.querySelector('.container');
-  // const navbarContainerRect = navbarContainer.getBoundingClientRect();
-  // console.log(navbarContainerRect);
   const menu = document.querySelector('.menu');
   const menuRect = menu.getBoundingClientRect();
   const filterBar = document.querySelector('.filter-bar');
   const filterBarRect = filterBar.getBoundingClientRect();
 
-  const initialPosition = filterBarRect.left;
-  const scrolledPosition = menuRect.right - logoRect.width;
-  const scrollDistance = navbarRect.height;
+  // Can't evaluate logoRect upon DOMContentLoaded - takes some time to render svg?
+  // Calculate logoPaddingLeft with navbarRect.Height
+
+  const logoRectWidth = (navbarRect.height * LOGO_RECT_PRESET_PROPORTIONS.width) / LOGO_RECT_PRESET_PROPORTIONS.height;
+  const logoPaddingLeft = logoRectWidth / 3;
+  // console.log(`logoRectWidth: ${logoRectWidth}`);
+  // console.log(`logoPaddingLeft: ${logoPaddingLeft}`);
+
+  // COORDINATES
+  const initialPosition = filterBarRect.left - logoPaddingLeft;
+  const scrolledPosition = menuRect.left - logoPaddingLeft;
+  // console.log(`initialPosition: ${initialPosition}px`);
+  // console.log(`scrolledPosition: ${scrolledPosition}px`);
+
+  const maxScrollDistance = navbarRect.height;
   const horizontalDistance = initialPosition - scrolledPosition;
 
   function evaluatePosition() {
+    // console.log('evaluating position logo...');
+    // console.log(`window.scrollY: ${window.scrollY}`);
+
     if (window.scrollY === 0) {
-      // console.log('scrollY: 0');
       return Math.floor(initialPosition);
     }
-    if (window.scrollY >= scrollDistance) {
-      // console.log(`scrollY: ${scrolledPosition}`);
+    if (window.scrollY >= maxScrollDistance) {
       return Math.floor(scrolledPosition);
     }
-    const scrollProportion = window.scrollY / scrollDistance;
+    const scrollProportion = window.scrollY / maxScrollDistance;
+    // console.log(`evaluatedPosition: ${Math.floor(initialPosition - (horizontalDistance * scrollProportion))}`);
     return Math.floor(initialPosition - (horizontalDistance * scrollProportion));
   }
 
@@ -33,7 +49,12 @@ const scrollCallback = () => {
 };
 
 const resizeCallback = () => {
+  const body = document.querySelector('body');
+  body.removeEventListener('resize', resizeCallback);
   window.removeEventListener('scroll', scrollCallback);
+  window.removeEventListener('resize', resizeCallback);
+  window.removeEventListener('DOMContentLoaded', scrollCallback);
+
   scrollLogo();
 };
 

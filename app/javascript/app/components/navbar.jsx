@@ -11,18 +11,16 @@ import Logo from './logo';
 
 // HELPERS
 import scrollLogo from '../helpers/_scroll_logo';
-import placeHamburger from '../helpers/_place_hamburger';
+// import placeHamburger from '../helpers/_place_hamburger';
 
 class Navbar extends Component {
   componentDidMount() {
     scrollLogo();
-    placeHamburger();
   }
 
   render() {
     return (
       <div className="navbar">
-        <i className="fas fa-bars"></i>
         <Logo />
       </div>
     );
