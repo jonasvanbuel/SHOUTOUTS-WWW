@@ -68,13 +68,13 @@ class FilterBar extends Component {
             <div className="filter-label">
               sort by:
             </div>
-            <div className="filter-option" id="filter-option-posted">
+            <div className="filter-option" id="filter-option-posted" onClick={this.handlePostedClick}>
               <i className={`fas fa-caret-up ${evaluateCaret('posted')}`}></i>
-              <button type="button" onClick={this.handlePostedClick}>posted</button>
+              <span>posted</span>
             </div>
-            <div className="filter-option" id="filter-option-likes">
+            <div className="filter-option" id="filter-option-likes" onClick={this.handleLikesClick}>
               <i className={`fas fa-caret-up ${evaluateCaret('likes')}`}></i>
-              <button type="button" onClick={this.handleLikesClick}>likes</button>
+              <span>likes</span>
             </div>
           </div>
         </div>

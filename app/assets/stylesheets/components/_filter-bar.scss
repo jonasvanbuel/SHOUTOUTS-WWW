@@ -29,8 +29,6 @@
     display: flex;
     flex-direction: column;
 
-
-
     .search-form {
       // background-color: white;
 
@@ -71,6 +69,10 @@
         margin-right: 24px;
         display: flex;
         align-items: center;
+
+        font-size: 14px;
+        font-weight: 400;
+        color: $font-color-medium-gray;
       }
 
       .filter-option {
@@ -87,32 +89,23 @@
         justify-content: center;
         align-items: center;
 
+        cursor: pointer;
+
         .fas {
           font-size: 18px;
           margin-right: 6px;
         }
 
-        button {
-          background-color: rgba(0, 0, 0, 0);
-          text-decoration: none;
-          border: none;
+        span {
+          font-size: 14px;
+          font-weight: 400;
+          color: $font-color-medium-gray;
           padding: 0;
         }
       }
 
       .filter-option:last-of-type {
         margin-right: 0px;
-      }
-
-      .filter-label,
-      button {
-        font-size: 14px;
-        font-weight: 400;
-        color: $font-color-medium-gray;
-      }
-
-      button:focus {
-        outline: 0;
       }
     }
   }
@@ -148,7 +141,7 @@
     .fas {
       color: $font-color-medium-gray-selected;
     }
-    button {
+    span {
       font-weight: 700;
       color: $font-color-medium-gray-selected
     }
@@ -164,7 +157,7 @@
     .fas {
       color: $font-color-medium-gray-selected;
     }
-    button {
+    span {
       font-weight: 700;
       color: $font-color-medium-gray-selected
     }
