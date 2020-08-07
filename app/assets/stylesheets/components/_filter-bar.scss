@@ -61,22 +61,42 @@
     }
 
     .filter-options {
-      // background-color: white;
-
       width: 100%;
+
       display: flex;
       justify-content: flex-end;
       align-items: center;
 
-      .filter-label,
-      .filter-option {
+      .filter-label {
         margin-right: 24px;
         display: flex;
+        align-items: center;
+      }
+
+      .filter-option {
+        background-color: $btn-color-light;
+
+        border: 0.75px solid $font-color-light-gray;
+        border-radius: 50px;
+
+        width: 96px;
+        padding: 6px 10px;
+
+        margin-right: 8px;
+        display: flex;
+        justify-content: center;
         align-items: center;
 
         .fas {
           font-size: 18px;
           margin-right: 6px;
+        }
+
+        button {
+          background-color: rgba(0, 0, 0, 0);
+          text-decoration: none;
+          border: none;
+          padding: 0;
         }
       }
 
@@ -84,21 +104,11 @@
         margin-right: 0px;
       }
 
-      // Filter text fields styling
-      .filter-option {
-        button {
-          text-decoration: none;
-          background-color: inherit;
-          border: none;
-          padding: 0;
-        }
-      }
-
       .filter-label,
       button {
         font-size: 14px;
         font-weight: 400;
-        color: $font-color-light-gray;
+        color: $font-color-medium-gray;
       }
 
       button:focus {
@@ -131,24 +141,32 @@
 
 .filter-options[data-sort-key="posted"] {
   #filter-option-posted {
+    background-color: $btn-color-selected;
+    border: 1.25px solid $font-color-medium-gray;
+    box-shadow: inset 1px 1.5px 3px rgba(0, 0, 0, 0.5);
+
     .fas {
-      color: black;
+      color: $font-color-medium-gray-selected;
     }
     button {
       font-weight: 700;
-      color: black
+      color: $font-color-medium-gray-selected
     }
   }
 }
 
 .filter-options[data-sort-key="likes"] {
   #filter-option-likes {
+    background-color: $btn-color-selected;
+    border: 1.25px solid $font-color-medium-gray;
+    box-shadow: inset 1px 1.5px 3px rgba(0, 0, 0, 0.5);
+
     .fas {
-      color: black;
+      color: $font-color-medium-gray-selected;
     }
     button {
       font-weight: 700;
-      color: black
+      color: $font-color-medium-gray-selected
     }
   }
 }
