@@ -7,13 +7,13 @@
 
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
 
   font-family: Open Sans;
   font-size: 14px;
 
   position: sticky;
-  top: $filter-bar-height - $livestream-btn-margin;
+  // top: $filter-bar-height - $livestream-btn-margin;
 
   margin-right: $large-padding;
 
@@ -25,13 +25,16 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-end;
 
     padding-bottom: $medium-padding;
 
+    position: relative;
+
     a.start-livestream {
-      height: $livestream-btn-height;
+      height: $btn-large-height;
+
       color: white;
       cursor: pointer;
       text-decoration: none;
@@ -39,28 +42,35 @@
 
       background-color: black;
       width: 100%;
-      // height: 48px;
+
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 80px;
 
-      padding-top: 12px;
-      padding-bottom: 12px;
-      margin: $livestream-btn-margin;
-      margin-left: 0px;
-      margin-right: 0px;
-
       font-size: 20px;
-
-      // position: sticky;
-      // top: $navbar-height;
     }
 
-    .connected-accounts-title,
-    .connected-accounts {
-      text-align: right;
+    .connected-accounts-title {
+      height: $btn-small-height;
+
+      font-size: $small-font-size;
+      font-family: Open Sans, Helvetica, sans-serif;
+      font-weight: 400;
+      color: $font-color-light-gray;
+
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+
+      position: absolute;
+      bottom: 0px;
     }
+  }
+
+  .submenu-bottom {
+    background-color: red;
+    padding-top: $large-padding;
 
     .connected-accounts {
       background-color: black;
@@ -72,5 +82,4 @@
     }
   }
 }
-
 

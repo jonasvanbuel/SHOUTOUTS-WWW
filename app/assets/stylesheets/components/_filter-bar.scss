@@ -30,10 +30,10 @@
     flex-direction: column;
 
     .search-form {
-      // background-color: white;
+      background-color: white;
 
       width: 80%;
-      height: $livestream-btn-height;
+      height: $btn-large-height;
       margin: auto 0px;
 
       display: flex;
@@ -60,6 +60,7 @@
 
     .filter-options {
       width: 100%;
+      height: $btn-small-height;
 
       display: flex;
       justify-content: flex-end;
@@ -82,7 +83,7 @@
         border-radius: 50px;
 
         width: 96px;
-        padding: 6px 10px;
+        height: 100%;
 
         margin-right: 8px;
         display: flex;

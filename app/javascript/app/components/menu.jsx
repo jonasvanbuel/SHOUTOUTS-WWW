@@ -16,6 +16,8 @@ class Menu extends Component {
           <div className="connected-accounts-title">
             connected accounts:
           </div>
+        </div>
+        <div className="submenu-bottom">
           <a href="https://www.instagram.com/mariotestino" target="_blank" className="connected-accounts">
             @mariotestino
           </a>

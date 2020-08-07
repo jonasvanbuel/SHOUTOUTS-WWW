@@ -34,8 +34,6 @@ $border-radius-sm: 2px;
 $navbar-height:         156px;
 $navbar-body-padding:   56px;
 $filter-bar-height:     $navbar-height;
-$livestream-btn-height: 56px;
-$livestream-btn-margin: ($filter-bar-height - $livestream-btn-height) / 2;
 
 $no-posts-found-height: 250px;
 $view-all-posts-height: 150px;
@@ -51,10 +49,14 @@ $large-padding:       24px;
 // FONTS
 $small-font-size:     14px;
 $large-font-size:     24px;
-// $font-color-light-gray: #3c4043;
+
 $font-color-light-gray: #929492;
 $font-color-medium-gray: #6c6c6c;
 $font-color-medium-gray-selected: #43424a;
+
+// BUTTONS
+$btn-small-height: 36px;
+$btn-large-height: 56px;
 
 $btn-color-light: white;
 $btn-color-selected: #cac9dd;
