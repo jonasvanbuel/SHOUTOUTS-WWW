@@ -11,18 +11,18 @@ body {
 .dashboard {
   width: 100vw;
   height: 100vh;
+
+  position: relative;
 }
 
 .dashboard-body {
   background-color: pink;
 
   width: 100%;
-  // height: calc(100vh - 156px);
-  // max-height: calc(100vh - 156px);
   min-height: 120vh;
 
   display: flex;
-  // margin-bottom: 200px;
+  margin-bottom: 240px;
   position: relative;
   top: $navbar-height;
 
