@@ -7,6 +7,7 @@ import { setSortKey, setSortOrder, updateSortedFilteredPosts } from '../actions'
 
 // COMPONENTS
 import SearchForm from './search_form';
+import SearchTerms from './search_terms';
 
 
 class FilterBar extends Component {
@@ -55,10 +56,12 @@ class FilterBar extends Component {
       }
       return '';
     };
+
     return (
       <div className="filter-bar">
         <div className="filter-sub">
           <SearchForm />
+          <SearchTerms />
         </div>
         <div className="filter-sub">
           <div

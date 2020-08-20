@@ -1,0 +1,42 @@
+.search-terms {
+  background-color: orange;
+
+  height: $btn-small-height;
+  width: 100%;
+
+  position: absolute;
+  bottom: 0px;
+
+  .search-term {
+    background-color: $btn-color-dark;
+
+    border: 1.25px solid $font-color-medium-gray;
+    border-radius: 50px;
+
+    width: fit-content;
+    height: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-left: $large-padding;
+    padding-right: $medium-padding;
+
+    .fas {
+      font-size: 18px;
+      color: $dashboard-background-color;
+
+      cursor: pointer;
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: 700;
+      color: $dashboard-background-color;
+      padding: 0;
+
+      margin-right: $medium-padding;
+    }
+  }
+}

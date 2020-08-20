@@ -58,8 +58,11 @@ $font-color-medium-gray-selected: #43424a;
 $btn-small-height: 36px;
 $btn-large-height: 56px;
 
+$margin-top-searchform:  ($navbar-height - $btn-large-height - $medium-padding) / 2;
+
 $btn-color-light: white;
 $btn-color-selected: #cac9dd;
+$btn-color-dark: #145c9e;
 
 $dashboard-background-color: #f4f4f4;
 
