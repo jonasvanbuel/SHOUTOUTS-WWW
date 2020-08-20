@@ -1,0 +1,29 @@
+.search-form {
+  background-color: white;
+
+  width: 80%;
+  height: $btn-large-height;
+  margin: 0px;
+  margin-top: $margin-top-searchform;
+
+  display: flex;
+  align-items: center;
+  // padding-left: $large-padding;
+  border-bottom: 4px solid $font-color-light-gray;
+
+  font-size: $large-font-size;
+  color: $font-color-light-gray;
+
+  input {
+    width: 100%;
+    border: none;
+    font-size: $large-font-size;
+    color: $font-color-light-gray;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  input:focus {
+    outline: 0;
+    color: $font-color-light-gray;
+  }
+}

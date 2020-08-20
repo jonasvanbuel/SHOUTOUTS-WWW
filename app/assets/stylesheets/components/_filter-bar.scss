@@ -1,17 +1,12 @@
-$small-padding:      6px;
-$medium-padding:     12px;
-
 .filter-bar {
   background-color: yellow;
 
   height: $filter-bar-height;
-  margin-top: $navbar-body-padding;
-  padding: $small-padding;
-  padding-top: 0px;
-  padding-bottom: $medium-padding;
+  // margin-top: $navbar-body-padding;
+  padding: 0 $small-padding $medium-padding $small-padding;
 
   position: sticky;
-  top: $navbar-height - $filter-bar-height;
+  top: 0;
   z-index: 10;
 
   display: flex;
@@ -23,7 +18,7 @@ $medium-padding:     12px;
 
   .filter-sub:first-of-type {
     flex-grow: 2;
-    justify-content: flex-start
+    justify-content: flex-start;
   }
 
   .filter-sub:last-of-type {
@@ -34,79 +29,57 @@ $medium-padding:     12px;
     display: flex;
     flex-direction: column;
 
-
-
-    .search-form {
-      // background-color: white;
-
-      width: 80%;
-      height: $livestream-btn-height;
-
-      display: flex;
-      align-items: center;
-      padding-left: $large-padding;
-      border-bottom: 4px solid $font-color-light-gray;
-
-      font-size: $large-font-size;
-      color: $font-color-light-gray;
-
-      input {
-        width: 100%;
-        border: none;
-        font-size: $large-font-size;
-        color: $font-color-light-gray;
-        background-color: rgba(0, 0, 0, 0);
-      }
-
-      input:focus {
-        outline: 0;
-        color: $font-color-light-gray;
-      }
-    }
+    position: relative;
 
     .filter-options {
-      // background-color: white;
-
       width: 100%;
+      height: $btn-small-height;
+
       display: flex;
       justify-content: flex-end;
       align-items: center;
 
-      .filter-label,
-      .filter-option {
+      .filter-label {
         margin-right: 24px;
         display: flex;
         align-items: center;
+
+        font-size: 14px;
+        font-weight: 400;
+        color: $font-color-medium-gray;
+      }
+
+      .filter-option {
+        background-color: $btn-color-light;
+
+        border: 0.75px solid $font-color-light-gray;
+        border-radius: 50px;
+
+        width: 96px;
+        height: 100%;
+
+        margin-right: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
 
         .fas {
           font-size: 18px;
           margin-right: 6px;
         }
-      }
 
-      .filter-option:last-of-type {
-        margin-right: 0px;
-      }
-
-      // Filter text fields styling
-      .filter-option {
-        button {
-          text-decoration: none;
-          background-color: inherit;
-          border: none;
+        span {
+          font-size: 14px;
+          font-weight: 400;
+          color: $font-color-medium-gray;
           padding: 0;
         }
       }
 
-      .filter-label,
-      button {
-        font-size: 14px;
-        font-weight: 400;
-        color: $font-color-light-gray;
-      }
-
-      button:focus {
-        outline: 0;
+      .filter-option:last-of-type {
+        margin-right: 0px;
       }
     }
   }
@@ -135,24 +108,32 @@ $medium-padding:     12px;
 
 .filter-options[data-sort-key="posted"] {
   #filter-option-posted {
+    background-color: $btn-color-selected;
+    border: 1.25px solid $font-color-medium-gray;
+    box-shadow: inset 1px 1.5px 3px rgba(0, 0, 0, 0.5);
+
     .fas {
-      color: black;
+      color: $font-color-medium-gray-selected;
     }
-    button {
+    span {
       font-weight: 700;
-      color: black
+      color: $font-color-medium-gray-selected
     }
   }
 }
 
 .filter-options[data-sort-key="likes"] {
   #filter-option-likes {
+    background-color: $btn-color-selected;
+    border: 1.25px solid $font-color-medium-gray;
+    box-shadow: inset 1px 1.5px 3px rgba(0, 0, 0, 0.5);
+
     .fas {
-      color: black;
+      color: $font-color-medium-gray-selected;
     }
-    button {
+    span {
       font-weight: 700;
-      color: black
+      color: $font-color-medium-gray-selected
     }
   }
 }

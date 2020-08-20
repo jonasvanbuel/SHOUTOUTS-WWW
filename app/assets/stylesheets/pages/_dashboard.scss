@@ -33,19 +33,6 @@ body {
 }
 
 
-.connected-accounts-title,
-.currently-livestreaming-title {
-  margin-top: $small-padding;
-  margin-bottom: $large-padding;
-
-  font-size: $small-font-size;
-  font-family: Open Sans, Helvetica, sans-serif;
-  font-weight: 400;
-  color: $font-color-light-gray;
-}
-
-
-
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

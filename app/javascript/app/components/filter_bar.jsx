@@ -7,6 +7,7 @@ import { setSortKey, setSortOrder, updateSortedFilteredPosts } from '../actions'
 
 // COMPONENTS
 import SearchForm from './search_form';
+import SearchTerms from './search_terms';
 
 
 class FilterBar extends Component {
@@ -55,10 +56,12 @@ class FilterBar extends Component {
       }
       return '';
     };
+
     return (
       <div className="filter-bar">
         <div className="filter-sub">
           <SearchForm />
+          <SearchTerms />
         </div>
         <div className="filter-sub">
           <div
@@ -68,13 +71,13 @@ class FilterBar extends Component {
             <div className="filter-label">
               sort by:
             </div>
-            <div className="filter-option" id="filter-option-posted">
+            <div className="filter-option" id="filter-option-posted" onClick={this.handlePostedClick}>
               <i className={`fas fa-caret-up ${evaluateCaret('posted')}`}></i>
-              <button type="button" onClick={this.handlePostedClick}>posted</button>
+              <span>posted</span>
             </div>
-            <div className="filter-option" id="filter-option-likes">
+            <div className="filter-option" id="filter-option-likes" onClick={this.handleLikesClick}>
               <i className={`fas fa-caret-up ${evaluateCaret('likes')}`}></i>
-              <button type="button" onClick={this.handleLikesClick}>likes</button>
+              <span>likes</span>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Navbar from './navbar';
 import Menu from './menu';
 import PostListContainer from './post_list_container';
+import Footer from './footer';
 
 // HELPERS
 // import getWidth from '../helpers/_get_width';
@@ -19,6 +20,7 @@ class Dashboard extends Component {
             <PostListContainer />
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
