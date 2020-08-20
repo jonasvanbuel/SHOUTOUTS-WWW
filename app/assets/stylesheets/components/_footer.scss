@@ -1,0 +1,80 @@
+footer {
+  background-color: black;
+
+
+  height: 30vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  font-family: Open Sans;
+  font-size: 12px;
+  font-weight: 400;
+  color: $font-color-light-gray;
+
+  .footer-content {
+    .custom-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .footer-content-menu {
+        text-align: right;
+        margin-bottom: 24px;
+        padding-right: $small-padding;
+
+        a {
+          text-decoration: none;
+          color: $font-color-light-gray;
+
+          display: block;
+          margin-top: 6px;
+        }
+
+        a:hover {
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .footer-message {
+    background-color: #3c4043;
+    height: 56px;
+    padding-right: $small-padding;
+
+    display: flex;
+    align-items: center;
+
+    .custom-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      span:first-of-type {
+        margin-right: 8px;
+      }
+
+      span:nth-of-type(2) {
+        margin-left: 12px;
+      }
+
+      a {
+        text-decoration: none;
+        color: $font-color-light-gray;
+
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      a:hover {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+
+}
