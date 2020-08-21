@@ -15,7 +15,7 @@ footer {
   color: $font-color-light-gray;
 
   .footer-content {
-    .custom-container {
+    .custom-footer-container {
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -24,6 +24,8 @@ footer {
         text-align: right;
         margin-bottom: 24px;
         padding-right: $small-padding;
+
+        font-size: 14px;
 
         a {
           text-decoration: none;
@@ -44,12 +46,12 @@ footer {
   .footer-message {
     background-color: #3c4043;
     height: 56px;
-    padding-right: $small-padding;
+    // padding-right: $small-padding;
 
     display: flex;
     align-items: center;
 
-    .custom-container {
+    .custom-footer-container {
       display: flex;
       justify-content: flex-end;
       align-items: center;
