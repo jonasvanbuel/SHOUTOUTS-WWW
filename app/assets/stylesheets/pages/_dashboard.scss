@@ -16,13 +16,12 @@ body {
 }
 
 .dashboard-body {
-  background-color: pink;
+  // background-color: pink;
 
   width: 100%;
-  min-height: 120vh;
+  min-height: 100vh;
 
   display: flex;
-  margin-bottom: 240px;
   position: relative;
   top: $navbar-height;
 
