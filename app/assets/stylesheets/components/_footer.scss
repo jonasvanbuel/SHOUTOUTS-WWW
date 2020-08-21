@@ -1,7 +1,7 @@
 footer {
   background-color: black;
 
-  height: 30vh;
+  // height: 30vh;
   width: 100%;
   margin-top: 240px;
 
@@ -15,6 +15,9 @@ footer {
   color: $font-color-light-gray;
 
   .footer-content {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
     .custom-footer-container {
       display: flex;
       justify-content: flex-end;
@@ -22,7 +25,6 @@ footer {
 
       .footer-content-menu {
         text-align: right;
-        margin-bottom: 24px;
         padding-right: $small-padding;
 
         font-size: 14px;

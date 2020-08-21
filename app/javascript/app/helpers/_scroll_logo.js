@@ -1,6 +1,6 @@
 const LOGO_RECT_PRESET_PROPORTIONS = {
-  height: 156,
-  width: 725.58
+  height: 184,
+  width: 769.2
 };
 const FILTER_BAR_PADDING_LEFT = 6;
 
