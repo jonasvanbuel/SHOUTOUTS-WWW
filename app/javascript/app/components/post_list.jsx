@@ -7,6 +7,7 @@ import { fetchTaggedPosts, updateSortedFilteredPosts } from '../actions';
 
 // COMPONENTS
 import PostDashboard from './post_dashboard/post_dashboard';
+import PostPlaceholder from './post_dashboard/post_placeholder';
 
 // HELPERS
 import sortPosts from '../helpers/_sort_posts';
@@ -28,14 +29,33 @@ class PostList extends Component {
     // clearInterval(this.interval);
   }
 
-  render() {
-    const { sortedFilteredPosts } = this.props;
+  renderPlaceholdersOrPosts = () => {
+    const {
+      taggedPosts,
+      sortedFilteredPosts,
+      filtered
+    } = this.props;
 
+    // If still loading state, display placeholders
+    if (taggedPosts.length === 0) {
+      const times = 7;
+      return [...Array(times)].map(() => {
+        return <PostPlaceholder />
+      })
+    }
+
+    // If state has arrived, display actual posts
+    if (sortedFilteredPosts.length > 1) {
+      return sortedFilteredPosts.map((taggedPost) => {
+        return <PostDashboard taggedPost={taggedPost} key={taggedPost.pathname} />;
+      })
+    }
+  }
+
+  render() {
     return (
       <div className="post-list" id="post-list">
-        {sortedFilteredPosts.map((taggedPost) => {
-          return <PostDashboard taggedPost={taggedPost} key={taggedPost.pathname} />;
-        })}
+        {this.renderPlaceholdersOrPosts()}
       </div>
     );
   }
