@@ -33,8 +33,9 @@ export const UPDATE_SORTED_FILTERED_POSTS = 'UPDATE_SORTED_FILTERED_POSTS';
 // ====================
 
 export function updateSortedFilteredPosts() {
+  reviewScroll();
+
   return (dispatch, getState) => {
-    console.log('updateSortedFilteredPosts triggered...');
     const {
       taggedPosts,
       sortKey,
