@@ -71,11 +71,9 @@ export const showPostHiddenOverlay = (taggedPost) => {
 };
 
 export const reviewScroll = () => {
-  console.log(`Old reviewScroll: ${window.scrollY}`);
-  if (window.scrollY > 165) {
-    window.scroll(0, 165);
+  if (window.scrollY > 184) {
+    window.scroll(0, 184);
   }
-  console.log(`New reviewScroll: ${window.scrollY}`);
 };
 
 

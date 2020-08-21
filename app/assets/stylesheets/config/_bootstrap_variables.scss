@@ -23,26 +23,29 @@ $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
 
-// Buttons & inputs' radius
-$border-radius:    2px;
-$border-radius-lg: 2px;
-$border-radius-sm: 2px;
-
 // PERSONAL VARIABLES
-$navbar-height:         156px;
+
+$dashboard-background-color: #f4f4f4;
+
+// ELEMENTS
+
+// $navbar-height:         156px;
+$navbar-height:         184px;
 $navbar-body-padding:   56px;
 $filter-bar-height:     $navbar-height;
+$menu-width:            256px;
 
-$no-posts-found-height: 250px;
-$view-all-posts-height: 150px;
-
-$db-post-width:       184px;
-$grid-gap:            32px;
+// SIZES
+$btn-small-height: 36px;
+$btn-large-height: 56px;
 
 // PADDING
 $small-padding:       6px;
 $medium-padding:      12px;
 $large-padding:       24px;
+$xl-padding:          40px;
+
+
 
 // FONTS
 $small-font-size:     14px;
@@ -53,16 +56,21 @@ $font-color-medium-gray: #6c6c6c;
 $font-color-medium-gray-selected: #43424a;
 
 // BUTTONS
-$btn-small-height: 36px;
-$btn-large-height: 56px;
-
-$margin-top-searchform:  ($navbar-height - $btn-large-height - $medium-padding) / 2;
-
 $btn-color-light: white;
 $btn-color-selected: #cac9dd;
 $btn-color-dark: #145c9e;
 
-$dashboard-background-color: #f4f4f4;
+// ELEMENTSß
+$no-posts-found-height: 250px;
+$view-all-posts-height: 150px;
+
+$db-post-width:       184px;
+$grid-gap:            32px;
+
+$search-form-height:  64px;
+$search-form-margin-top:  ($navbar-height - $search-form-height - $medium-padding) / 2;
+
+
 
 $livestream-padding-top: ($filter-bar-height - $medium-padding - $btn-large-height) / 2;
 

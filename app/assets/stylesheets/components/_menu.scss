@@ -2,7 +2,9 @@
   // background-color: gray;
 
   // Horizontal flex-grow within dashboard-body
-  flex-grow: 2;
+  // flex-grow: 2;
+  width: 256px;
+  min-width: 256px;
   height: 300px;
 
   display: flex;
@@ -15,7 +17,7 @@
   position: sticky;
   top: $navbar-height - $livestream-padding-top;
 
-  margin-right: $large-padding;
+  margin-right: $xl-padding;
 
   .submenu-top {
     // background-color: yellow;
