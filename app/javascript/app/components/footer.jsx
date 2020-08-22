@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-// HELPERS
-// import getWidth from '../helpers/_get_width';
+// ASSETS
+import Fire from 'images/fire.svg';
 
 class Footer extends Component {
   render() {
@@ -38,7 +38,7 @@ class Footer extends Component {
         <div className="footer-message">
           <div className="container custom-body-container custom-footer-container">
             <span>Made with</span>
-            🔥
+            <img src={Fire} className="fire" alt="" />
             <span>
               in
               <a
