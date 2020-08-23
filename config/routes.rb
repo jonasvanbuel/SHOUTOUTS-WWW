@@ -1,12 +1,23 @@
 Rails.application.routes.draw do
-  devise_for :users, skip: [:sessions]    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # Default devise setup for Rails front end?
+
+  # devise_for :users, skip: [:sessions]    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_scope :user do
     get 'login', to: 'devise/sessions#new', as: :new_user_session
     post 'login', to: 'devise/sessions#create', as: :user_session
     delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
+  # Enable interoperability with React
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/logged_in', to: 'sessions#is_logged_in?'
+
+  resources :users, only: [:create, :show, :index]
+
   root to: 'pages#root'
+  get '/signin', to: 'pages#root'
   get '/dashboard', to: 'pages#root'
   get '/live', to: 'pages#root'
 

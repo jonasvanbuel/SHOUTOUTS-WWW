@@ -27,6 +27,7 @@ export const SET_SORT_ORDER = 'SET_SORT_ORDER';
 export const SET_FILTERED = 'SET_FILTERED';
 export const SET_FILTER = 'SET_FILTER';
 export const UPDATE_SORTED_FILTERED_POSTS = 'UPDATE_SORTED_FILTERED_POSTS';
+export const GET_LOGIN_STATUS = 'GET_LOGIN_STATUS';
 
 // ====================
 // ACTIONS
@@ -195,6 +196,43 @@ export function fetchTaggedPosts(username) {
     });
   };
 }
+
+export function handleLogin() {
+  console.log('handleLogin action triggered...');
+}
+
+export function handleLogout() {
+  console.log('handleLogout action triggered...');
+}
+
+export function getLoginStatus() {
+  console.log('getLoginStatus action triggered...');
+
+  // A-SYNCHRONOUS action dispatching using redux-thunks
+  return (dispatch) => {
+    const endpoint = `/logged_in`;
+    const promise = fetch(endpoint, {
+      credentials: "same-origin",
+      withCredentials: true
+    })
+      .then((response) => response.json())
+      .catch((error) => console.log('api errors:', error));
+
+    const response = dispatch({
+      type: GET_LOGIN_STATUS,
+      payload: promise
+    });
+
+    response.then((response) => {
+      if (response.value.logged_in) {
+        dispatch(handleLogin(response));
+      } else {
+        dispatch(handleLogout());
+      }
+    });
+  };
+}
+
 
 
 

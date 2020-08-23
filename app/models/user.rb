@@ -6,4 +6,9 @@ class User < ApplicationRecord
 
   has_many :users_instagram_accounts
   has_many :instagram_accounts, through: :users_instagram_accounts
+
+  def self.authenticate(email, password)
+    user = User.find_for_authentication(:email => email)
+    user.valid_password?(password) ? user : nil
+  end
 end

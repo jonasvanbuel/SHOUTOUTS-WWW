@@ -16,6 +16,7 @@ import {
 import { createBrowserHistory } from 'history';
 
 // COMPONENTS
+import SignIn from './components/pages/signin';
 import Dashboard from './components/dashboard';
 import Livestream from './components/livestream';
 
@@ -26,8 +27,12 @@ import sortOrderReducer from './reducers/sort_order_reducer';
 import filteredReducer from './reducers/filtered_reducer';
 import filterReducer from './reducers/filter_reducer';
 import sortedFilteredPostsReducer from './reducers/sorted_filtered_posts_reducer';
+import isLoggedInReducer from './reducers/is_logged_in_reducer';
+import userReducer from './reducers/user_reducer';
 
 const initialState = {
+  isLoggedIn: false,
+  user: {},
   taggedPosts: [],
   sortedFilteredPosts: [],
   sortKey: 'posted',
@@ -37,6 +42,8 @@ const initialState = {
 };
 
 const reducers = combineReducers({
+  isLoggedIn: isLoggedInReducer,
+  user: userReducer,
   taggedPosts: taggedPostsReducer,
   sortedFilteredPosts: sortedFilteredPostsReducer,
   sortKey: sortKeyReducer,
@@ -53,9 +60,10 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
+        <Route path="/signin" component={SignIn} />
         <Route path="/dashboard" exact component={Dashboard} />
         <Route path="/live" component={Livestream} />
-        <Redirect from="/" to="/dashboard" />
+        <Redirect from="/" to="/login" />
       </Switch>
     </Router>
   </Provider>,
