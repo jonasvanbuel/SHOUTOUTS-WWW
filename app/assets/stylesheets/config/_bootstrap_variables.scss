@@ -27,10 +27,18 @@ $warning:    $orange;
 // ELEMENTS
 
 // $navbar-height:         156px;
-$navbar-height:         184px;
-$navbar-body-padding:   56px;
-$filter-bar-height:     $navbar-height;
-$menu-width:            256px;
+$login-pg-navbar-height:             248px;
+$dashboard-pg-navbar-height:         184px;
+
+$navbar-body-padding:                56px;
+$filter-bar-height:                  $dashboard-pg-navbar-height;
+$menu-width:                         256px;
+
+$logo-proportions-height: 184px;
+$logo-proportions-width:  256px;
+
+// PAGES
+$login-pg-logo-margin: calc(100vw - $logo-proportions-width) / 2;
 
 // SIZES
 $btn-small-height: 36px;
@@ -54,7 +62,7 @@ $db-post-width:       184px;
 $grid-gap:            32px;
 
 $search-form-height:  64px;
-$search-form-margin-top:  ($navbar-height - $search-form-height - $medium-padding) / 2;
+$search-form-margin-top:  ($dashboard-pg-navbar-height - $search-form-height - $medium-padding) / 2;
 
 
 $livestream-padding-top: ($filter-bar-height - $medium-padding - $btn-large-height) / 2;

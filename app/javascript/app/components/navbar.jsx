@@ -15,7 +15,10 @@ import scrollLogo from '../helpers/_scroll_logo';
 
 class Navbar extends Component {
   componentDidMount() {
-    scrollLogo();
+    const { type } = this.props;
+    if (type === "navbar-dashboard") {
+      scrollLogo();
+    }
   }
 
   render() {

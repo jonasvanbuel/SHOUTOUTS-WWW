@@ -1,14 +1,6 @@
 .logo-container {
-  // background-color: red;
-
-  height: $navbar-height;
-  // width: 400px;
-
   display: flex;
   align-items: center;
-
-  position: absolute;
-  left: 0px;
 
     .logo-foreground {
       height: 100%;
@@ -17,13 +9,36 @@
       z-index: 1;
       // box-shadow: inset 0 0 10px #000000;
     }
-
-    .logo-pattern {
-      height: 50px;
-
-      position: absolute;
-      left: 5px;
-      top: 57px;
-      // margin: auto 0px;
-    }
 }
+
+.login-page .logo-container {
+  height: 100%;
+
+  position: absolute;
+  left: 0px;
+
+  .logo-pattern {
+    height: 27%;
+
+    position: absolute;
+    left: 5px;
+    top: 76px;
+  }
+}
+
+.dashboard .logo-container {
+  height: $dashboard-pg-navbar-height;
+
+  position: absolute;
+  left: 0px;
+
+  .logo-pattern {
+    height: 50px;
+
+    position: absolute;
+    left: 5px;
+    top: 57px;
+  }
+}
+
+
