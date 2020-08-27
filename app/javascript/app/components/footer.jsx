@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 
 // ASSETS
 import Fire from 'images/fire.svg';
+import SunsetGradient from 'images/sunset-gradient.svg';
 
 class Footer extends Component {
   render() {
     return (
       <footer>
+        <img src={SunsetGradient} className="sunset-gradient" alt="" />
         <div className="footer-content">
           <div className="container custom-body-container custom-footer-container">
             <div className="footer-content-menu">

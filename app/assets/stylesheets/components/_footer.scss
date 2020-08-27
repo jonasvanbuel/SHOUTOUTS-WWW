@@ -13,6 +13,8 @@ footer {
   font-weight: 400;
   color: $font-color-light-gray;
 
+  position: relative;
+
   .footer-content {
     padding-top: 56px;
     padding-bottom: 56px;
@@ -86,5 +88,25 @@ footer {
       }
     }
   }
-
 }
+
+footer .sunset-gradient {
+  height: $sunset-gradient-height;
+
+  position: absolute;
+  width: 100vw;
+  top: -$sunset-gradient-height;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
