@@ -24,9 +24,6 @@ $danger:     $red;
 $warning:    $orange;
 
 // PERSONAL VARIABLES
-
-$dashboard-background-color: #f4f4f4;
-
 // ELEMENTS
 
 // $navbar-height:         156px;
@@ -45,20 +42,9 @@ $medium-padding:      12px;
 $large-padding:       24px;
 $xl-padding:          40px;
 
-
-
 // FONTS
 $small-font-size:     14px;
 $large-font-size:     24px;
-
-$font-color-light-gray: #929492;
-$font-color-medium-gray: #6c6c6c;
-$font-color-medium-gray-selected: #43424a;
-
-// BUTTONS
-$btn-color-light: white;
-$btn-color-selected: #cac9dd;
-$btn-color-dark: #145c9e;
 
 // ELEMENTSß
 $no-posts-found-height: 250px;
@@ -69,7 +55,6 @@ $grid-gap:            32px;
 
 $search-form-height:  64px;
 $search-form-margin-top:  ($navbar-height - $search-form-height - $medium-padding) / 2;
-
 
 
 $livestream-padding-top: ($filter-bar-height - $medium-padding - $btn-large-height) / 2;
