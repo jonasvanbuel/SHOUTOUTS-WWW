@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import anime from 'animejs/lib/anime.es';
 
 // ASSETS
-import Foreground from 'images/logo_fg_184x256.svg';
+import Foreground from 'images/logo_fg_184x256_inner_glow_edited.svg';
 import Pattern from 'images/logo_v2_bg.svg';
 
 class Logo extends Component {
