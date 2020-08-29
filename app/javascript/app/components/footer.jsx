@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 
 // ASSETS
 import Fire from 'images/fire.svg';
+// import SunsetGradient from 'images/sunset-gradient.svg';
+import Wave from 'images/footer-wave.svg';
 
 class Footer extends Component {
   render() {
     return (
       <footer>
+        <div className="horizontal-gradient"></div>
         <div className="footer-content">
+          <img src={Wave} className="wave" alt="" />
           <div className="container custom-body-container custom-footer-container">
             <div className="footer-content-menu">
               <a href="mailto:jonas.vanbuel@gmail.com">Contact us</a>

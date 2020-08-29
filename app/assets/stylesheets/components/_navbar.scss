@@ -1,10 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
-
 .navbar {
   background-color: $dashboard-background-color;
-  // background-color: yellow;
 
-  height: $navbar-height;
   width: 100%;
   position: fixed;
   top: 0px;
@@ -12,12 +8,12 @@
   z-index: 5;
 
   display: flex;
-
-  .fa-bars {
-    font-size: 30px;
-    position: absolute;
-    left: 0px;
-  }
 }
 
+.login-page .navbar {
+  height: $login-pg-navbar-height;
+}
 
+.dashboard .navbar {
+  height: $dashboard-pg-navbar-height;
+}

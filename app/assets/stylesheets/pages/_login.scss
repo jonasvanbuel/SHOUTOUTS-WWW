@@ -1,0 +1,107 @@
+.login-page {
+  font: $body-font;
+
+  .load-screen {
+    // background-color: green;
+
+    width: 100vw;
+    height: 100vh;
+
+    #navbar-react {
+      position: relative;
+      top: 0px;
+    }
+  }
+
+  .footer-react {
+    footer {
+      margin-top: 0px;
+    }
+  }
+}
+
+.login-page .navbar {
+  position: relative;
+  top: 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .logo-container {
+    position: relative;
+  }
+}
+
+.login-body > .login-container {
+  h1 {
+    margin-top: 0px;
+    margin-bottom: 40px;
+    color: $dark-blue;
+
+    @media (min-width: 768px) {
+      margin-top: 40px;
+    }
+  }
+}
+
+.login-container {
+  width: 90vw;
+  max-width: 320px;
+
+  margin: 0 auto;
+
+  @media (min-width: 1200px) {
+    width: 400px;
+    max-width: 400px;
+  }
+}
+
+// Overwriting default simple_form styling
+#login-form {
+  .form-inputs {
+    color: red;
+
+    .form-group {
+      margin-bottom: 16px;
+
+      input.form-control {
+        height: 40px;
+        padding-left: 20px;
+        border-radius: 20px;
+        border: none;
+      }
+
+      input.form-control::placeholder {
+        color: $light-gray;
+      }
+
+      input.form-control:focus,
+      input.form-control:checked {
+        // background: linear-gradient(106.95deg, rgba(255, 255, 255, 1) 6.49%, rgba(0, 0, 0, 0.5  ) 232.6%), #FFFFFF;
+        box-shadow: inset 3px 4px 6px rgba($light-gray, 0.5),
+                    0px 1px 24px rgba($bright-pink, 0.15);
+        color: $dark-blue;
+      }
+    }
+  }
+
+  .form-actions {
+    // background-color: $dashboard-background-color;
+    margin-top: 32px;
+
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

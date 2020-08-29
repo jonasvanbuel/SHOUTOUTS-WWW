@@ -5,6 +5,8 @@ const LOGO_RECT_PRESET_PROPORTIONS = {
 const FILTER_BAR_PADDING_LEFT = 6;
 
 const scrollCallback = () => {
+  console.log("scrollCallback triggered...");
+
   const logo = document.querySelector('.logo-container');
   const logoRect = logo.getBoundingClientRect();
   const navbar = document.querySelector('.navbar');

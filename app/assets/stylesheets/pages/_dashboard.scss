@@ -26,13 +26,14 @@ body {
 
 .dashboard-body {
   // background-color: pink;
-
   width: 100%;
   min-height: 100vh;
 
   display: flex;
   position: relative;
-  top: $navbar-height;
+  top: $dashboard-pg-navbar-height;
+
+  margin-bottom: 320px;
 
   .post-list-container {
     // background-color: rgba(0, 0, 0, 0.5);

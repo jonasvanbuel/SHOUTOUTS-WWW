@@ -13,7 +13,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        <Navbar />
+        <Navbar type="navbar-dashboard" />
         <div className="container custom-body-container">
           <div className="dashboard-body">
             <Menu />
