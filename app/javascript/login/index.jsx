@@ -1,5 +1,3 @@
-/* eslint no-alert:off */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 

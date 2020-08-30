@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 // import Logo from 'images/logo_v1.svg';
 
 // COMPONENTS
-import Logo from './logo';
+import LogoIframe from './logo-iframe/logo-iframe';
 
 // HELPERS
 import scrollLogo from '../helpers/_scroll_logo';
@@ -15,6 +15,7 @@ import scrollLogo from '../helpers/_scroll_logo';
 
 class Navbar extends Component {
   componentDidMount() {
+    // Add scroll behaviour when on dashboard
     const { type } = this.props;
     if (type === "navbar-dashboard") {
       scrollLogo();
@@ -24,7 +25,7 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar">
-        <Logo />
+        <LogoIframe />
       </div>
     );
   }
