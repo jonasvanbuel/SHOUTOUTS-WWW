@@ -79,8 +79,7 @@
       input.form-control:focus,
       input.form-control:checked {
         // background: linear-gradient(106.95deg, rgba(255, 255, 255, 1) 6.49%, rgba(0, 0, 0, 0.5  ) 232.6%), #FFFFFF;
-        box-shadow: inset 3px 4px 6px rgba($light-gray, 0.5),
-                    0px 1px 24px rgba($bright-pink, 0.15);
+        box-shadow: inset 3px 4px 6px rgba($light-gray, 0.5);
         color: $dark-blue;
       }
     }

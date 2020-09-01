@@ -1,0 +1,45 @@
+$logo-proportions-width: 2000px;
+$logo-proportions-height: 391px;
+
+$logo-width: 410px;
+$logo-height: $logo-width * $logo-proportions-height / $logo-proportions-width;
+
+iframe {
+  width: $logo-width;
+  height: $logo-height;
+
+  border: 0;
+  overflow: hidden;
+}
+
+.logo-container-iframe {
+  // background-color: orange;
+
+  width: $logo-width;
+  height: $logo-height;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  .logo-foreground {
+    width: $logo-width + 4;
+    height: $logo-height + 4;
+
+    position: absolute;
+    top: -2px;
+    left: -3px;
+    z-index: 1;
+  }
+
+  .logo-pattern {
+    height: 95%;
+
+    position: absolute;
+    top: 2px;
+
+    z-index: -1;
+  }
+}
