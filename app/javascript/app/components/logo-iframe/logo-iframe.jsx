@@ -9,22 +9,18 @@ import Pattern from 'images/logo_v2_bg.svg';
 class LogoIframe extends Component {
   renderScript() {
     return (
-      `<script>
-        const findMeDiv = document.getElementById("find-me-div");
-        findMeDiv.innerText = "NEW STRING!";
+      `<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js" integrity="sha512-LfB+BcvR3zBt7ebVskhSWiSbEUiG3p5EcCprkieldsKhBeR6wpnLi0VpWC2GNgVGWP2n/skO8Bx2oKNjUhXCkw==" crossorigin="anonymous"></script>
+      <script>
+        anime({
+          targets: '.logo-pattern',
+          translateX: 100,
+          duration: 30000,
+          loop: true,
+          direction: 'alternate',
+          easing: 'linear'
+        });
       </script>`
     )
-  }
-
-  componentDidMount() {
-    // anime({
-    //   targets: '.logo-pattern',
-    //   translateX: 100,
-    //   duration: 30000,
-    //   loop: true,
-    //   direction: 'alternate',
-    //   easing: 'linear'
-    // });
   }
 
   render() {
