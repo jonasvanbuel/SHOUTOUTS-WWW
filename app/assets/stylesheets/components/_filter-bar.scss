@@ -1,8 +1,5 @@
 .filter-bar {
-  // background-color: yellow;
-
   height: $filter-bar-height;
-  // margin-top: $navbar-body-padding;
   padding: 0 $small-padding $medium-padding $small-padding;
 
   position: sticky;
@@ -10,36 +7,28 @@
   z-index: 10;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: space-between;
 
   font-family: Open Sans;
   color: $font-color-light-gray;
 
-  .filter-sub:first-of-type {
-    flex-grow: 2;
-    justify-content: flex-start;
-  }
-
-  .filter-sub:last-of-type {
-    justify-content: flex-end
-  }
-
   .filter-sub {
     display: flex;
-    flex-direction: column;
-
     position: relative;
 
-    .filter-options {
-      width: 100%;
-      height: $btn-small-height;
+    .sort-options {
+      // background-color: white;
+      height: 100%;
 
       display: flex;
       justify-content: flex-end;
       align-items: center;
 
-      .filter-label {
+      position: absolute;
+      right: $small-padding;
+
+      .sort-label {
         margin-right: 24px;
         display: flex;
         align-items: center;
@@ -49,50 +38,63 @@
         color: $font-color-medium-gray;
       }
 
-      .filter-option {
-        background-color: $btn-color-light;
-
-        border: 0.75px solid $font-color-light-gray;
-        border-radius: 50px;
-
-        width: 96px;
+      .sort-options-buttons {
+        display: flex;
         height: 100%;
 
-        margin-right: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        border-radius: 16px;
+        box-shadow: -5px -5px 4px rgba(255, 255, 255, 1),
+                    5px 5px 4px rgba($medium-gray, 0.25);
 
-        cursor: pointer;
+        .sort-option {
+          width: 96px;
+          height: 100%;
 
-        .fas {
-          font-size: 18px;
-          margin-right: 6px;
-        }
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
-        span {
           font-size: 14px;
-          font-weight: 400;
-          color: $font-color-medium-gray;
-          padding: 0;
-        }
-      }
 
-      .filter-option:last-of-type {
-        margin-right: 0px;
+          cursor: pointer;
+
+          .fas {
+            font-size: 18px;
+            margin-right: 6px;
+          }
+
+          span {
+            padding: 0;
+          }
+        }
+
+        .sort-option:last-of-type {
+          margin-right: 0px;
+        }
       }
     }
   }
+
+  .filter-sub[type="search-form"] {
+    flex-grow: 2;
+    justify-content: flex-start;
+  }
+
+  .filter-sub[type="search-options"] {
+    height: $btn-small-height;
+
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
-.filter-option {
+.filter-bar .sort-option {
   .fas {
     position: relative;
   }
 
   .fas.asc {
     transform: rotate(0deg);
-    // top: 0.5px;
   }
 
   .fas.desc {
@@ -106,39 +108,35 @@
   }
 }
 
-.filter-options[data-sort-key="posted"] {
-  #filter-option-posted {
-    background-color: $btn-color-selected;
-    border: 1.25px solid $font-color-medium-gray;
-    box-shadow: inset 1px 1.5px 3px rgba(0, 0, 0, 0.5);
+.filter-bar #sort-option-posted {
+  border-radius: 20px 0px 0px 20px;
 
-    .fas {
-      color: $font-color-medium-gray-selected;
-    }
-    span {
-      font-weight: 700;
-      color: $font-color-medium-gray-selected
-    }
-  }
+  clip-path: inset(-10px 0px -10px -10px);
 }
 
-.filter-options[data-sort-key="likes"] {
-  #filter-option-likes {
-    background-color: $btn-color-selected;
-    border: 1.25px solid $font-color-medium-gray;
-    box-shadow: inset 1px 1.5px 3px rgba(0, 0, 0, 0.5);
+.filter-bar #sort-option-likes {
+  border-radius: 0px 20px 20px 0px;
 
-    .fas {
-      color: $font-color-medium-gray-selected;
-    }
-    span {
-      font-weight: 700;
-      color: $font-color-medium-gray-selected
-    }
-  }
+  clip-path: inset(-10px -10px -10px 0px);
 }
 
+.sort-option.btn-secondary-custom {
+  box-shadow: none;
+}
 
+.sort-option.btn-secondary-custom-selected {
+  font-weight: 700;
+
+  box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.4);
+}
+
+.sort-option.btn-secondary-custom-selected:hover {
+  background-color: rgba($dark-blue, 0.9);
+  color: white;
+
+  box-shadow: inset -2px 0px 5px rgba(0, 0, 0, 0.4),
+              inset 3px 3px 4px rgba(0, 0, 0, 0.4);
+}
 
 
 

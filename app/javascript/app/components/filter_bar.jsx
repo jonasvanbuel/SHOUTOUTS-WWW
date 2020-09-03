@@ -11,6 +11,7 @@ import SearchTerms from './search_terms';
 
 
 class FilterBar extends Component {
+  // Change redux state
   handlePostedClick = (event) => {
     event.preventDefault();
     const { sortKey, sortOrder, setSortKey, setSortOrder } = this.props;
@@ -59,25 +60,32 @@ class FilterBar extends Component {
 
     return (
       <div className="filter-bar">
-        <div className="filter-sub">
+        <div className="filter-sub" type="search-form">
           <SearchForm />
-          <SearchTerms />
         </div>
-        <div className="filter-sub">
-          <div
-            className="filter-options"
-            data-sort-key={sortKey}
-          >
-            <div className="filter-label">
+        <div className="filter-sub" type="search-options">
+          <SearchTerms />
+          <div className="sort-options" data-sort-key={sortKey}>
+            <div className="sort-label">
               sort by:
             </div>
-            <div className="filter-option" id="filter-option-posted" onClick={this.handlePostedClick}>
-              <i className={`fas fa-caret-up ${evaluateCaret('posted')}`}></i>
-              <span>posted</span>
-            </div>
-            <div className="filter-option" id="filter-option-likes" onClick={this.handleLikesClick}>
-              <i className={`fas fa-caret-up ${evaluateCaret('likes')}`}></i>
-              <span>likes</span>
+            <div className="sort-options-buttons">
+              <div
+                className={`sort-option btn-secondary-custom ${sortKey === "posted" ? "btn-secondary-custom-selected" : ""}`}
+                id="sort-option-posted"
+                onClick={this.handlePostedClick}
+              >
+                <i className={`fas fa-caret-up ${evaluateCaret('posted')}`}></i>
+                <span>posted</span>
+              </div>
+              <div
+                className={`sort-option btn-secondary-custom ${sortKey === "likes" ? "btn-secondary-custom-selected" : ""}`}
+                id="sort-option-likes"
+                onClick={this.handleLikesClick}
+              >
+                <i className={`fas fa-caret-up ${evaluateCaret('likes')}`}></i>
+                <span>likes</span>
+              </div>
             </div>
           </div>
         </div>

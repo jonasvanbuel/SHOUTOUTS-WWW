@@ -9,10 +9,7 @@ import { setFilter, setFiltered } from '../actions';
 
 
 class SearchTerms extends Component {
-
   handleClick = () => {
-    console.log("close clicked...");
-
     const { setFiltered, setFilter } = this.props;
 
     setFiltered('');
@@ -21,7 +18,7 @@ class SearchTerms extends Component {
 
   renderSearchTerm = (filter) => {
     return (
-      <div className="search-term">
+      <div className="search-term btn-secondary-custom">
         <span>{`"${filter}"`}</span>
         <i class="fas fa-times-circle" onClick={this.handleClick}></i>
       </div>
