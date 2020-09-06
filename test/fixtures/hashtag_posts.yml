@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hashtag: one
+  post_type: MyString
+  author: MyString
+  message: MyText
+  posted_at: 2020-09-05 18:00:34
+  post_url: MyString
+  image_url: MyString
+  likes: 1
+
+two:
+  hashtag: two
+  post_type: MyString
+  author: MyString
+  message: MyText
+  posted_at: 2020-09-05 18:00:34
+  post_url: MyString
+  image_url: MyString
+  likes: 1

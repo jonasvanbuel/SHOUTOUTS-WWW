@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_163835) do
+ActiveRecord::Schema.define(version: 2020_09_05_170034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hashtag_posts", force: :cascade do |t|
+    t.bigint "hashtag_id", null: false
+    t.string "post_type"
+    t.string "author"
+    t.text "message"
+    t.datetime "posted_at"
+    t.string "post_url"
+    t.string "image_url"
+    t.integer "likes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashtag_id"], name: "index_hashtag_posts_on_hashtag_id"
+  end
 
   create_table "hashtags", force: :cascade do |t|
     t.string "name"
@@ -57,6 +71,15 @@ ActiveRecord::Schema.define(version: 2020_09_05_163835) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "users_hashtags", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "hashtag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashtag_id"], name: "index_users_hashtags_on_hashtag_id"
+    t.index ["user_id"], name: "index_users_hashtags_on_user_id"
+  end
+
   create_table "users_instagram_accounts", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "instagram_account_id"
@@ -66,7 +89,10 @@ ActiveRecord::Schema.define(version: 2020_09_05_163835) do
     t.index ["user_id"], name: "index_users_instagram_accounts_on_user_id"
   end
 
+  add_foreign_key "hashtag_posts", "hashtags"
   add_foreign_key "tagged_posts", "instagram_accounts"
+  add_foreign_key "users_hashtags", "hashtags"
+  add_foreign_key "users_hashtags", "users"
   add_foreign_key "users_instagram_accounts", "instagram_accounts"
   add_foreign_key "users_instagram_accounts", "users"
 end
