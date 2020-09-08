@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :users_instagram_accounts
   has_many :instagram_accounts, through: :users_instagram_accounts
+
+  has_many :users_hashtags, dependent: :destroy
+  has_many :hashtags, through: :users_hashtags
 end
