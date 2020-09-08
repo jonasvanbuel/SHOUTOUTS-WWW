@@ -4,28 +4,41 @@ class Api::V1::HashtagPostsController < ActionController::API
   def index
     render json: {
       hashtag: @hashtag,
+      post_urls: render_post_urls,
       hashtag_posts: most_popular_selection
     }
   end
 
   def create
-    unless HashtagPost.find_by(post_url: params[:post_url])
-      HashtagPost.create(
-        hashtag: @hashtag,
-        post_type: params[:post_type],
-        author: params[:author],
-        message: params[:message],
-        posted_at: params[:posted_at],
-        post_url: params[:post_url],
-        image_url: params[:image_url],
-        likes: params[:likes],
-        user_avatar_url: params[:user_avatar_url],
-        style_classname: params[:style_classname]
-      )
+    if HashtagPost.find_by(post_url: params[:post_url])
+      update
+    else HashtagPost.create(
+          hashtag: @hashtag,
+          post_type: params[:post_type],
+          author: params[:author],
+          message: params[:message],
+          posted_at: params[:posted_at],
+          post_url: params[:post_url],
+          image_url: params[:image_url],
+          likes: params[:likes] || 0,
+          user_avatar_url: params[:user_avatar_url],
+          style_classname: params[:style_classname]
+        )
+      index
     end
-    # ELSE UPDATE LIKES, MESSAGE, ETC
+  end
 
-    index
+  def update
+    hashtag_post = HashtagPost.find_by(post_url: params[:post_url])
+    hashtag_post.update(
+      message: params[:message],
+      image_url: params[:image_url],
+      likes: params[:likes] || 0,
+      user_avatar_url: params[:user_avatar_url]
+    )
+    if hashtag_post.save
+      index
+    end
   end
 
   def update_likes
@@ -49,7 +62,8 @@ class Api::V1::HashtagPostsController < ActionController::API
 
   def most_popular_selection
     hashtag_posts = HashtagPost.where(hashtag: @hashtag)
-    sorted_posts = hashtag_posts.sort_by(&:likes).reverse
+    sorted_posts = hashtag_posts.sort_by { |post| post.likes || 0 }
+    sliced_posts = sorted_posts.reverse[0..49]
     categorized_posts = add_style_classnames(sorted_posts, 'MP')
   end
 
@@ -61,4 +75,11 @@ class Api::V1::HashtagPostsController < ActionController::API
     end
   end
 
+  def render_post_urls
+    posts = HashtagPost.all
+    post_urls = posts.map do |post|
+      post.post_url
+    end
+    post_urls
+  end
 end
