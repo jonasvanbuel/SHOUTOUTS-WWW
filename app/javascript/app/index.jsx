@@ -20,7 +20,7 @@ import Dashboard from './components/dashboard';
 import Livestream from './components/livestream';
 
 // REDUCERS
-import taggedPostsReducer from './reducers/tagged_posts_reducer';
+import postsReducer from './reducers/posts_reducer';
 import sortKeyReducer from './reducers/sort_key_reducer';
 import sortOrderReducer from './reducers/sort_order_reducer';
 import filteredReducer from './reducers/filtered_reducer';
@@ -28,7 +28,7 @@ import filterReducer from './reducers/filter_reducer';
 import sortedFilteredPostsReducer from './reducers/sorted_filtered_posts_reducer';
 
 const initialState = {
-  taggedPosts: [],
+  posts: [],
   sortedFilteredPosts: [],
   sortKey: 'posted',
   sortOrder: 'desc',
@@ -37,7 +37,7 @@ const initialState = {
 };
 
 const reducers = combineReducers({
-  taggedPosts: taggedPostsReducer,
+  posts: postsReducer,
   sortedFilteredPosts: sortedFilteredPostsReducer,
   sortKey: sortKeyReducer,
   sortOrder: sortOrderReducer,
@@ -54,7 +54,7 @@ ReactDOM.render(
     <Router history={history}>
       <Switch>
         <Route path="/dashboard" exact component={Dashboard} />
-        <Route path="/live" component={Livestream} />
+        <Route path="/live" exact component={Livestream} />
         <Redirect from="/" to="/dashboard" />
       </Switch>
     </Router>

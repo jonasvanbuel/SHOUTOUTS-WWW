@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 // ACTIONS
-import { fetchTaggedPosts, updateSortedFilteredPosts } from '../actions';
+import { fetchPosts, updateSortedFilteredPosts } from '../actions';
 
 // COMPONENTS
 import PostDashboard from './post_dashboard/post_dashboard';
@@ -16,12 +16,13 @@ import filterPosts from '../helpers/_filter_posts';
 class PostList extends Component {
   componentDidMount() {
     const {
-      taggedPosts,
+      posts,
       sortedFilteredPosts,
-      fetchTaggedPosts,
+      fetchPosts,
       updateSortedFilteredPosts
     } = this.props;
-    fetchTaggedPosts('mariotestino');
+    fetchPosts();
+
     // this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
   }
 
@@ -31,13 +32,13 @@ class PostList extends Component {
 
   renderPlaceholdersOrPosts = () => {
     const {
-      taggedPosts,
+      posts,
       sortedFilteredPosts,
       filtered
     } = this.props;
 
     // If still loading state, display placeholders
-    if (taggedPosts.length === 0) {
+    if (posts.length === 0) {
       const times = 7;
       return [...Array(times)].map(() => {
         return <PostPlaceholder />
@@ -46,8 +47,8 @@ class PostList extends Component {
 
     // If state has arrived, display actual posts
     if (sortedFilteredPosts.length > 1) {
-      return sortedFilteredPosts.map((taggedPost) => {
-        return <PostDashboard taggedPost={taggedPost} key={taggedPost.pathname} />;
+      return sortedFilteredPosts.map((post) => {
+        return <PostDashboard taggedPost={post} key={post.pathname} />;
       })
     }
   }
@@ -63,7 +64,7 @@ class PostList extends Component {
 
 function mapStateToProps(state) {
   return {
-    taggedPosts: state.taggedPosts,
+    posts: state.posts,
     sortedFilteredPosts: state.sortedFilteredPosts,
     sortKey: state.sortKey,
     sortOrder: state.sortOrder,
@@ -74,7 +75,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    fetchTaggedPosts,
+    fetchPosts,
     updateSortedFilteredPosts
   }, dispatch);
 }

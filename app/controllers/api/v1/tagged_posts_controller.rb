@@ -1,12 +1,21 @@
 class Api::V1::TaggedPostsController < ActionController::API
-  before_action :set_instagram_account
+  before_action :set_instagram_account, except: :user_route
+
+  def user_route
+    if current_user && current_user.post_type == "hashtag"
+      # redirect_to api_v1_hashtag_posts_index_path
+      user_hashtag = Hashtag.find_by(name: current_user.hashtag)
+      redirect_to controller: 'hashtag_posts', action: 'index', hashtag_name: user_hashtag.name
+    end
+
+    if current_user && current_user.post_type == "tagged_post"
+      index
+    end
+  end
+
 
   def index
-    if current_user.post_type == "hashtag"
-      redirect_to api_v1_hashtag_posts_index_path
-    else
-      render json: most_recent_selection
-    end
+    render json: most_recent_selection
   end
 
   def create

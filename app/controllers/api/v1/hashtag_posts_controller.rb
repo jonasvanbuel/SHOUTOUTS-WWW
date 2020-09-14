@@ -2,15 +2,11 @@ class Api::V1::HashtagPostsController < ActionController::API
   before_action :set_hashtag
 
   def index
-    render json: {
-      hashtag: @hashtag,
-      post_urls: render_post_urls,
-      hashtag_posts: most_popular_selection
-    }
+    render json: most_popular_selection
   end
 
   def create
-    if HashtagPost.find_by(post_url: params[:post_url])
+    if HashtagPost.find_by(pathname: params[:pathname])
       update
     else HashtagPost.create(
           hashtag: @hashtag,
@@ -18,7 +14,7 @@ class Api::V1::HashtagPostsController < ActionController::API
           author: params[:author],
           message: params[:message],
           posted_at: params[:posted_at],
-          post_url: params[:post_url],
+          pathname: params[:pathname],
           image_url: params[:image_url],
           likes: params[:likes] || 0,
           user_avatar_url: params[:user_avatar_url],
@@ -29,7 +25,7 @@ class Api::V1::HashtagPostsController < ActionController::API
   end
 
   def update
-    hashtag_post = HashtagPost.find_by(post_url: params[:post_url])
+    hashtag_post = HashtagPost.find_by(pathname: params[:pathname])
     hashtag_post.update(
       message: params[:message],
       image_url: params[:image_url],
@@ -56,11 +52,13 @@ class Api::V1::HashtagPostsController < ActionController::API
 
   def set_hashtag
     # For website
-    if current_user.post_type == "hashtag" && current_user.hashtag
-      @hashtag = Hashtag.find_by(name: current_user.hashtag)
+    if current_user
+      if current_user.post_type == "hashtag" && current_user.hashtag
+        @hashtag = Hashtag.find_by(name: current_user.hashtag)
+      end
     end
 
-    # For scraper
+    # For scraper and postman
     if params[:hashtag_name]
       @hashtag = Hashtag.find_by(name: params[:hashtag_name])
     end
@@ -70,7 +68,8 @@ class Api::V1::HashtagPostsController < ActionController::API
     hashtag_posts = HashtagPost.where(hashtag: @hashtag)
     sorted_posts = hashtag_posts.sort_by { |post| post.likes || 0 }
     sliced_posts = sorted_posts.reverse[0..49]
-    categorized_posts = add_style_classnames(sorted_posts, 'MP')
+    categorized_posts = add_style_classnames(sliced_posts, 'MR')
+    # categorized_posts
   end
 
   def add_style_classnames(posts_array, selection_type)
@@ -81,11 +80,11 @@ class Api::V1::HashtagPostsController < ActionController::API
     end
   end
 
-  def render_post_urls
+  def render_pathnames
     posts = HashtagPost.all
-    post_urls = posts.map do |post|
-      post.post_url
+    pathnames = posts.map do |post|
+      post.pathname
     end
-    post_urls
+    pathnames
   end
 end

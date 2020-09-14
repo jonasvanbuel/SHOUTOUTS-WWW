@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_173216) do
+ActiveRecord::Schema.define(version: 2020_09_14_140743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_173216) do
     t.string "author"
     t.text "message"
     t.datetime "posted_at"
-    t.string "post_url"
+    t.string "pathname"
     t.string "image_url"
     t.integer "likes"
     t.datetime "created_at", precision: 6, null: false
