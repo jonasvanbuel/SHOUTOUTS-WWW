@@ -8,10 +8,6 @@ body {
   // background-color: #E5E4DC;
 }
 
-.container {
-  // background-color: orange;
-}
-
 .custom-body-container {
   padding: 0;
   margin: 0 auto;
@@ -25,15 +21,32 @@ body {
 }
 
 .dashboard-body {
-  // background-color: pink;
   width: 100%;
   min-height: 100vh;
+  margin-bottom: 320px;
 
   display: flex;
+  flex-direction: column;
+
   position: relative;
   top: $dashboard-pg-navbar-height;
 
-  margin-bottom: 320px;
+  @media (min-width: 576px) {
+
+  }
+
+  @media (min-width: 768px) {
+
+  }
+
+  @media (min-width: 992px) {
+    flex-direction: row;
+  }
+
+  @media (min-width: 1200px) {
+
+  }
+
 
   .post-list-container {
     // background-color: rgba(0, 0, 0, 0.5);

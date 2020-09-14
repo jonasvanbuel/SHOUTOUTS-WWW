@@ -1,14 +1,11 @@
 .post-list {
-  // background-color: green;
-
-  // min-height: 100vh;
-
   padding-top: $large-padding;
   padding-left: $small-padding;
   padding-right: $small-padding;
+
   display: grid;
   grid-gap: 12px;
-  grid-template-columns: repeat(1, $db-post-width);
+  grid-template-columns: repeat(2, $db-post-width);
   grid-template-rows: fit-content(100%);
 
   @media (min-width: 576px) {
@@ -18,7 +15,7 @@
 
   @media (min-width: 768px) {
     grid-gap: 24px;
-    grid-template-columns: repeat(2, $db-post-width);
+    grid-template-columns: repeat(3, $db-post-width);
   }
 
   @media (min-width: 992px) {
