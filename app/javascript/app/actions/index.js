@@ -196,5 +196,24 @@ export function fetchTaggedPosts(username) {
   };
 }
 
+export function fetchHashtagPosts() {
+  // A-SYNCHRONOUS action dispatching using redux-thunks
+  return (dispatch) => {
+    const endpoint = `${BASE_URL}/user_posts`;
+    const promise = fetch(endpoint, {
+      credentials: "same-origin"
+    })
+      .then((r) => r.json());
 
+    const response = dispatch({
+      type: FETCH_TAGGED_POSTS,
+      payload: promise
+    });
+
+    // Async second action call
+    response.then(() => {
+      dispatch(updateSortedFilteredPosts());
+    });
+  };
+}
 

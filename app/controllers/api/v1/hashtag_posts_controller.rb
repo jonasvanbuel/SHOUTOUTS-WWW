@@ -52,9 +52,15 @@ class Api::V1::HashtagPostsController < ActionController::API
 
   private
 
-  # STRONG PARAMS
+  # TO DO: STRONG PARAMS
 
   def set_hashtag
+    # For website
+    if current_user.post_type == "hashtag" && current_user.hashtag
+      @hashtag = Hashtag.find_by(name: current_user.hashtag)
+    end
+
+    # For scraper
     if params[:hashtag_name]
       @hashtag = Hashtag.find_by(name: params[:hashtag_name])
     end
