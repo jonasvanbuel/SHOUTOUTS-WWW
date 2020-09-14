@@ -2,7 +2,11 @@ class Api::V1::TaggedPostsController < ActionController::API
   before_action :set_instagram_account
 
   def index
-    render json: most_recent_selection
+    if current_user.post_type == "hashtag"
+      redirect_to api_v1_hashtag_posts_index_path
+    else
+      render json: most_recent_selection
+    end
   end
 
   def create

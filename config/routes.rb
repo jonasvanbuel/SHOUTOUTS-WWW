@@ -12,13 +12,16 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+
+      get 'user_posts', to: 'tagged_posts#index'
+
       get 'tagged_posts/:instagram_username', to: 'tagged_posts#index'
       post 'tagged_posts/:instagram_username', to: 'tagged_posts#create'
       patch 'tagged_posts/update_likes', to: 'tagged_posts#update_likes'
       patch 'tagged_posts/update_hidden', to: 'tagged_posts#update_hidden'
       delete 'tagged_posts/delete', to: 'tagged_posts#delete'
 
-      get 'hashtag_posts/:hashtag_name', to: 'hashtag_posts#index'
+      get 'hashtag_posts', to: 'hashtag_posts#index', as: :hashtag_posts_index
       post 'hashtag_posts/:hashtag_name', to: 'hashtag_posts#create'
       patch 'hashtag_posts/update_likes', to: 'hashtag_posts#update_likes'
       patch 'hashtag_posts/update_hidden', to: 'hashtag_posts#update_hidden'

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Post from '../components/post_livestream';
-import { fetchTaggedPosts } from '../actions';
+import { fetchHashtagPosts } from '../actions';
 
 class Livestream extends Component {
   componentDidMount() {
@@ -11,16 +11,17 @@ class Livestream extends Component {
     const body = document.getElementsByTagName('body')[0];
     body.style.overflow = "hidden";
 
-    this.props.fetchTaggedPosts('mariotestino');
-    this.interval = setInterval(() => this.props.fetchTaggedPosts('mariotestino'), 5000);
+    this.props.fetchHashtagPosts();
+    // this.interval = setInterval(() => this.props.fetchHashtagPosts(), 5000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    // clearInterval(this.interval);
   }
 
   render() {
     const { taggedPosts } = this.props;
+
     return (
       <div className="livestream-container">
         {taggedPosts.map((taggedPost) => {
@@ -38,7 +39,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchTaggedPosts }, dispatch);
+  return bindActionCreators({ fetchHashtagPosts }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Livestream);
