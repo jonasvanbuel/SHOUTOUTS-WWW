@@ -28,7 +28,7 @@ class LogoIframe extends Component {
     const initialContent = `<!DOCTYPE html><html><head>${document.head.innerHTML}</head><body><div></div>${this.renderScript()}</body></html>`;
 
     return (
-      <Frame initialContent={initialContent} contentDidMount={this.renderScript} scrolling="no" >
+      <Frame initialContent={initialContent} contentDidMount={this.renderScript} id="logo-iframe" scrolling="no" >
         <div className="logo-container-iframe">
           <img src={Foreground} className="logo-foreground" alt="" />
           <img src={Pattern} className="logo-pattern" alt="" />
