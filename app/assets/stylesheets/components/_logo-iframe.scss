@@ -46,7 +46,10 @@ $logo-height: $logo-width * $logo-proportions-height / $logo-proportions-width;
   }
 }
 
+.login-page .navbar #logo-iframe {
+  width: $logo-width;
+}
 
-.dashboard #logo-iframe {
+.dashboard .navbar #logo-iframe {
   top: ($dashboard-pg-navbar-height / 2) - ($logo-height / 2);
 }
