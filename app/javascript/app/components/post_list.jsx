@@ -40,8 +40,8 @@ class PostList extends Component {
     // If still loading state, display placeholders
     if (posts.length === 0) {
       const times = 7;
-      return [...Array(times)].map(() => {
-        return <PostPlaceholder />
+      return [...Array(times)].map((value, index) => {
+        return <PostPlaceholder key={index}/>
       })
     }
 

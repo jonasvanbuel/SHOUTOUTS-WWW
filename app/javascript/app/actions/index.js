@@ -37,14 +37,14 @@ export function updateSortedFilteredPosts() {
 
   return (dispatch, getState) => {
     const {
-      taggedPosts,
+      posts,
       sortKey,
       sortOrder,
       filtered,
       filter
     } = getState();
 
-    const filteredPosts = filtered === true ? filterPosts(taggedPosts, filtered, filter) : taggedPosts;
+    const filteredPosts = filtered === true ? filterPosts(posts, filtered, filter) : posts;
     const sortedFilteredPosts = sortPosts(filteredPosts, sortKey, sortOrder);
 
     dispatch({
