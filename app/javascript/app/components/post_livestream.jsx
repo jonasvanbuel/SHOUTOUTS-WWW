@@ -42,7 +42,7 @@ class PostLivestream extends Component {
           </div>
 
           <div className="likes">
-            {`${taggedPost.likes} likes`}
+            {`${Number(taggedPost.likes).toLocaleString()} likes`}
           </div>
 
           <div className="message">

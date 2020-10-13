@@ -19,7 +19,7 @@ import filterPosts from '../helpers/_filter_posts';
 
 const BASE_URL = '/api/v1';
 
-export const FETCH_TAGGED_POSTS = 'FETCH_TAGGED_POSTS';
+export const FETCH_POSTS = 'FETCH_POSTS';
 export const HIDE_POST = 'HIDE_POST';
 export const UNHIDE_POST = 'UNHIDE_POST';
 export const SET_SORT_KEY = 'SET_SORT_KEY';
@@ -37,14 +37,14 @@ export function updateSortedFilteredPosts() {
 
   return (dispatch, getState) => {
     const {
-      taggedPosts,
+      posts,
       sortKey,
       sortOrder,
       filtered,
       filter
     } = getState();
 
-    const filteredPosts = filtered === true ? filterPosts(taggedPosts, filtered, filter) : taggedPosts;
+    const filteredPosts = filtered === true ? filterPosts(posts, filtered, filter) : posts;
     const sortedFilteredPosts = sortPosts(filteredPosts, sortKey, sortOrder);
 
     dispatch({
@@ -175,28 +175,7 @@ export function setFilter(string) {
   };
 }
 
-export function fetchTaggedPosts(username) {
-  // A-SYNCHRONOUS action dispatching using redux-thunks
-  return (dispatch) => {
-    const endpoint = `${BASE_URL}/tagged_posts/${username}`;
-    const promise = fetch(endpoint, {
-      credentials: "same-origin"
-    })
-      .then((r) => r.json());
-
-    const response = dispatch({
-      type: FETCH_TAGGED_POSTS,
-      payload: promise
-    });
-
-    // Async second action call
-    response.then(() => {
-      dispatch(updateSortedFilteredPosts());
-    });
-  };
-}
-
-export function fetchHashtagPosts() {
+export function fetchPosts() {
   // A-SYNCHRONOUS action dispatching using redux-thunks
   return (dispatch) => {
     const endpoint = `${BASE_URL}/user_posts`;
@@ -206,7 +185,7 @@ export function fetchHashtagPosts() {
       .then((r) => r.json());
 
     const response = dispatch({
-      type: FETCH_TAGGED_POSTS,
+      type: FETCH_POSTS,
       payload: promise
     });
 
@@ -216,4 +195,3 @@ export function fetchHashtagPosts() {
     });
   };
 }
-
