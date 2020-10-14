@@ -10,8 +10,8 @@ class Menu extends Component {
     return (
       <div className="menu">
         <div className="submenu-top">
-          <a href="/live" target="_blank" className="start-livestream">
-            start livestream
+          <a href="/live" target="_blank" className="start-livestream btn-primary-custom">
+            Start livestream
           </a>
           <div className="connected-accounts-title">
             connected accounts:

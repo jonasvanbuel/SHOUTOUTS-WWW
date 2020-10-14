@@ -1,9 +1,5 @@
 .menu {
-  // background-color: gray;
-
-  // Horizontal flex-grow within dashboard-body
-  // flex-grow: 2;
-  width: 256px;
+  // width: $menu-width;
   min-width: 256px;
   height: 300px;
 
@@ -33,25 +29,6 @@
     padding-bottom: $medium-padding;
 
     position: relative;
-
-    a.start-livestream {
-      height: $btn-large-height;
-
-      color: white;
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 600;
-
-      background-color: black;
-      width: 100%;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 80px;
-
-      font-size: 20px;
-    }
 
     .connected-accounts-title {
       height: $btn-small-height;
