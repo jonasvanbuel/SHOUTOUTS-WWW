@@ -11,7 +11,7 @@ class Menu extends Component {
       <div className="menu">
         <div className="submenu-top">
           <a href="/live" target="_blank" className="start-livestream btn-primary-custom">
-            Start livestream
+            start livestream
           </a>
           <div className="connected-accounts-title">
             connected accounts:
