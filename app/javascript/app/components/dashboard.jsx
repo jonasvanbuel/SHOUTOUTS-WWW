@@ -14,8 +14,8 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <Navbar type="navbar-dashboard" />
-        <div className="container custom-body-container">
-          <div className="dashboard-body">
+        <div className="dashboard-body">
+          <div className="container custom-body-container">
             <Menu />
             <PostListContainer />
           </div>

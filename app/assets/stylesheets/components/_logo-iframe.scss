@@ -51,5 +51,5 @@ $logo-height: $logo-width * $logo-proportions-height / $logo-proportions-width;
 }
 
 .dashboard .navbar #logo-iframe {
-  top: ($dashboard-pg-navbar-height / 2) - ($logo-height / 2);
+  top: (($dashboard-pg-navbar-height - $medium-padding) / 2) - ($logo-height / 2) - 5;
 }
