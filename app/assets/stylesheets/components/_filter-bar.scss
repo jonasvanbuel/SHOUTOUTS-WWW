@@ -35,7 +35,7 @@
 
         font-size: 14px;
         font-weight: 400;
-        color: $font-color-medium-gray;
+        color: $dark-blue;
       }
 
       .sort-options-buttons {
@@ -81,7 +81,7 @@
   }
 
   .filter-sub[type="search-options"] {
-    height: $btn-small-height;
+    height: $btn-secondary-small-height;
 
     flex-direction: row;
     justify-content: space-between;
@@ -120,17 +120,17 @@
   clip-path: inset(-10px -10px -10px 0px);
 }
 
-.sort-option.btn-secondary-custom {
+.sort-option.btn-secondary-switch {
   box-shadow: none;
 }
 
-.sort-option.btn-secondary-custom-selected {
-  font-weight: 700;
+.sort-option.btn-secondary-switch-selected {
+  font-weight: 600;
 
   box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.4);
 }
 
-.sort-option.btn-secondary-custom-selected:hover {
+.sort-option.btn-secondary-switch-selected:hover {
   background-color: rgba($dark-blue, 0.9);
   color: white;
 

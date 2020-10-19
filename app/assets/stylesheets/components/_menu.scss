@@ -30,13 +30,13 @@
 
     position: relative;
 
-    .connected-accounts-title {
-      height: $btn-small-height;
+    .following-title {
+      height: $btn-secondary-small-height;
 
       font-size: $small-font-size;
       font-family: Open Sans, Helvetica, sans-serif;
       font-weight: 400;
-      color: $font-color-light-gray;
+      color: $dark-blue;
 
       margin-bottom: 12px;
       display: flex;
@@ -49,15 +49,6 @@
 
   .submenu-bottom {
     padding-top: $large-padding;
-
-    .connected-accounts {
-      background-color: black;
-      color: white;
-      font-weight: 600;
-
-      padding: 6px 24px;
-      border-radius: 80px;
-    }
   }
 }
 
@@ -67,4 +58,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.menu a {
+
+}
+
+.menu a:link, a:visited {
+  /* Enabled link styles */
 }

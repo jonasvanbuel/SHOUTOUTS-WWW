@@ -43,8 +43,8 @@ $logo-proportions-width:  256px;
 $login-pg-logo-margin: calc(100vw - $logo-proportions-width) / 2;
 
 // SIZES
-$btn-small-height: 32px;
-$btn-primary-height: 56px;
+$btn-primary-large-height: 56px;
+$btn-secondary-small-height: 32px;
 
 // PADDING
 $small-padding:       6px;
@@ -67,5 +67,5 @@ $search-form-height:  64px;
 $search-form-margin-top:  ($dashboard-pg-navbar-height - $search-form-height - $medium-padding) / 2;
 
 
-$livestream-padding-top: ($filter-bar-height - $medium-padding - $btn-primary-height) / 2;
+$livestream-padding-top: ($filter-bar-height - $medium-padding - $btn-primary-large-height) / 2;
 
