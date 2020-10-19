@@ -1,13 +1,11 @@
-const LOGO_RECT_PRESET_PROPORTIONS = {
-  height: 184,
-  width: 769.2
-};
+// const LOGO_RECT_PRESET_PROPORTIONS = {
+//   height: 50.05,
+//   width: 256
+// };
 const FILTER_BAR_PADDING_LEFT = 6;
 
 const scrollCallback = () => {
-  console.log("scrollCallback triggered...");
-
-  const logo = document.querySelector('.logo-container');
+  const logo = document.getElementById("logo-iframe");
   const logoRect = logo.getBoundingClientRect();
   const navbar = document.querySelector('.navbar');
   const navbarRect = navbar.getBoundingClientRect();
@@ -15,18 +13,17 @@ const scrollCallback = () => {
   const menuRect = menu.getBoundingClientRect();
   const filterBar = document.querySelector('.filter-bar');
   const filterBarRect = filterBar.getBoundingClientRect();
-
-  // Can't evaluate logoRect upon DOMContentLoaded - takes some time to render svg?
-  // Calculate logoPaddingLeft with navbarRect.Height
-
-  const logoRectWidth = (navbarRect.height * LOGO_RECT_PRESET_PROPORTIONS.width) / LOGO_RECT_PRESET_PROPORTIONS.height;
-  const logoPaddingLeft = logoRectWidth / 3;
-  // console.log(`logoRectWidth: ${logoRectWidth}`);
-  // console.log(`logoPaddingLeft: ${logoPaddingLeft}`);
+  const container = document.querySelector('.custom-body-container');
+  const containerRect = container.getBoundingClientRect();
+  const containerMargin = (window.innerWidth - containerRect.width) / 2;
 
   // COORDINATES
-  const initialPosition = filterBarRect.left + FILTER_BAR_PADDING_LEFT - logoPaddingLeft;
-  const scrolledPosition = menuRect.left - logoPaddingLeft;
+  // Center position...
+  // const initialPosition = (containerRect.width / 2) - (logoRect.width / 2);
+  // Left alligned with search input...
+  const initialPosition = filterBarRect.left - containerMargin + FILTER_BAR_PADDING_LEFT;
+
+  const scrolledPosition = -(logoRect.width - menuRect.width);
   // console.log(`initialPosition: ${initialPosition}px`);
   // console.log(`scrolledPosition: ${scrolledPosition}px`);
 

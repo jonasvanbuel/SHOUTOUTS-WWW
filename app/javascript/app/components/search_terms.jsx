@@ -18,7 +18,7 @@ class SearchTerms extends Component {
 
   renderSearchTerm = (filter) => {
     return (
-      <div className="search-term btn-secondary-custom">
+      <div className="search-term btn-secondary-switch">
         <span>{`"${filter}"`}</span>
         <i class="fas fa-times-circle" onClick={this.handleClick}></i>
       </div>

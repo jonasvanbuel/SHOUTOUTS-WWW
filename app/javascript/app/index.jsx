@@ -20,6 +20,7 @@ import Dashboard from './components/dashboard';
 import Livestream from './components/livestream';
 
 // REDUCERS
+import userReducer from './reducers/user_reducer';
 import postsReducer from './reducers/posts_reducer';
 import sortKeyReducer from './reducers/sort_key_reducer';
 import sortOrderReducer from './reducers/sort_order_reducer';
@@ -28,6 +29,7 @@ import filterReducer from './reducers/filter_reducer';
 import sortedFilteredPostsReducer from './reducers/sorted_filtered_posts_reducer';
 
 const initialState = {
+  user: {},
   posts: [],
   sortedFilteredPosts: [],
   sortKey: 'posted',
@@ -37,6 +39,7 @@ const initialState = {
 };
 
 const reducers = combineReducers({
+  user: userReducer,
   posts: postsReducer,
   sortedFilteredPosts: sortedFilteredPostsReducer,
   sortKey: sortKeyReducer,

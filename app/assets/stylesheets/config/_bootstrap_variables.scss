@@ -28,11 +28,12 @@ $warning:    $orange;
 
 // $navbar-height:         156px;
 $login-pg-navbar-height:             248px;
-$dashboard-pg-navbar-height:         184px;
+$dashboard-pg-navbar-height:         200px;
 
 $navbar-body-padding:                56px;
 $filter-bar-height:                  $dashboard-pg-navbar-height;
-$menu-width:                         256px;
+// $menu-width:                         256px;
+$menu-width:                         300px;
 $sunset-gradient-height:             400px;
 
 $logo-proportions-height: 184px;
@@ -42,8 +43,8 @@ $logo-proportions-width:  256px;
 $login-pg-logo-margin: calc(100vw - $logo-proportions-width) / 2;
 
 // SIZES
-$btn-small-height: 32px;
-$btn-large-height: 56px;
+$btn-primary-large-height: 56px;
+$btn-secondary-small-height: 32px;
 
 // PADDING
 $small-padding:       6px;
@@ -55,7 +56,7 @@ $xl-padding:          40px;
 $small-font-size:     14px;
 $large-font-size:     24px;
 
-// ELEMENTSß
+// ELEMENTS
 $no-posts-found-height: 250px;
 $view-all-posts-height: 150px;
 
@@ -66,5 +67,5 @@ $search-form-height:  64px;
 $search-form-margin-top:  ($dashboard-pg-navbar-height - $search-form-height - $medium-padding) / 2;
 
 
-$livestream-padding-top: ($filter-bar-height - $medium-padding - $btn-large-height) / 2;
+$livestream-padding-top: ($filter-bar-height - $medium-padding - $btn-primary-large-height) / 2;
 

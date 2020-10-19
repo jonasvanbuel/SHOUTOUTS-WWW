@@ -1,15 +1,17 @@
 $logo-proportions-width: 2000px;
 $logo-proportions-height: 391px;
 
-$logo-width: 410px;
+$logo-width: $menu-width * 1.1;
 $logo-height: $logo-width * $logo-proportions-height / $logo-proportions-width;
 
-iframe {
+#logo-iframe {
   width: $logo-width;
   height: $logo-height;
 
   border: 0;
   overflow: hidden;
+
+  position: absolute;
 }
 
 .logo-container-iframe {
@@ -42,4 +44,12 @@ iframe {
 
     z-index: -1;
   }
+}
+
+.login-page .navbar #logo-iframe {
+  width: $logo-width;
+}
+
+.dashboard .navbar #logo-iframe {
+  top: (($dashboard-pg-navbar-height - $medium-padding) / 2) - ($logo-height / 2) + 3;
 }

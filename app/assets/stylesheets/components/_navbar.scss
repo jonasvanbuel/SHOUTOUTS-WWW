@@ -5,15 +5,17 @@
   position: fixed;
   top: 0px;
   padding: 0px;
-  z-index: 5;
+  z-index: 50;
 
   display: flex;
 }
 
-.login-page .navbar {
+.login-page .navbar,
+.login-page .navbar .menu {
   height: $login-pg-navbar-height;
 }
 
-.dashboard .navbar {
+.dashboard .navbar,
+.dashboard .navbar .menu {
   height: $dashboard-pg-navbar-height;
 }

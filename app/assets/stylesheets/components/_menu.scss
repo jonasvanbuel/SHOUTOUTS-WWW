@@ -1,9 +1,5 @@
 .menu {
-  // background-color: gray;
-
-  // Horizontal flex-grow within dashboard-body
-  // flex-grow: 2;
-  width: 256px;
+  // width: $menu-width;
   min-width: 256px;
   height: 300px;
 
@@ -34,32 +30,13 @@
 
     position: relative;
 
-    a.start-livestream {
-      height: $btn-large-height;
-
-      color: white;
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 600;
-
-      background-color: black;
-      width: 100%;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 80px;
-
-      font-size: 20px;
-    }
-
-    .connected-accounts-title {
-      height: $btn-small-height;
+    .following-title {
+      height: $btn-secondary-small-height;
 
       font-size: $small-font-size;
       font-family: Open Sans, Helvetica, sans-serif;
       font-weight: 400;
-      color: $font-color-light-gray;
+      color: $dark-blue;
 
       margin-bottom: 12px;
       display: flex;
@@ -72,15 +49,21 @@
 
   .submenu-bottom {
     padding-top: $large-padding;
-
-    .connected-accounts {
-      background-color: black;
-      color: white;
-      font-weight: 600;
-
-      padding: 6px 24px;
-      border-radius: 80px;
-    }
   }
 }
 
+.login-page .navbar .menu {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu a {
+
+}
+
+.menu a:link, a:visited {
+  /* Enabled link styles */
+}

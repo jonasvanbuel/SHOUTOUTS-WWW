@@ -25,7 +25,11 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar">
-        <LogoIframe />
+        <div className="container custom-body-container">
+          <div className="menu">
+            <LogoIframe />
+          </div>
+        </div>
       </div>
     );
   }

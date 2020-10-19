@@ -1,13 +1,101 @@
-.btn-primary-custom {
+.btn-primary-large {
+  height: $btn-primary-large-height;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 80px;
+  margin-top: 24px;
+
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+
+  background: linear-gradient(128.03deg, rgba(255, 255, 255, 0.05) -3.68%, rgba(0, 0, 0, 0.05) 112.22%), linear-gradient(180deg, #4B7AC2 0%, #0B2136 100%);
+  // background: linear-gradient(115deg, rgba(255, 255, 255, 0.05) -10%, rgba(0, 0, 0, 0.05) 100%), linear-gradient(180deg, #4B7AC2 0%, #0B2136 100%);
+  box-shadow: -5px -5px 4px #FFFFFF, 5px 5px 4px rgba(108, 108, 108, 0.25), inset 0px 8px 8px rgba(255, 255, 255, 0.2), inset 0px -4px 20px rgba(28, 39, 99, 0.5);
+}
+
+.btn-primary-large:hover {
+  text-decoration: none;
+  color: white;
+
+  // background: linear-gradient(128.03deg, rgba(255, 255, 255, 0) -3.68%, rgba(0, 0, 0, 0.25) 112.22%), linear-gradient(180deg, #4B7AC2 0%, #0B2136 100%);
+  background: linear-gradient(128.03deg, rgba(255, 255, 255, 0.05) -3.68%, rgba(0, 0, 0, 0.05) 112.22%), #355889;
+  // box-shadow: -5px -5px 4px #FFFFFF, 5px 5px 4px rgba(108, 108, 108, 0.30), inset 0px 8px 8px rgba(255, 255, 255, 0.2), inset 0px -4px 20px rgba(28, 39, 99, 0.5);
+  box-shadow: -5px -5px 4px #FFFFFF, 5px 5px 4px rgba(108, 108, 108, 0.30), inset 0px 0px 32px rgba(0, 0, 0, 0.1), inset 0px 0px 16px rgba(0, 0, 0, 0.5);
 
 }
 
-.btn-secondary-custom {
+.btn-primary-large:onclick {
+  text-decoration: none;
+  color: white;
+
+  // background: linear-gradient(128.03deg, rgba(255, 255, 255, 0) -3.68%, rgba(0, 0, 0, 0.25) 112.22%), linear-gradient(180deg, #4B7AC2 0%, #0B2136 100%);
+  background: linear-gradient(128.03deg, rgba(255, 255, 255, 0.05) -3.68%, rgba(0, 0, 0, 0.05) 112.22%), #355889;
+  // box-shadow: -5px -5px 4px #FFFFFF, 5px 5px 4px rgba(108, 108, 108, 0.30), inset 0px 8px 8px rgba(255, 255, 255, 0.2), inset 0px -4px 20px rgba(28, 39, 99, 0.5);
+  box-shadow: -5px -5px 4px #FFFFFF, 5px 5px 4px rgba(108, 108, 108, 0.30), inset 0px 0px 32px rgba(0, 0, 0, 0.1), inset 0px 0px 16px rgba(0, 0, 0, 0.5);
+
+}
+
+// ==========
+
+.btn-secondary-small {
+  height: $btn-secondary-small-height;
+  padding: 0px 28px;
+  border-radius: $btn-secondary-small-height / 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font: $body-font;
+  font-size: 14 px;
+  font-weight: 600;
+  color: $dark-blue;
+
+  background-color: $dashboard-background-color;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.05) -10%, rgba(0, 0, 0, 0.05) 100%);
+  box-shadow: -5px -5px 4px rgba(255, 255, 255, 1),
+              5px 5px 4px rgba($medium-gray, 0.25);
+  border: none;
+
+  text-decoration: none;
+
+  .active-symbol {
+    height: 12px;
+    width: 12px;
+    border-radius: 10px;
+    background-color: #1ed002;
+
+    margin-right: 24px;
+    margin-top: 1px;
+  }
+}
+
+.btn-secondary-small:hover {
+  text-decoration: none;
+  color: $dark-blue;
+
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.15) -10%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.btn-secondary-small:active {
+  color: white;
+  background-color: rgba($dark-blue, 0.7);
+}
+
+// ==========
+
+.btn-secondary-switch {
   background-color: $dashboard-background-color;
 
-  height: 32px;
+  height: $btn-secondary-small-height;
   padding: 0px 48px;
-  border-radius: 20px;
+  border-radius: $btn-secondary-small-height / 2;
   border: none;
 
   font: $body-font;
@@ -20,13 +108,13 @@
               5px 5px 4px rgba($medium-gray, 0.25);
 }
 
-.btn-secondary-custom:hover {
+.btn-secondary-switch:hover {
   background: linear-gradient(115deg, rgba(255, 255, 255, 0.15) -10%, rgba(0, 0, 0, 0.1) 100%);
   box-shadow: -5px -5px 4px rgba(255, 255, 255, 1),
               5px 5px 4px rgba($medium-gray, 0.5);
 }
 
-.btn-secondary-custom:active {
+.btn-secondary-switch:active {
   background-color: rgba($dark-blue, 0.7);
   color: white;
 
@@ -35,7 +123,7 @@
               -5px -5px 4px rgba(255, 255, 255, 1);
 }
 
-.btn-secondary-custom-selected {
+.btn-secondary-switch-selected {
   background-color: rgba($dark-blue, 0.7);
   color: white;
 

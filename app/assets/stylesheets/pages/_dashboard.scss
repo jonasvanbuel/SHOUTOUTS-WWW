@@ -5,7 +5,7 @@
 
 
 body {
-  // background-color: #E5E4DC;
+  background-color: rgba(230, 96, 139, 1);
 }
 
 .custom-body-container {
@@ -21,40 +21,43 @@ body {
 }
 
 .dashboard-body {
+  background-color: $dashboard-background-color;
+
   width: 100%;
   min-height: 100vh;
-  margin-bottom: 320px;
-
-  display: flex;
-  flex-direction: column;
+  padding-bottom: 400px;
 
   position: relative;
   top: $dashboard-pg-navbar-height;
 
-  @media (min-width: 576px) {
+  .custom-body-container {
+    display: flex;
+    flex-direction: column;
 
+    @media (min-width: 576px) {
+
+    }
+
+    @media (min-width: 768px) {
+
+    }
+
+    @media (min-width: 992px) {
+      flex-direction: row;
+    }
+
+    @media (min-width: 1200px) {
+
+    }
   }
+}
 
-  @media (min-width: 768px) {
-
-  }
-
-  @media (min-width: 992px) {
-    flex-direction: row;
-  }
-
-  @media (min-width: 1200px) {
-
-  }
-
-
-  .post-list-container {
+.dashboard-body .post-list-container {
     // background-color: rgba(0, 0, 0, 0.5);
 
     display: flex;
     flex-direction: column;
   }
-}
 
 
 .noselect {

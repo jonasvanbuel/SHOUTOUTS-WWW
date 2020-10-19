@@ -2,11 +2,10 @@
   background-color: white;
 
   width: 100%;
-  // height: $btn-large-height;
   height: $search-form-height;
 
   margin: 0px;
-  margin-top: $search-form-margin-top;
+  margin-top: $search-form-margin-top + 12;
   padding-left: $large-padding;
 
   display: flex;

@@ -67,11 +67,11 @@ class FilterBar extends Component {
           <SearchTerms />
           <div className="sort-options" data-sort-key={sortKey}>
             <div className="sort-label">
-              sort by:
+              Sort by:
             </div>
             <div className="sort-options-buttons">
               <div
-                className={`sort-option btn-secondary-custom ${sortKey === "posted" ? "btn-secondary-custom-selected" : ""}`}
+                className={`sort-option btn-secondary-switch ${sortKey === "posted" ? "btn-secondary-switch-selected" : ""}`}
                 id="sort-option-posted"
                 onClick={this.handlePostedClick}
               >
@@ -79,7 +79,7 @@ class FilterBar extends Component {
                 <span>posted</span>
               </div>
               <div
-                className={`sort-option btn-secondary-custom ${sortKey === "likes" ? "btn-secondary-custom-selected" : ""}`}
+                className={`sort-option btn-secondary-switch ${sortKey === "likes" ? "btn-secondary-switch-selected" : ""}`}
                 id="sort-option-likes"
                 onClick={this.handleLikesClick}
               >
