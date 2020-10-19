@@ -9,9 +9,10 @@ class Footer extends Component {
   render() {
     return (
       <footer>
-        <div className="horizontal-gradient"></div>
+        <div className="pink-glow"></div>
         <div className="footer-content">
           <img src={Wave} className="wave" alt="" />
+          <div className="dark-glow"></div>
           <div className="container custom-body-container custom-footer-container">
             <div className="footer-content-menu">
               <a href="mailto:jonas.vanbuel@gmail.com">Contact us</a>
