@@ -17,14 +17,7 @@ class Footer extends Component {
             <div className="footer-content-menu">
               <a href="mailto:jonas.vanbuel@gmail.com">Contact us</a>
               <a
-                href="https://www.instagram.com/jonasvanbuel/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-              <a
-                href="https://github.com/jonasvanbuel"
+                href="https://github.com/jonasvanbuel/SHOUTOUTS-WWW"
                 target="_blank"
                 rel="noopener noreferrer"
               >
