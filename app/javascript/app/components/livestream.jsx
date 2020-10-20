@@ -24,7 +24,7 @@ class Livestream extends Component {
 
     return (
       <div className="livestream-container">
-        <div className="horizontal-gradient"></div>
+        <div className="pink-glow"></div>
         {posts.map((post) => {
           return <Post taggedPost={post} key={post.pathname} />;
         })}

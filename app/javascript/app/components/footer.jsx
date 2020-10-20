@@ -9,21 +9,15 @@ class Footer extends Component {
   render() {
     return (
       <footer>
-        <div className="horizontal-gradient"></div>
+        <div className="pink-glow"></div>
         <div className="footer-content">
           <img src={Wave} className="wave" alt="" />
+          <div className="dark-glow"></div>
           <div className="container custom-body-container custom-footer-container">
             <div className="footer-content-menu">
               <a href="mailto:jonas.vanbuel@gmail.com">Contact us</a>
               <a
-                href="https://www.instagram.com/jonasvanbuel/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-              <a
-                href="https://github.com/jonasvanbuel"
+                href="https://github.com/jonasvanbuel/SHOUTOUTS-WWW"
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -2,7 +2,7 @@
   font: $body-font;
 
   .load-screen {
-    // background-color: green;
+    background-color: $dashboard-background-color;
 
     width: 100vw;
     height: 90vh;
@@ -62,7 +62,13 @@
 }
 
 // Overwriting default simple_form styling
+.simple_form .btn {
+  transition: none;
+}
+
 #login-form {
+  font: $body-font;
+
   .form-inputs {
     color: red;
 
@@ -88,16 +94,18 @@
       }
     }
   }
-
-  .form-actions {
-    // background-color: $dashboard-background-color;
-    margin-top: 32px;
-
-    display: flex;
-    justify-content: flex-end;
-  }
 }
 
+#login-form .form-actions {
+  margin-top: 32px;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+#login-form .btn-secondary-small[type=submit] {
+  font-size: 16px;
+}
 
 
 
