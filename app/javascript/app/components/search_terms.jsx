@@ -20,7 +20,7 @@ class SearchTerms extends Component {
     return (
       <div className="search-term btn-secondary-switch">
         <span>{`"${filter}"`}</span>
-        <i class="fas fa-times-circle" onClick={this.handleClick}></i>
+        <i className="fas fa-times-circle" onClick={this.handleClick}></i>
       </div>
     );
   }

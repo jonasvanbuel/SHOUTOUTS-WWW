@@ -34,6 +34,7 @@ class PostDashboard extends Component {
   render() {
     const { taggedPost } = this.props;
     const { hidden } = this.state;
+
     return (
       <div className="post post-dashboard" id={taggedPost.pathname} data-hidden={hidden}>
         <PostHiddenOptions taggedPost={taggedPost} stateHidden={hidden} setHidden={this.setHidden} />

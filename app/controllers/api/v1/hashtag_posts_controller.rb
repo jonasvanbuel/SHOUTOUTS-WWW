@@ -67,7 +67,7 @@ class Api::V1::HashtagPostsController < ActionController::API
   def most_popular_selection
     hashtag_posts = HashtagPost.where(hashtag: @hashtag)
     sorted_posts = hashtag_posts.sort_by { |post| post.likes || 0 }
-    sliced_posts = sorted_posts.reverse[0..9]
+    sliced_posts = sorted_posts.reverse[0..29]
     categorized_posts = add_style_classnames(sliced_posts, 'MR')
     # categorized_posts
   end
