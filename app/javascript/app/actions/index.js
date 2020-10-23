@@ -44,6 +44,7 @@ export function updateSortedFilteredPosts() {
       filter
     } = getState();
 
+    // Search is not working properly!!!
     const filteredPosts = filtered === true ? filterPosts(posts, filtered, filter) : posts;
     const sortedFilteredPosts = sortPosts(filteredPosts, sortKey, sortOrder);
 
