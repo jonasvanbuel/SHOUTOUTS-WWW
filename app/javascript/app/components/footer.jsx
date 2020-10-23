@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 // ASSETS
 import Fire from 'images/fire.svg';
@@ -6,6 +8,21 @@ import Fire from 'images/fire.svg';
 import Wave from 'images/footer-wave.svg';
 
 class Footer extends Component {
+  renderSignout = () => {
+    const { pageContext } = this.props;
+    if (pageContext === "dashboard") {
+      return (
+        <a
+          href="/signout"
+          data-method="delete"
+          rel="nofollow"
+        >
+          Sign out
+        </a>
+      );
+    }
+  }
+
   render() {
     return (
       <footer>
@@ -23,13 +40,7 @@ class Footer extends Component {
               >
                 Github
               </a>
-              <a
-                href="/logout"
-                data-method="delete"
-                rel="nofollow"
-              >
-                Sign out
-              </a>
+              {this.renderSignout()}
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@ class Dashboard extends Component {
             <PostListContainer />
           </div>
         </div>
-        <Footer />
+        <Footer pageContext="dashboard" />
       </div>
     );
   }
