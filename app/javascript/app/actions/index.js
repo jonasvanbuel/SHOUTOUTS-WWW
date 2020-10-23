@@ -44,6 +44,7 @@ export function updateSortedFilteredPosts() {
       filter
     } = getState();
 
+    // Search is not working properly!!!
     const filteredPosts = filtered === true ? filterPosts(posts, filtered, filter) : posts;
     const sortedFilteredPosts = sortPosts(filteredPosts, sortKey, sortOrder);
 
@@ -54,16 +55,16 @@ export function updateSortedFilteredPosts() {
   };
 }
 
-export function hidePost(taggedPost) {
+export function hidePost(taggedPost, postType) {
   // UPDATE DOM
   hidePostOptions(taggedPost);
   hidePostHiddenOptions(taggedPost);
   showPostHiddenOverlay(taggedPost);
 
   const body = {
-    type: HIDE_POST,
-    instagram_account_id: taggedPost.instagram_account_id,
-    post_id: taggedPost.id
+    action_type: HIDE_POST,
+    post_type: postType,
+    post_id: taggedPost.id,
   };
 
   const endpoint = `${BASE_URL}/tagged_posts/update_hidden`;
@@ -81,14 +82,14 @@ export function hidePost(taggedPost) {
   };
 }
 
-export function unhidePost(taggedPost) {
+export function unhidePost(taggedPost, postType) {
   // Update DOM
   // hidePostHidden(taggedPost);
   hidePostHiddenOptions(taggedPost);
 
   const body = {
-    type: UNHIDE_POST,
-    instagram_account_id: taggedPost.instagram_account_id,
+    action_type: UNHIDE_POST,
+    post_type: postType,
     post_id: taggedPost.id
   };
 

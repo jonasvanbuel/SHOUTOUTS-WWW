@@ -41,6 +41,30 @@ class Api::V1::HashtagPostsController < ActionController::API
   end
 
   def update_hidden
+    if params[:post_type] === "hashtag"
+
+      action_type = params[:action_type]
+      if action_type === 'HIDE_POST'
+        post = HashtagPost.find(params[:post_id])
+
+        unless post[:hidden] = true
+          post[:hidden] = true
+        end
+        if post.save
+          render json: most_popular_selection
+        end
+      end
+
+      if action_type === 'UNHIDE_POST'
+        post = HashtagPost.find(params[:post_id])
+        unless post[:hidden] = false
+          post[:hidden] = false
+        end
+        if post.save
+          render json: most_popular_selection
+        end
+      end
+    end
   end
 
   def delete
@@ -67,7 +91,7 @@ class Api::V1::HashtagPostsController < ActionController::API
   def most_popular_selection
     hashtag_posts = HashtagPost.where(hashtag: @hashtag)
     sorted_posts = hashtag_posts.sort_by { |post| post.likes || 0 }
-    sliced_posts = sorted_posts.reverse[0..9]
+    sliced_posts = sorted_posts.reverse[0..29]
     categorized_posts = add_style_classnames(sliced_posts, 'MR')
     # categorized_posts
   end

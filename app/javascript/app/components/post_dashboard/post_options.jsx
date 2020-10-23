@@ -22,12 +22,12 @@ class PostOptions extends Component {
   // }
 
   handleClick = () => {
-    const { taggedPost, hidePost, setHidden } = this.props;
+    const { user, taggedPost, hidePost, setHidden } = this.props;
     // Update local state postDashboard
     setHidden(true);
 
     // Dispatch server action
-    hidePost(taggedPost);
+    hidePost(taggedPost, user.post_type);
   }
 
   render() {
@@ -49,8 +49,14 @@ class PostOptions extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ hidePost }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(PostOptions);
+export default connect(mapStateToProps, mapDispatchToProps)(PostOptions);
