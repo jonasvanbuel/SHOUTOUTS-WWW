@@ -15,6 +15,9 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem "actionpack", ">= 6.0.3.2"
+gem "actionview", ">= 6.0.3.3"
+gem "rack", ">= 2.2.3"
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -28,5 +31,3 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
 end
-
-gem "actionpack", ">= 5.2.4.3"
