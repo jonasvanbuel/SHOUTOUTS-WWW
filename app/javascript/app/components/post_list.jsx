@@ -46,7 +46,7 @@ class PostList extends Component {
     }
 
     // If state has arrived, display actual posts
-    if (sortedFilteredPosts.length >= 1) {
+    if (sortedFilteredPosts.length > 0) {
       return sortedFilteredPosts.map((post) => {
         return <PostDashboard taggedPost={post} key={post.pathname} />;
       })
