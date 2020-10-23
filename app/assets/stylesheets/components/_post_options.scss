@@ -53,8 +53,8 @@ $internal-padding: 8px;
 }
 
 .post-hidden-overlay {
-  background-color: #70587C;
-  opacity: 0.9;
+  background-color: $dashboard-post-background-color;
+  opacity: 0.8;
 
   .fas,
   span.symbol-label {
