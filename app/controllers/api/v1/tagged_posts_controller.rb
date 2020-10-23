@@ -13,7 +13,6 @@ class Api::V1::TaggedPostsController < ActionController::API
     end
   end
 
-
   def index
     render json: most_recent_selection
   end
@@ -37,39 +36,46 @@ class Api::V1::TaggedPostsController < ActionController::API
 
   def update_likes
     # TO DO: REFACTOR TO DEDICATED IF STATEMENT
-    tagged_post = TaggedPost.find_by instagram_account: @instagram_account, pathname: params[:pathname]
-    tagged_post[:likes] = params[:likes]
-    tagged_post.save
+    post = TaggedPost.find(params[:post_id]) || HashtagPost.find(params[:post_id])
+    post[:likes] = params[:likes]
+    post.save
     render json: most_recent_selection
   end
 
+  # TODO: REDIRECT TO HASHTAG_CONTROLLER
   def update_hidden
-    update_type = params[:type]
-
-    if update_type === 'HIDE_POST'
-      tagged_post = TaggedPost.find(params[:post_id])
-      unless tagged_post[:hidden] = true
-        tagged_post[:hidden] = true
-      end
-      if tagged_post.save
-        render json: most_recent_selection
-      end
+    if params[:post_type] === "hashtag"
+      redirect_to controller: 'hashtag_posts', action: 'update_hidden'
     end
 
-    if update_type === 'UNHIDE_POST'
-      tagged_post = TaggedPost.find(params[:post_id])
-      unless tagged_post[:hidden] = false
-        tagged_post[:hidden] = false
+    if params[:post_type] === "instagram_account"
+      action_type = params[:action_type]
+      if action_type === 'HIDE_POST'
+        tagged_post = TaggedPost.find(params[:post_id])
+
+        unless tagged_post[:hidden] = true
+          tagged_post[:hidden] = true
+        end
+        if tagged_post.save
+          render json: most_recent_selection
+        end
       end
-      if tagged_post.save
-        render json: most_recent_selection
+
+      if action_type === 'UNHIDE_POST'
+        tagged_post = TaggedPost.find(params[:post_id])
+        unless tagged_post[:hidden] = false
+          tagged_post[:hidden] = false
+        end
+        if tagged_post.save
+          render json: most_recent_selection
+        end
       end
     end
   end
 
   def delete
-    tagged_post = TaggedPost.find_by instagram_account: @instagram_account, pathname: params[:pathname]
-    tagged_post.destroy
+    post = TaggedPost.find(params[:post_id])
+    post.destroy
     render json: most_recent_selection
   end
 

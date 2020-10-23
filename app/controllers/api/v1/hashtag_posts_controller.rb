@@ -41,6 +41,30 @@ class Api::V1::HashtagPostsController < ActionController::API
   end
 
   def update_hidden
+    if params[:post_type] === "hashtag"
+
+      action_type = params[:action_type]
+      if action_type === 'HIDE_POST'
+        post = HashtagPost.find(params[:post_id])
+
+        unless post[:hidden] = true
+          post[:hidden] = true
+        end
+        if post.save
+          render json: most_popular_selection
+        end
+      end
+
+      if action_type === 'UNHIDE_POST'
+        post = HashtagPost.find(params[:post_id])
+        unless post[:hidden] = false
+          post[:hidden] = false
+        end
+        if post.save
+          render json: most_popular_selection
+        end
+      end
+    end
   end
 
   def delete

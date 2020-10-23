@@ -22,12 +22,12 @@ class PostHiddenOptions extends Component {
   // }
 
   handleClick = () => {
-    const { taggedPost, unhidePost, setHidden } = this.props;
+    const { user, taggedPost, unhidePost, setHidden } = this.props;
     // Update local state postDashboard
     setHidden(false);
 
     // Dispatch server action
-    unhidePost(taggedPost);
+    unhidePost(taggedPost, user.post_type);
   }
 
   render() {
@@ -49,8 +49,14 @@ class PostHiddenOptions extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ unhidePost }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(PostHiddenOptions);
+export default connect(mapStateToProps, mapDispatchToProps)(PostHiddenOptions);
