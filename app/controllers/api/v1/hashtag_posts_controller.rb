@@ -88,12 +88,30 @@ class Api::V1::HashtagPostsController < ActionController::API
     end
   end
 
+  def set_post_count
+    case current_user.device_width
+    when 0..576
+      7
+    when 577..768
+      10
+    when 769..992
+      20
+    when 993..1200
+      30
+    when 1201..1440
+      40
+    when 1440..10000
+      75
+    end
+  end
+
   def most_popular_selection
+    post_count = current_user.device_width ? set_post_count : 5
+
     hashtag_posts = HashtagPost.where(hashtag: @hashtag)
     sorted_posts = hashtag_posts.sort_by { |post| post.likes || 0 }
-    sliced_posts = sorted_posts.reverse[0..29]
+    sliced_posts = sorted_posts.reverse[0..post_count-1]
     categorized_posts = add_style_classnames(sliced_posts, 'MR')
-    # categorized_posts
   end
 
   def add_style_classnames(posts_array, selection_type)

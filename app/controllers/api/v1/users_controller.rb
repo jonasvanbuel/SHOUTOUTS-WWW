@@ -16,8 +16,8 @@ class Api::V1::UsersController < ActionController::API
   def set_device_width
     if current_user && params[:device_width]
       current_user.device_width = params[:device_width]
+      current_user.save
     end
-    binding.pry
   end
 
   def user_details
