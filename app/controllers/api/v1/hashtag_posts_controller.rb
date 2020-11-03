@@ -91,7 +91,7 @@ class Api::V1::HashtagPostsController < ActionController::API
   def set_post_count
     case current_user.device_width
     when 0..576
-      7
+      8
     when 577..768
       10
     when 769..992
@@ -99,9 +99,9 @@ class Api::V1::HashtagPostsController < ActionController::API
     when 993..1200
       30
     when 1201..1440
-      40
+      35
     when 1440..10000
-      75
+      40
     end
   end
 
@@ -111,6 +111,7 @@ class Api::V1::HashtagPostsController < ActionController::API
     hashtag_posts = HashtagPost.where(hashtag: @hashtag)
     sorted_posts = hashtag_posts.sort_by { |post| post.likes || 0 }
     sliced_posts = sorted_posts.reverse[0..post_count-1]
+
     categorized_posts = add_style_classnames(sliced_posts, 'MR')
   end
 

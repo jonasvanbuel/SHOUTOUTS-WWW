@@ -86,7 +86,7 @@ class Api::V1::TaggedPostsController < ActionController::API
   def set_post_count
     case current_user.device_width
     when 0..576
-      5
+      8
     when 577..768
       10
     when 769..992
@@ -94,9 +94,9 @@ class Api::V1::TaggedPostsController < ActionController::API
     when 993..1200
       30
     when 1201..1440
-      40
+      35
     when 1440..10000
-      75
+      40
     end
   end
 
