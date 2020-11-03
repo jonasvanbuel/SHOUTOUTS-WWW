@@ -2,24 +2,31 @@ class Api::V1::HashtagPostsController < ActionController::API
   before_action :set_hashtag
 
   def index
-    render json: most_popular_selection
+    if current_user
+      post_count = current_user.device_width ? set_post_count : 5
+      render json: most_popular_selection(post_count)
+    else
+      # Calling from scraper
+      render json: most_popular_selection(50)
+    end
   end
 
   def create
     if HashtagPost.find_by(pathname: params[:pathname])
       update
-    else HashtagPost.create(
-          hashtag: @hashtag,
-          post_type: params[:post_type],
-          author: params[:author],
-          message: params[:message],
-          posted_at: params[:posted_at],
-          pathname: params[:pathname],
-          image_url: params[:image_url],
-          likes: params[:likes] || 0,
-          user_avatar_url: params[:user_avatar_url],
-          style_classname: params[:style_classname]
-        )
+    else
+      HashtagPost.create(
+        hashtag: @hashtag,
+        post_type: params[:post_type],
+        author: params[:author],
+        message: params[:message],
+        posted_at: params[:posted_at],
+        pathname: params[:pathname],
+        image_url: params[:image_url],
+        likes: params[:likes] || 0,
+        user_avatar_url: params[:user_avatar_url],
+        style_classname: params[:style_classname]
+      )
       index
     end
   end
@@ -32,6 +39,7 @@ class Api::V1::HashtagPostsController < ActionController::API
       likes: params[:likes] || 0,
       user_avatar_url: params[:user_avatar_url]
     )
+    # hashtag_post.save
     if hashtag_post.save
       index
     end
@@ -51,7 +59,7 @@ class Api::V1::HashtagPostsController < ActionController::API
           post[:hidden] = true
         end
         if post.save
-          render json: most_popular_selection
+          render json: most_popular_selection(50)
         end
       end
 
@@ -61,7 +69,7 @@ class Api::V1::HashtagPostsController < ActionController::API
           post[:hidden] = false
         end
         if post.save
-          render json: most_popular_selection
+          render json: most_popular_selection(50)
         end
       end
     end
@@ -105,9 +113,7 @@ class Api::V1::HashtagPostsController < ActionController::API
     end
   end
 
-  def most_popular_selection
-    post_count = current_user.device_width ? set_post_count : 5
-
+  def most_popular_selection(post_count)
     hashtag_posts = HashtagPost.where(hashtag: @hashtag)
     sorted_posts = hashtag_posts.sort_by { |post| post.likes || 0 }
     sliced_posts = sorted_posts.reverse[0..post_count-1]
