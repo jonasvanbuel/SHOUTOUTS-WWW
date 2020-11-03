@@ -1,8 +1,8 @@
 // Number of posts in each size
 export const COUNT_CONFIG = {
   mr: {
-    post_large: 9,
-    post_medium: 12,
+    post_large: 4,
+    post_medium: 8,
   }
 };
 

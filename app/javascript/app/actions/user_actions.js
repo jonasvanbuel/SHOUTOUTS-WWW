@@ -7,11 +7,18 @@ export const FETCH_USER = 'FETCH_USER';
 
 // ACTIONS
 export function fetchUser() {
+  const body = {
+    device_width: window.innerWidth
+  };
+
   // A-SYNCHRONOUS action dispatching using redux-thunks
   return (dispatch) => {
     const endpoint = `${BASE_URL}/user`;
     const promise = fetch(endpoint, {
-      credentials: "same-origin"
+      method: 'PATCH',
+      credentials: "same-origin",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
     })
       .then((r) => r.json());
 
