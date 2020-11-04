@@ -1,4 +1,4 @@
-import fetchPosts from './index';
+// import fetchPosts from './index';
 
 // VARIABLES
 const BASE_URL = '/api/v1';
