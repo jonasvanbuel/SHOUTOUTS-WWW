@@ -13,7 +13,7 @@ import LogoIframe from './logo-iframe/logo-iframe';
 import scrollLogo from '../helpers/_scroll_logo';
 // import placeHamburger from '../helpers/_place_hamburger';
 
-class Navbar extends Component {
+class NavbarDashboard extends Component {
   componentDidMount() {
     // Add scroll behaviour when on dashboard
     const { type } = this.props;
@@ -35,4 +35,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default NavbarDashboard;

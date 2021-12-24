@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_11_02_153210) do
     t.string "post_type"
     t.string "instagram_account"
     t.string "hashtag"
-    t.integer "device_width"
+    t.integer "device_width", default: 500
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
