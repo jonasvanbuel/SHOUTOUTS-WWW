@@ -39,7 +39,6 @@ class Api::V1::HashtagPostsController < ActionController::API
       likes: params[:likes] || 0,
       user_avatar_url: params[:user_avatar_url]
     )
-    # hashtag_post.save
     if hashtag_post.save
       index
     end

@@ -33,13 +33,6 @@ class Footer extends Component {
           <div className="container custom-body-container custom-footer-container">
             <div className="footer-content-menu">
               <a href="mailto:jonas.vanbuel@gmail.com">Contact us</a>
-              <a
-                href="https://github.com/jonasvanbuel/SHOUTOUTS-WWW"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Github
-              </a>
               {this.renderSignout()}
             </div>
           </div>
