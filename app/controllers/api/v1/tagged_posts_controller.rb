@@ -1,5 +1,5 @@
 class Api::V1::TaggedPostsController < ActionController::API
-  before_action :set_instagram_account, except: :user_route
+  before_action :set_instagram_account
 
   def user_route
     if current_user && current_user.post_type == "hashtag"
@@ -8,30 +8,52 @@ class Api::V1::TaggedPostsController < ActionController::API
       redirect_to controller: 'hashtag_posts', action: 'index', hashtag_name: user_hashtag.name
     end
 
-    if current_user && current_user.post_type == "tagged_post"
+    if current_user && current_user.post_type == "tagged"
       index
     end
   end
 
   def index
-    render json: most_recent_selection
+    if current_user
+      post_count = current_user.device_width ? set_post_count : 5
+      render json: most_recent_selection(post_count)
+    else
+      # Calling from scraper
+      render json: most_recent_selection(50)
+    end
   end
 
   def create
-    # @instagram_account = InstagramAccount.find_by(username: params[:instagram_username])
-    unless TaggedPost.find_by(pathname: params[:pathname])
+    if TaggedPost.find_by(pathname: params[:pathname])
+      update
+    else
       TaggedPost.create(
         instagram_account: @instagram_account,
+        post_type: params[:post_type],
         author: params[:author],
         message: params[:message],
         posted_at: params[:posted_at],
         pathname: params[:pathname],
         image_url: params[:image_url],
+        likes: params[:likes],
         user_avatar_url: params[:user_avatar_url],
-        likes: params[:likes]
+        style_classname: params[:style_classname]
       )
+      index
     end
-    render json: most_recent_selection
+  end
+
+  def update
+    tagged_post = TaggedPost.find_by(pathname: params[:pathname])
+    tagged_post.update(
+      message: params[:message],
+      image_url: params[:image_url],
+      likes: params[:likes] || 0,
+      user_avatar_url: params[:user_avatar_url]
+    )
+    if tagged_post.save
+      index
+    end
   end
 
   def update_likes
@@ -100,12 +122,12 @@ class Api::V1::TaggedPostsController < ActionController::API
     end
   end
 
-  def most_recent_selection
-    post_count = current_user.device_width ? set_post_count : 5
-
+  def most_recent_selection(post_count)
     tagged_posts = TaggedPost.where(instagram_account: @instagram_account)
-    sorted_posts = tagged_posts.sort_by(&:posted_at).reverse[0..post_count]
-    categorized_posts = add_style_classnames(sorted_posts, 'MR')
+    sorted_posts = tagged_posts.sort_by { |post| post.likes || 0 }
+    sliced_posts = sorted_posts.reverse[0..post_count-1]
+
+    categorized_posts = add_style_classnames(sliced_posts, 'MR')
   end
 
   def wide_selection
@@ -115,11 +137,22 @@ class Api::V1::TaggedPostsController < ActionController::API
   end
 
   def set_instagram_account
+
+    # From browser session
+    if current_user
+      @instagram_account = InstagramAccount.find_by(username: current_user.instagram_account)
+    end
+
+    # From API (scraper and postman)
     if params[:instagram_username]
       @instagram_account = InstagramAccount.find_by(username: params[:instagram_username])
-    elsif params[:instagram_account_id]
-      @instagram_account = InstagramAccount.find(params[:instagram_account_id])
     end
+
+    # if params[:instagram_username]
+    #   @instagram_account = InstagramAccount.find_by(username: params[:instagram_username])
+    # elsif params[:instagram_account_id]
+    #   @instagram_account = InstagramAccount.find(params[:instagram_account_id])
+    # end
   end
 
   def add_style_classnames(posts_array, selection_type)

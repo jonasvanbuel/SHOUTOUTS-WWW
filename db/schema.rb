@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_02_153210) do
+ActiveRecord::Schema.define(version: 2021_12_24_132430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_11_02_153210) do
     t.string "user_avatar_url"
     t.string "style_classname"
     t.boolean "hidden", default: false
+    t.string "post_type"
     t.index ["instagram_account_id"], name: "index_tagged_posts_on_instagram_account_id"
   end
 

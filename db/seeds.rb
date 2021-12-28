@@ -13,30 +13,19 @@ User.create(
   email: 'jonas.vanbuel@gmail.com',
   password: 'shoutouts123',
   password_confirmation: 'shoutouts123',
-  post_type: 'hashtag',
-  instagram_account: nil,
+  post_type: 'tagged',
+  instagram_account: 'mariotestino',
   hashtag: 'ciaomariotestino'
 )
 
 User.create(
-  first_name: 'Toon',
-  last_name: 'Bosmans',
-  email: 'toon.j.bosmans@gmail.com',
-  password: 'shoutouts',
-  password_confirmation: 'shoutouts',
-  post_type: 'hashtag',
-  instagram_account: nil,
-  hashtag: 'ciaomariotestino'
-)
-
-User.create(
-  first_name: 'Greg',
-  last_name: 'Lofthouse',
-  email: 'greglofthouse@gmail.com',
-  password: 'shoutouts',
-  password_confirmation: 'shoutouts',
-  post_type: 'hashtag',
-  instagram_account: nil,
+  first_name: 'Guest',
+  last_name: 'Account',
+  email: 'guest@shoutouts.stream',
+  password: 'letmein',
+  password_confirmation: 'letmein',
+  post_type: 'tagged',
+  instagram_account: 'mariotestino',
   hashtag: 'ciaomariotestino'
 )
 
@@ -56,6 +45,7 @@ puts "Instagram accounts connected to user..."
 
 TaggedPost.create(
   instagram_account: InstagramAccount.find_by(username: 'mariotestino'),
+  post_type: 'tagged',
   author: 'anglophileclub',
   message: 'Princess Diana for @vanityfair, 1997. (📷: @mariotestino)',
   posted_at: DateTime.new(2020, 4, 27),
@@ -67,6 +57,7 @@ TaggedPost.create(
 
 TaggedPost.create(
   instagram_account: InstagramAccount.find_by(username: 'mariotestino'),
+  post_type: 'tagged',
   author: 'crazyforcouture',
   message: 'Bone structure for their future baby will be perfecto !
 #gigihadid #zaynmalik 📸 @mariotestino
