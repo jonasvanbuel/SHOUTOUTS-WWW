@@ -1,3 +1,5 @@
+require "open-uri"
+
 class Api::V1::TaggedPostsController < ActionController::API
   before_action :set_instagram_account
 
@@ -27,6 +29,14 @@ class Api::V1::TaggedPostsController < ActionController::API
     if TaggedPost.find_by(pathname: params[:pathname])
       update
     else
+      # Upload image URLs to Cloudinary first
+      image_response = Cloudinary::Uploader.upload(params[:image_url],
+        folder: "shoutouts/#{clean_pathname(params[:pathname])}",
+        public_id: 'image')
+      avatar_response = Cloudinary::Uploader.upload(params[:user_avatar_url],
+        folder: "shoutouts/#{clean_pathname(params[:pathname])}",
+        public_id: 'avatar')
+
       TaggedPost.create(
         instagram_account: @instagram_account,
         post_type: params[:post_type],
@@ -34,9 +44,9 @@ class Api::V1::TaggedPostsController < ActionController::API
         message: params[:message],
         posted_at: params[:posted_at],
         pathname: params[:pathname],
-        image_url: params[:image_url],
+        image_url: image_response['secure_url'],
+        user_avatar_url: avatar_response['secure_url'],
         likes: params[:likes],
-        user_avatar_url: params[:user_avatar_url],
         style_classname: params[:style_classname]
       )
       index
@@ -46,10 +56,7 @@ class Api::V1::TaggedPostsController < ActionController::API
   def update
     tagged_post = TaggedPost.find_by(pathname: params[:pathname])
     tagged_post.update(
-      message: params[:message],
-      image_url: params[:image_url],
       likes: params[:likes] || 0,
-      user_avatar_url: params[:user_avatar_url]
     )
     if tagged_post.save
       index
@@ -161,5 +168,9 @@ class Api::V1::TaggedPostsController < ActionController::API
       post["style_classname"] = "#{selection_type}_#{number < 10 ? "0#{number}" : number}"
       post
     end
+  end
+
+  def clean_pathname(old_pathname)
+    old_pathname.slice(3, old_pathname.length).chomp("/");
   end
 end

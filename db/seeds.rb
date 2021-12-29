@@ -1,6 +1,7 @@
 require 'date'
 
 TaggedPost.destroy_all
+HashtagPost.destroy_all
 UsersInstagramAccount.destroy_all
 InstagramAccount.destroy_all
 User.destroy_all
@@ -13,7 +14,7 @@ User.create(
   email: 'jonas.vanbuel@gmail.com',
   password: 'shoutouts123',
   password_confirmation: 'shoutouts123',
-  post_type: 'tagged',
+  post_type: 'hashtag',
   instagram_account: 'mariotestino',
   hashtag: 'ciaomariotestino'
 )
@@ -43,6 +44,18 @@ UsersInstagramAccount.create(
 )
 puts "Instagram accounts connected to user..."
 
+first_tagged_post_images = {
+  image: 'https://scontent-bru2-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/270058468_213509174308237_7072864980900537491_n.jpg?_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=101&_nc_ohc=FgoKiJtR3fkAX8m9Ygt&edm=AP_V10EBAAAA&ccb=7-4&oh=00_AT_9eXHQyh8s0R5BBDCNh-D2ri717KNF7PMs77I0OroKTw&oe=61D17585&_nc_sid=4f375e',
+  avatar: 'https://scontent-bru2-1.cdninstagram.com/v/t51.2885-19/s150x150/19533879_1724034901222844_4139947009865940992_a.jpg?_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=1&_nc_ohc=yHG86pTYCA8AX9P0iUY&tn=gXTxQs9O-LI1_GdV&edm=AP_V10EBAAAA&ccb=7-4&oh=00_AT-FKApe1JXAJ8A6D4JYQ10Iw3Exa5oFeZ7Ukz-vnzNVWQ&oe=61D2E1DE&_nc_sid=4f375e'
+}
+
+image_response = Cloudinary::Uploader.upload(first_tagged_post_images[:image],
+  folder: 'shoutouts/B_fb1GoJKhs/',
+  public_id: 'image')
+avatar_response = Cloudinary::Uploader.upload(first_tagged_post_images[:avatar],
+  folder: 'shoutouts/B_fb1GoJKhs/',
+  public_id: 'avatar')
+
 TaggedPost.create(
   instagram_account: InstagramAccount.find_by(username: 'mariotestino'),
   post_type: 'tagged',
@@ -50,10 +63,22 @@ TaggedPost.create(
   message: 'Princess Diana for @vanityfair, 1997. (📷: @mariotestino)',
   posted_at: DateTime.new(2020, 4, 27),
   pathname: '/p/B_fb1GoJKhs/',
-  image_url: 'https://scontent-lht6-1.cdninstagram.com/v/t51.2885-15/e35/p1080x1080/95016821_2584228335238619_6233441985609805717_n.jpg?_nc_ht=scontent-lht6-1.cdninstagram.com&_nc_cat=111&_nc_ohc=MVspVszkOdMAX_M2VS2&oh=c1210bd67b036d237f02a02d6fc19f2a&oe=5ED3CBEC',
-  user_avatar_url: 'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-19/s150x150/51822779_830197817364006_5487371687634665472_n.jpg?_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_ohc=eosiFp0G48MAX9-wKtS&oh=7476ac27c7bac707661b0d071ef3272d&oe=5EDBA413',
+  image_url: image_response['secure_url'],
+  user_avatar_url: avatar_response['secure_url'],
   likes: 923
 )
+
+second_tagged_post_images = {
+  image: 'https://scontent-bru2-1.cdninstagram.com/v/t51.2885-15/e35/p1080x1080/269790327_439150641019161_7508665196875358847_n.jpg?_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=109&_nc_ohc=39CMYdHf1ecAX8kCIt-&edm=AP_V10EBAAAA&ccb=7-4&oh=00_AT8l5dYUUSAbr2km9Gzjz_90CSvCYQRyNpSgs_G5TIcbUQ&oe=61D2E80C&_nc_sid=4f375e',
+  avatar: 'https://scontent-bru2-1.cdninstagram.com/v/t51.2885-19/s150x150/19533879_1724034901222844_4139947009865940992_a.jpg?_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_cat=1&_nc_ohc=yHG86pTYCA8AX9P0iUY&tn=gXTxQs9O-LI1_GdV&edm=AP_V10EBAAAA&ccb=7-4&oh=00_AT-FKApe1JXAJ8A6D4JYQ10Iw3Exa5oFeZ7Ukz-vnzNVWQ&oe=61D2E1DE&_nc_sid=4f375e'
+}
+
+image_response = Cloudinary::Uploader.upload(second_tagged_post_images[:image],
+  folder: 'shoutouts/B_jDZQKjMRn/',
+  public_id: 'image')
+avatar_response = Cloudinary::Uploader.upload(second_tagged_post_images[:avatar],
+  folder: 'shoutouts/B_jDZQKjMRn/',
+  public_id: 'avatar')
 
 TaggedPost.create(
   instagram_account: InstagramAccount.find_by(username: 'mariotestino'),
@@ -64,11 +89,13 @@ TaggedPost.create(
 FOLLOW @crazyforcouture for your daily style & couture inspiration, We always tag & mention the designers. #Crazyforcouture #hautecouture #couture #couturefashion #couturedress #couturegown #highfashion #bride #ballgown #whitegown #weddingdress #mermaiddress #royalwedding #style #eveningdress #dreamdress #fashionart #fashionstyle #couturestyle #headpiece #whiteweddingdress #fashionphotography #weddinggown #amazingdress #couturedetails #beautifuldress #fairy #dreamy',
   posted_at: DateTime.new(2020, 4, 29),
   pathname: '/p/B_jDZQKjMRn/',
-  image_url: 'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-15/e35/p1080x1080/95525962_841113593051762_150187507184528024_n.jpg?_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_cat=102&_nc_ohc=N8QlBvfJOdAAX_Xyzr8&oh=01890bb7261fdfda08e7b3ff68d7f671&oe=5ED29F5F',
-  user_avatar_url: 'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-19/s150x150/22639203_1907915762805983_1610780407228268544_n.jpg?_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_ohc=ue9BybCbbK8AX942Vlb&oh=2ad360bc6e68dfe0fc1c67c7262767f9&oe=5EDD6C50',
+  image_url: image_response['secure_url'],
+  user_avatar_url: avatar_response['secure_url'],
   likes: 16
 )
 puts "#{TaggedPost.count} tagged posts created..."
+
+
 
 Hashtag.create(
   name: 'ciaomariotestino'
@@ -81,6 +108,8 @@ UsersHashtag.create(
 )
 puts "Hashtag connected to user..."
 
+
+
 HashtagPost.create(
   hashtag: Hashtag.find_by(name: 'ciaomariotestino'),
   post_type: 'hashtag',
@@ -88,8 +117,8 @@ HashtagPost.create(
   message: 'Princess Diana for @vanityfair, 1997. (📷: @mariotestino)',
   posted_at: DateTime.new(2020, 4, 27),
   pathname: '/p/B_fb1GoJKhs/',
-  image_url: 'https://scontent-lht6-1.cdninstagram.com/v/t51.2885-15/e35/p1080x1080/95016821_2584228335238619_6233441985609805717_n.jpg?_nc_ht=scontent-lht6-1.cdninstagram.com&_nc_cat=111&_nc_ohc=MVspVszkOdMAX_M2VS2&oh=c1210bd67b036d237f02a02d6fc19f2a&oe=5ED3CBEC',
-  user_avatar_url: 'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-19/s150x150/51822779_830197817364006_5487371687634665472_n.jpg?_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_ohc=eosiFp0G48MAX9-wKtS&oh=7476ac27c7bac707661b0d071ef3272d&oe=5EDBA413',
+  image_url: image_response['secure_url'],
+  user_avatar_url: avatar_response['secure_url'],
   likes: 923,
   style_classname: ''
 )
@@ -103,8 +132,8 @@ HashtagPost.create(
 FOLLOW @crazyforcouture for your daily style & couture inspiration, We always tag & mention the designers. #Crazyforcouture #hautecouture #couture #couturefashion #couturedress #couturegown #highfashion #bride #ballgown #whitegown #weddingdress #mermaiddress #royalwedding #style #eveningdress #dreamdress #fashionart #fashionstyle #couturestyle #headpiece #whiteweddingdress #fashionphotography #weddinggown #amazingdress #couturedetails #beautifuldress #fairy #dreamy',
   posted_at: DateTime.new(2020, 4, 29),
   pathname: '/p/B_jDZQKjMRn/',
-  image_url: 'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-15/e35/p1080x1080/95525962_841113593051762_150187507184528024_n.jpg?_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_cat=102&_nc_ohc=N8QlBvfJOdAAX_Xyzr8&oh=01890bb7261fdfda08e7b3ff68d7f671&oe=5ED29F5F',
-  user_avatar_url: 'https://scontent-lhr8-1.cdninstagram.com/v/t51.2885-19/s150x150/22639203_1907915762805983_1610780407228268544_n.jpg?_nc_ht=scontent-lhr8-1.cdninstagram.com&_nc_ohc=ue9BybCbbK8AX942Vlb&oh=2ad360bc6e68dfe0fc1c67c7262767f9&oe=5EDD6C50',
+  image_url: image_response['secure_url'],
+  user_avatar_url: avatar_response['secure_url'],
   likes: 16
 )
 puts "#{HashtagPost.count} hashtag posts created..."

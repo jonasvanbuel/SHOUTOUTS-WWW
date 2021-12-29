@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: deo4sjfc8
+  api_key: '714342692473669'
+  api_secret: RB7Sn_qr5MZPQdWhB_lZtoVKAos
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: deo4sjfc8
+  api_key: '714342692473669'
+  api_secret: RB7Sn_qr5MZPQdWhB_lZtoVKAos
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: deo4sjfc8
+  api_key: '714342692473669'
+  api_secret: RB7Sn_qr5MZPQdWhB_lZtoVKAos
+  enhance_image_tag: true
+  static_file_support: false
