@@ -21,6 +21,8 @@ gem "rack", ">= 2.2.3"
 gem 'dotenv-rails'
 gem 'cloudinary'
 
+gem "activerecord", ">= 6.0.3.5"
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
