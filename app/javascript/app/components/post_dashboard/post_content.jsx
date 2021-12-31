@@ -33,14 +33,14 @@ class PostContent extends Component {
         </div>
 
         <div className="likes">
-          {`${taggedPost.likes} likes`}
+          {`${Number(taggedPost.likes).toLocaleString()} likes`}
         </div>
 
         <div className="message">
           <span className="author">{taggedPost.author}</span>
           <span> </span>
           <Truncate
-            lines={3}
+            lines={2.5}
             dangerouslySetInnerHTML={{
               __html: taggedPost.message
             }}

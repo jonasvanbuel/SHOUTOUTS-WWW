@@ -15,6 +15,14 @@ class Api::V1::HashtagPostsController < ActionController::API
     if HashtagPost.find_by(pathname: params[:pathname])
       update
     else
+      # Upload image URLs to Cloudinary first
+      image_response = Cloudinary::Uploader.upload(params[:image_url],
+        folder: "shoutouts/#{clean_pathname(params[:pathname])}",
+        public_id: 'image')
+      avatar_response = Cloudinary::Uploader.upload(params[:user_avatar_url],
+        folder: "shoutouts/#{clean_pathname(params[:pathname])}",
+        public_id: 'avatar')
+
       HashtagPost.create(
         hashtag: @hashtag,
         post_type: params[:post_type],
@@ -22,9 +30,9 @@ class Api::V1::HashtagPostsController < ActionController::API
         message: params[:message],
         posted_at: params[:posted_at],
         pathname: params[:pathname],
-        image_url: params[:image_url],
+        image_url: image_response['secure_url'],
+        user_avatar_url: avatar_response['secure_url'],
         likes: params[:likes] || 0,
-        user_avatar_url: params[:user_avatar_url],
         style_classname: params[:style_classname]
       )
       index
@@ -34,17 +42,11 @@ class Api::V1::HashtagPostsController < ActionController::API
   def update
     hashtag_post = HashtagPost.find_by(pathname: params[:pathname])
     hashtag_post.update(
-      message: params[:message],
-      image_url: params[:image_url],
       likes: params[:likes] || 0,
-      user_avatar_url: params[:user_avatar_url]
     )
     if hashtag_post.save
       index
     end
-  end
-
-  def update_likes
   end
 
   def update_hidden
@@ -134,5 +136,9 @@ class Api::V1::HashtagPostsController < ActionController::API
       post.pathname
     end
     pathnames
+  end
+
+  def clean_pathname(old_pathname)
+    old_pathname.slice(3, old_pathname.length).chomp("/");
   end
 end
