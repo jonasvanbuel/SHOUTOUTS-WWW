@@ -81,7 +81,7 @@ class Api::V1::HashtagPostsController < ActionController::API
 
   private
 
-  # TO DO: STRONG PARAMS
+  # TODO: STRONG PARAMS
 
   def set_hashtag
     # For website
